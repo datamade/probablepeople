@@ -15,32 +15,32 @@ try :
 except IOError :
     warnings.warn("You must train the model (run training/training.py) and create the usaddr.crfsuite file before you can use the parse and tag methods")
 
-def parse(address_string) :
+def parse(raw_string) :
 
-    tokens = tokenize(address_string)
+    tokens = tokenize(raw_string)
 
     if not tokens :
         return []
 
-    features = addr2features(tokens)
+    features = tokens2features(tokens)
 
     tags = TAGGER.tag(features)
     return zip(tokens, tags)
 
-def tag(address_string) :
-    tagged_address = OrderedDict()
-    for token, label in parse(address_string) :
-        tagged_address.setdefault(label, []).append(token)
+def tag(raw_string) :
+    tagged = OrderedDict()
+    for token, label in parse(raw_string) :
+        tagged.setdefault(label, []).append(token)
 
-    for token in tagged_address :
-        component = ' '.join(tagged_address[token])
+    for token in tagged :
+        component = ' '.join(tagged[token])
         component = component.strip(" ,;")
-        tagged_address[token] = component
+        tagged[token] = component
 
-    return tagged_address 
+    return tagged
 
 
-def tokenize(address_string) :
+def tokenize(raw_string) :
     re_tokens = re.compile(r"""
     \(*\b[^\s,;#()]+[.,;)]*   # ['ab. cd,ef '] -> ['ab.', 'cd,', 'ef']
     |
@@ -48,7 +48,7 @@ def tokenize(address_string) :
     """,
                            re.VERBOSE | re.UNICODE)
 
-    tokens = re_tokens.findall(address_string)
+    tokens = re_tokens.findall(raw_string)
 
     if not tokens :
         return []
@@ -79,12 +79,12 @@ def tokenFeatures(token) :
 
     return features
 
-def addr2features(address):
+def tokens2features(tokens):
     
-    feature_sequence = [tokenFeatures(address[0])]
+    feature_sequence = [tokenFeatures(tokens[0])]
     previous_features = feature_sequence[-1].copy()
 
-    for token in address[1:] :
+    for token in tokens[1:] :
         token_features = tokenFeatures(token) 
         current_features = token_features.copy()
 
@@ -95,12 +95,12 @@ def addr2features(address):
 
         previous_features = current_features
 
-    feature_sequence[0]['address.start'] = True
-    feature_sequence[-1]['address.end'] = True
+    feature_sequence[0]['rawstring.start'] = True
+    feature_sequence[-1]['rawstring.end'] = True
 
     if len(feature_sequence) > 1 :
-        feature_sequence[1]['previous']['address.start'] = True
-        feature_sequence[-2]['next']['address.end'] = True
+        feature_sequence[1]['previous']['rawstring.start'] = True
+        feature_sequence[-2]['next']['rawstring.end'] = True
 
     return feature_sequence
 
