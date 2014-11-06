@@ -1,13 +1,13 @@
-import usaddress
+import name_parser
 from lxml import etree
 import sys
 import os.path
 
 
-def consoleLabel(raw_addr, label_options): 
+def consoleLabel(raw_addr, labels): 
 
-    friendly_tag_dict = dict((label[1], label[0])
-                            for label in label_options)
+    friendly_tag_dict = dict((label, label)
+                            for label in labels)
     valid_responses = ['y', 'n', 's', 'f', '']
     addrs_left_to_tag = []
     finished = False
@@ -25,7 +25,7 @@ def consoleLabel(raw_addr, label_options):
             print "-"*50
             print "ADDRESS STRING: ", addr_string
                 
-            preds = usaddress.parse(addr_string)
+            preds = name_parser.parse(addr_string)
 
             user_input = None 
             while user_input not in valid_responses :
@@ -43,7 +43,7 @@ def consoleLabel(raw_addr, label_options):
 
                 elif user_input =='n':
                     corrected_addr = manualTagging(preds, 
-                                                label_options,
+                                                labels,
                                                 friendly_tag_dict)
                     tagged_addr.add(tuple(corrected_addr))
                     addrs_left_to_tag.remove(addr_string)
@@ -151,38 +151,9 @@ if __name__ == '__main__' :
     import csv
     from argparse import ArgumentParser
     import unidecode
-
-    labels = [
-        ['not addr', 'Null'],
-        ['addr #', 'AddressNumber'],
-        ['st dir pre', 'StreetNamePreDirectional'],
-        ['st dir post', 'StreetNamePostDirectional'],
-        ['st name', 'StreetName'],
-        ['st type post', 'StreetNamePostType'],
-        ['st type pre', 'StreetNamePreType'],
-        ['intersection separator', 'IntersectionSeparator'],
-        ['unit type', 'OccupancyType'],
-        ['unit no', 'OccupancyIdentifier'],
-        ['box type', 'USPSBoxType'],
-        ['box no', 'USPSBoxID'],
-        ['city', 'PlaceName'],
-        ['state', 'StateName'],
-        ['zip', 'ZipCode'],
-        ['landmark', 'LandmarkName'],
-        ['box group type', 'USPSBoxGroupType'],
-        ['box group id', 'USPSBoxGroupID'],
-        ['address number prefix', 'AddressNumberPrefix'],
-        ['address number suffix', 'AddressNumberSuffix'],
-        ['subaddress id', 'SubaddressIdentifier'],
-        ['subaddress type', 'SubaddressType'],
-        ['recipient', 'Recipient'],
-        ['streetname modifer, pre', 'StreetNamePreModifier'],
-        ['building name', 'BuildingName'],
-        ['corner/junction', 'CornerOf']
-
-    ]
-
-
+    
+    labels = name_parser.labels
+    #
     parser = ArgumentParser(description="Label some addresses")
     parser.add_argument(dest="infile", 
                         help="input csv with addresses", metavar="FILE")
