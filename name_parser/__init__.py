@@ -4,11 +4,9 @@ import pycrfsuite
 import re
 from collections import OrderedDict
 import warnings
+import config
 
-DIRECTIONS = set(['n', 's', 'e', 'w',
-                  'ne', 'nw', 'se', 'sw',
-                  'north', 'south', 'east', 'west', 
-                  'northeast', 'northwest', 'southeast', 'southwest'])
+labels = config.LABELS
 
 try :
     TAGGER = pycrfsuite.Tagger()
