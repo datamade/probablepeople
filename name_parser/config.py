@@ -9,8 +9,15 @@
 
 # these are the labels for tagging tokens
 LABELS = [
+'Prefix',       # prefix types? e.g. title?
 'FirstName',
-'LastName'
+'FirstInitial', # should name & initial be separate tags
+'MiddleName',
+'MiddleInitial',
+'LastName',
+'LastInitial',
+'Suffix',       # suffix types?
+'Nickname'
 ]
 
-NULL_TAG = 'Null'
+NULL_LABEL = 'Null'
