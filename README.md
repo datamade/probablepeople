@@ -6,4 +6,4 @@ currently a work in progress
 
 ### Copyright
 
-Copyright (c) 2014 Atlanta Journal Constitution. Released under the [MIT License](https://github.com/datamade/usaddress/blob/master/LICENSE).
+Copyright (c) 2014 Atlanta Journal Constitution. Released under the [MIT License](https://github.com/datamade/name-parser/blob/master/LICENSE).
