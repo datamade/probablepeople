@@ -12,3 +12,5 @@ LABELS = [
 'FirstName',
 'LastName'
 ]
+
+NULL_TAG = 'Null'
