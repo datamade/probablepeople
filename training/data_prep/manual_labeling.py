@@ -143,7 +143,7 @@ def list2file(string_list, filepath):
 def naiveConsoleLabel(raw_strings, labels): 
     print "Start console labeling!"
 
-    valid_responses = ['t', 's', 'f']
+    valid_responses = ['t', 's', 'f', '']
     finished = False
 
     strings_left_to_tag = raw_strings.copy()
@@ -165,7 +165,7 @@ def naiveConsoleLabel(raw_strings, labels):
                 sys.stderr.write('(t)ag / (s)kip / (f)inish tagging\n')
                 user_input = sys.stdin.readline().strip()
 
-                if user_input =='t':
+                if user_input =='t' or user_input == '':
                     tagged_sequence = naiveManualTag(tokens, labels)
                     tagged_strings.add(tuple(tagged_sequence))
                     strings_left_to_tag.remove(raw_sequence)

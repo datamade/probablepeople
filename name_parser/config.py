@@ -19,7 +19,8 @@ LABELS = [
 'LastInitial',
 'SuffixGenerational',
 'SuffixOther',
-'Nickname'
+'Nickname',
+'And'
 ]
 
 NULL_LABEL = 'Null'
