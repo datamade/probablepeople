@@ -10,10 +10,10 @@ labels = config.LABELS
 
 try :
     TAGGER = pycrfsuite.Tagger()
-    path = os.path.split(os.path.abspath(__file__))[0] + '/usaddr.crfsuite'
+    path = os.path.split(os.path.abspath(__file__))[0] + '/learned_settings.crfsuite'
     TAGGER.open(path)
 except IOError :
-    warnings.warn("You must train the model (run training/training.py) and create the usaddr.crfsuite file before you can use the parse and tag methods")
+    warnings.warn("You must train the model (run training/training.py) and create the learned_settings.crfsuite file before you can use the parse and tag methods")
 
 def parse(raw_string) :
 
