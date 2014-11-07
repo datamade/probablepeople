@@ -9,15 +9,15 @@
 
 # these are the labels for tagging tokens
 LABELS = [
-'PrefixMarital',       # prefix types? e.g. title?
+'PrefixMarital',
 'PrefixOther',
 'GivenName',
-'FirstInitial', # should name & initial be separate tags
+'FirstInitial',
 'MiddleName',
 'MiddleInitial',
 'Surname',
 'LastInitial',
-'SuffixGenerational',       # suffix types?
+'SuffixGenerational',
 'SuffixOther',
 'Nickname'
 ]

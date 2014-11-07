@@ -73,7 +73,6 @@ def tokenFeatures(token) :
                 'endsinpunc' : (token[-1]
                                 if bool(re.match('.+[^.\w]', token))
                                 else False),
-                'directional' : token_abbrev in DIRECTIONS,
                 'has.vowels'  : bool(set(token_abbrev[1:]) & set('aeiou')),
                 }
 

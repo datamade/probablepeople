@@ -3,53 +3,45 @@ from lxml import etree
 import sys
 import os.path
 
-
-def consoleLabel(raw_addr, labels): 
+####### test this #############
+def consoleLabel(raw_strings, labels): 
     print "Start console labeling!"
 
-    friendly_tag_dict = dict((label, label)
-                            for label in labels)
-
     valid_responses = ['y', 'n', 's', 'f', '']
-    addrs_left_to_tag = []
     finished = False
 
-    addrs_left_to_tag = raw_addr.copy()
+    strings_left_to_tag = raw_strings.copy()
+    total_strings = len(raw_strings)
+    tagged_strings = set([])
 
-    total_addrs = len(raw_addr)
-
-    tagged_addr = set([])
-
-    for i, addr_string in enumerate(raw_addr, 1):
+    for i, raw_sequence in enumerate(raw_strings, 1):
 
         if not finished:
 
-            print "(%s of %s)" % (i, total_addrs)
+            print "(%s of %s)" % (i, total_strings)
             print "-"*50
-            print "ADDRESS STRING: ", addr_string
+            print "STRING: ", raw_sequence
             
-            preds = name_parser.parse(addr_string)
+            preds = name_parser.parse(raw_sequence)
 
             user_input = None 
             while user_input not in valid_responses :
 
-
-                friendly_addr = [(token[0], friendly_tag_dict[token[1]]) for token in preds]
+                friendly_addr = [(token[0], token[1]) for token in preds]
                 print_table(friendly_addr)
 
                 sys.stderr.write('Is this correct? (y)es / (n)o / (s)kip / (f)inish tagging\n')
                 user_input = sys.stdin.readline().strip()
 
                 if user_input =='y':
-                    tagged_addr.add(tuple(preds))
-                    addrs_left_to_tag.remove(addr_string)
+                    tagged_strings.add(tuple(preds))
+                    strings_left_to_tag.remove(raw_sequence)
 
                 elif user_input =='n':
-                    corrected_addr = manualTagging(preds, 
-                                                labels,
-                                                friendly_tag_dict)
-                    tagged_addr.add(tuple(corrected_addr))
-                    addrs_left_to_tag.remove(addr_string)
+                    corrected_string = manualTagging(preds, 
+                                                labels)
+                    tagged_strings.add(tuple(corrected_string))
+                    addrs_left_to_tag.remove(raw_sequence)
 
 
                 elif user_input in ('' or 's') :
@@ -58,10 +50,7 @@ def consoleLabel(raw_addr, labels):
                     finished = True
 
     print "Done! Yay!"
-    
-    return tagged_addr, addrs_left_to_tag
-
-
+    return tagged_strings, strings_left_to_tag
 
 
 def print_table(table):
@@ -71,16 +60,14 @@ def print_table(table):
                                 for i, x in enumerate(line))
         
 
-
-def manualTagging(preds, label_options, friendly_tag_dict):
-    valid_input_tags = dict((str(i), tag[0]) 
-                            for i, tag
-                            in enumerate(label_options))
-    tagged_addr = []
-    for token in preds:
+####### test this #############
+def manualTagging(preds, labels):
+    valid_input_tags = dict( (str(i), label) for i, label in enumerate(labels))
+    tagged_sequence = []
+    for token_pred in preds:
         valid_tag = False
         while not valid_tag:
-            print 'What is \''+token[0]+'\' ? If '+ friendly_tag_dict[token[1]]+' hit return' #where should the tag list be printed?
+            print 'What is \''+token_pred[0]+'\' ? If '+ token_pred[1] +' hit return' #where should the tag list be printed?
             user_input_tag = sys.stdin.readline().strip()
             if user_input_tag in valid_input_tags or user_input_tag == '':
                 valid_tag = True
@@ -91,12 +78,12 @@ def manualTagging(preds, label_options, friendly_tag_dict):
 
         xml_tag = ''
         if user_input_tag == '':
-            xml_tag = token[1]
+            xml_tag = token_pred[1]
         else:
-            xml_tag = label_options[int(user_input_tag)][1]
+            xml_tag = labels[int(user_input_tag)]
 
-        tagged_addr.append((token[0], xml_tag))
-    return tagged_addr
+        tagged_sequence.append((token[0], xml_tag))
+    return tagged_sequence
 
 
 def appendListToXML(addr_list, collection) :
@@ -155,7 +142,6 @@ def naiveConsoleLabel(raw_strings, labels):
     print "Start console labeling!"
 
     valid_responses = ['t', 's', 'f']
-    addrs_left_to_tag = []
     finished = False
 
     strings_left_to_tag = raw_strings.copy()
