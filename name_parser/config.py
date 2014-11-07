@@ -23,3 +23,11 @@ LABELS = [
 ]
 
 NULL_LABEL = 'Null'
+
+######## XML CONFIG ############
+
+# this is the tag for each string
+PARENT_LABEL = 'Name'
+
+# this is the tag for a group of strings
+GROUP_LABEL = 'NameCollection'
