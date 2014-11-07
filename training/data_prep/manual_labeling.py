@@ -27,8 +27,8 @@ def consoleLabel(raw_strings, labels):
             user_input = None 
             while user_input not in valid_responses :
 
-                friendly_addr = [(token[0], token[1]) for token in preds]
-                print_table(friendly_addr)
+                friendly_repr = [(token[0], token[1]) for token in preds]
+                print_table(friendly_repr)
 
                 sys.stderr.write('Is this correct? (y)es / (n)o / (s)kip / (f)inish tagging\n')
                 user_input = sys.stdin.readline().strip()
@@ -41,7 +41,7 @@ def consoleLabel(raw_strings, labels):
                     corrected_string = manualTagging(preds, 
                                                 labels)
                     tagged_strings.add(tuple(corrected_string))
-                    addrs_left_to_tag.remove(raw_sequence)
+                    strings_left_to_tag.remove(raw_sequence)
 
 
                 elif user_input in ('' or 's') :
@@ -86,21 +86,22 @@ def manualTagging(preds, labels):
     return tagged_sequence
 
 
-def appendListToXML(addr_list, collection) :
-    for addr in addr_list:
-        addr_xml = addr2XML(addr)
-        collection.append(addr_xml)
-    return collection
+def appendListToXML(list_to_append, collection_XML) :
+    for labeled_sequence in list_to_append:
+        sequence_xml = sequence2XML(labeled_sequence)
+        collection_XML.append(sequence_xml)
+    return collection_XML
 
-def addr2XML(addr) :
-    addr_xml = etree.Element('AddressString')
-    for token, label in addr:
+def sequence2XML(labeled_sequence) :
+    parent_tag = name_parser.config.PARENT_LABEL
+    sequence_xml = etree.Element(parent_tag)
+    for token, label in labeled_sequence:
         component_xml = etree.Element(label)
         component_xml.text = token
         component_xml.tail = ' '
-        addr_xml.append(component_xml)
-    addr_xml[-1].tail = ''
-    return addr_xml
+        sequence_xml.append(component_xml)
+    sequence_xml[-1].tail = ''
+    return sequence_xml
 
 
 def stripFormatting(collection) :
@@ -112,30 +113,31 @@ def stripFormatting(collection) :
     return collection
 
 
-def appendListToXMLfile(addr_list, filepath):
+def appendListToXMLfile(labeled_list, filepath):
 
     if os.path.isfile(filepath):
         with open( filepath, 'r+' ) as f:
             tree = etree.parse(filepath)
-            address_collection = tree.getroot()
-            address_collection = stripFormatting(address_collection)
+            collection_XML = tree.getroot()
+            collection_XML = stripFormatting(collection_XML)
 
     else:
-        address_collection = etree.Element('AddressCollection')
+        collection_tag = name_parser.config.GROUP_LABEL
+        collection_XML = etree.Element(collection_tag)
 
 
-    address_collection = appendListToXML(addr_list, address_collection)
+    collection_XML = appendListToXML(labeled_list, collection_XML)
 
 
     with open(filepath, 'w') as f :
-        f.write(etree.tostring(address_collection, pretty_print = True)) 
+        f.write(etree.tostring(collection_XML, pretty_print = True)) 
 
 
-
-def list2file(addr_list, filepath):
+############# better way to write to csv?
+def list2file(string_list, filepath):
     file = open( filepath, 'w' )
-    for addr in addr_list:
-        file.write('"%s"\n' % addr)
+    for string in string_list:
+        file.write('"%s"\n' % string)
 
 
 def naiveConsoleLabel(raw_strings, labels): 
@@ -203,7 +205,7 @@ if __name__ == '__main__' :
     import unidecode
     
     labels = name_parser.labels
-    #
+    
     parser = ArgumentParser(description="Label some strings")
     parser.add_argument(dest="infile", 
                         help="input csv", metavar="FILE")
@@ -228,10 +230,10 @@ if __name__ == '__main__' :
         strings = set([unidecode.unidecode(row[0]) for row in reader])
 
     if args.n :
-        tagged_string_list, raw_strings_left = naiveConsoleLabel(strings, labels)
+        labeled_list, raw_strings_left = naiveConsoleLabel(strings, labels)
     else:
-        tagged_string_list, raw_strings_left = consoleLabel(strings, labels) 
+        labeled_list, raw_strings_left = consoleLabel(strings, labels) 
 
-    appendListToXMLfile(tagged_list, args.outfile)
-    list2file(raw_strings_left, 'unlabeled.csv')
+    appendListToXMLfile(labeled_list, args.outfile)
+    list2file(raw_strings_left, 'training/data_prep/unlabeled_data/unlabeled.csv')
     
