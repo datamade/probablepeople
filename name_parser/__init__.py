@@ -1,5 +1,4 @@
 import os
-import string
 import pycrfsuite
 import re
 from collections import OrderedDict
@@ -56,35 +55,13 @@ def tokenize(raw_string) :
     return tokens
 
 
-def tokenFeatures(token) :
-
-    if token in (u'&', u'#') :
-        token_clean = token
-    else :
-        token_clean = re.sub(r'(^[\W]*)|([^.\w]*$)', u'', token)
-    token_abbrev = re.sub(r'[.]', u'', token_clean.lower())
-    features = {'nopunc' : token_abbrev,
-                'abbrev' : token_clean[-1] == u'.',
-                'case' : casing(token_clean),
-                'digits' : digits(token_clean),
-                'length' : (u'd:' + unicode(len(token_abbrev))
-                            if token_abbrev.isdigit()
-                            else u'w:' + unicode(len(token_abbrev))),
-                'endsinpunc' : (token[-1]
-                                if bool(re.match('.+[^.\w]', token))
-                                else False),
-                'has.vowels'  : bool(set(token_abbrev[1:]) & set('aeiou')),
-                }
-
-    return features
-
 def tokens2features(tokens):
     
-    feature_sequence = [tokenFeatures(tokens[0])]
+    feature_sequence = [config.tokenFeatures(tokens[0])]
     previous_features = feature_sequence[-1].copy()
 
     for token in tokens[1:] :
-        token_features = tokenFeatures(token) 
+        token_features = config.tokenFeatures(token) 
         current_features = token_features.copy()
 
         feature_sequence[-1]['next'] = current_features
@@ -102,23 +79,3 @@ def tokens2features(tokens):
         feature_sequence[-2]['next']['rawstring.end'] = True
 
     return feature_sequence
-
-def casing(token) :
-    if token.isupper() :
-        return 'upper'
-    elif token.islower() :
-        return 'lower' 
-    elif token.istitle() :
-        return 'title'
-    else :
-        return 'other'
-
-def digits(token) :
-    if token.isdigit() :
-        return 'all_digits' 
-    elif set(token) & set(string.digits) :
-        return 'some_digits' 
-    else :
-        return 'no_digits'
-                                    
-
