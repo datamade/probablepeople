@@ -27,7 +27,18 @@ test_strings = [
     ('Edwin van der Sar', ['GivenName', 'Surname', 'Surname', 'Surname']),
     ('Joost van den Vondel', ['GivenName', 'Surname', 'Surname', 'Surname']),
     ('Monique van de Ven', ['GivenName', 'Surname', 'Surname', 'Surname']),
-    ('Robert J. Van de Graaff', ['GivenName', 'MiddleInitial', 'Surname', 'Surname', 'Surname'])
+    ('Robert J. Van de Graaff', ['GivenName', 'MiddleInitial', 'Surname', 'Surname', 'Surname']),
+    ('a. b. smith', ['FirstInitial', 'MiddleInitial', 'Surname']),
+    ('a. bob smith', ['FirstInitial', 'MiddleName', 'Surname']),
+    ('bob a and linda b belcher', ['GivenName', 'MiddleInitial', 'And', 'GivenName', 'MiddleInitial', 'Surname']),
+    ('a. smith', ['FirstInitial', 'Surname']),
+    ('a smith', ['FirstInitial', 'Surname']),
+    ('a smith d.o.', ['FirstInitial', 'Surname', 'SuffixOther']),
+    ('a smith iii', ['FirstInitial', 'Surname', 'SuffixGenerational']),
+    ('a smith DO', ['FirstInitial', 'Surname', 'SuffixOther']),
+    ('belcher, bob b', ['Surname', 'GivenName', 'MiddleInitial']),
+    ('belcher, bob b jr', ['Surname', 'GivenName', 'MiddleInitial', 'SuffixGenerational']),
+    ('Belcher, Bob B. IV', ['Surname', 'GivenName', 'MiddleInitial', 'SuffixGenerational']),
 ]
 
 failed = 0
