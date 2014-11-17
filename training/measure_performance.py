@@ -1,63 +1,51 @@
-from usaddress import parse
-from training import parseTrainingData
+from name_parser import parse
 
 
-class TestSynthetic(object) :
-    def test_Parser(self):
+test_strings = [
+    ('Cathy Deng', ['GivenName', 'Surname']),
+    ('Mr & Mrs Bob Belcher', ['PrefixMarital', 'And', 'PrefixMarital', 'GivenName', 'Surname']),
+    ('Belcher, Bob', ['Surname', 'GivenName']),
+    ('Bob B', ['GivenName', 'LastInitial']),
+    ('Bob B.', ['GivenName', 'LastInitial']),
+    ('mr bob b', ['PrefixMarital', 'GivenName', 'LastInitial']),
+    ('bob b jr', ['GivenName', 'LastInitial', 'SuffixGenerational']),
+    ('Bob Belcher, II', ['GivenName', 'Surname', 'SuffixGenerational']),
+    ('bob belcher IV', ['GivenName', 'Surname', 'SuffixGenerational']),
+    ('Bob Belcher M.D.', ['GivenName', 'Surname', 'SuffixOther']),
+    ('Dr. Bob Belcher', ['PrefixOther', 'GivenName', 'Surname']),
+    ('Bob Belcher PhD', ['GivenName', 'Surname', 'SuffixOther']),
+    ('B Belcher', ['FirstInitial', 'Surname']),
+    ('b. belcher', ['FirstInitial', 'Surname']),
+    ('b belcher', ['FirstInitial', 'Surname']),
+    ("Bob O'Malley", ['GivenName', 'Surname']),
+    ("Bob 'Bill' O'Malley", ['GivenName', 'Nickname', 'Surname']),
+    ("Bob (Bill) O'Malley", ['GivenName', 'Nickname', 'Surname']),
+    ("B O'Malley", ['FirstInitial', 'Surname']),
+    ('', []),
+    ('', []),
+    ('', []),
+    ('', []),
+    ('', []),
+    ('', []),
+    ('', []),
+    ('', []),
+    ('', []),
+    ('', [])
+]
 
-        test_file = 'test_data/synthetic_osm_data_xml.xml'
+failed = 0
+for string_tuple in test_strings :
+    labels_true = string_tuple[1]
+    parsed = parse(string_tuple[0])
+    labels_pred = [ token[1] for token in parsed ]
+    if labels_pred == labels_true:
+        print string_tuple[0], "...ok"
+    else:
+        failed += 1
+        print "*"*40
+        print string_tuple[0], "...INCORRECT PARSING"
+        print "pred: ", labels_pred
+        print "true: ", labels_true
+        print "-"*40
 
-        for address_text, components in parseTrainingData(test_file) :
-            _, labels_true = zip(*components)
-            _, labels_pred = zip(*parse(address_text))
-            yield equals, address_text, labels_pred, labels_true
-
-
-class TestUS50_2(object) :
-    def test_Parser(self):
-
-        test_file = 'test_data/us50_test_tagged.xml'
-
-        for address_text, components in parseTrainingData(test_file) :
-            _, labels_true = zip(*components)
-            _, labels_pred = zip(*parse(address_text))
-            
-            yield fuzzyEquals, address_text, labels_pred, labels_true
-
-
-class TestOpenaddress(object) :
-    def test_us_ia_linn(self) :
-
-        test_file = 'training_data/openaddress_us_ia_linn.xml'
-
-        for address_text, components in parseTrainingData(test_file) :
-            _, labels_true = zip(*components)
-            _, labels_pred = zip(*parse(address_text))
-            yield equals, address_text, labels_pred, labels_true
-
-
-def equals(addr, 
-           labels_pred, 
-           labels_true) :
-    print "ADDRESS: ", addr
-    assert labels_pred == labels_true
-
-def fuzzyEquals(addr, 
-                labels_pred,
-                labels_true) : 
-    labels = []
-    fuzzy_labels = []
-    for label in labels_pred:
-        if label.startswith('StreetName') :
-            fuzzy_labels.append('StreetName')
-        elif label.startswith('AddressNumber') :
-            fuzzy_labels.append('AddressNumber')
-        else:
-            fuzzy_labels.append(label)
-    for label in labels_true:
-        labels.append(label)
-    print "ADDRESS:    ", addr
-    print "fuzzy pred: ", fuzzy_labels
-    print "true:       ", labels
-
-    assert fuzzy_labels == labels
+print "Failed", failed, "out of", len(test_strings), "strings"
