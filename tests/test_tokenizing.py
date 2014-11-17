@@ -1,46 +1,35 @@
-from usaddress import tokenize
+from name_parser import tokenize
 import unittest
 
 class TestTokenizing(unittest.TestCase) :
-    def test_hash(self):
-        
-        assert tokenize('# 1 abc st') == ['#', '1', 'abc', 'st']
-        assert tokenize('#1 abc st') == ['#', '1', 'abc', 'st']
-        assert tokenize('box # 1 abc st') == ['box', '#', '1', 'abc', 'st']
-        assert tokenize('box #1 abc st') == ['box', '#', '1', 'abc', 'st']
-        assert tokenize('box# 1 abc st') == ['box', '#', '1', 'abc', 'st']
-        assert tokenize('box#1 abc st') == ['box', '#', '1', 'abc', 'st']
 
     def test_split_on_punc(self) :
 
-        assert tokenize('1 abc st,suite 1') == ['1', 'abc', 'st,', 'suite', '1']
-        assert tokenize('1 abc st;suite 1') == ['1', 'abc', 'st;', 'suite', '1']
-        assert tokenize('1-5 abc road') == ['1-5', 'abc', 'road']
+        assert tokenize('belcher,bob') == ['belcher,', 'bob']
+        assert tokenize('bob foo-bar') == ['bob', 'foo-bar']
     
     def test_spaces(self) :
 
-        assert tokenize('1 abc st') == ['1', 'abc', 'st']
-        assert tokenize('1  abc st') == ['1', 'abc', 'st']
-        assert tokenize('1 abc st ') == ['1', 'abc', 'st']
-        assert tokenize(' 1 abc st') == ['1', 'abc', 'st']
+        assert tokenize('foo bar') == ['foo', 'bar']
+        assert tokenize('foo  bar') == ['foo', 'bar']
+        assert tokenize('foo bar ') == ['foo', 'bar']
+        assert tokenize(' foo bar') == ['foo', 'bar']
 
     def test_capture_punc(self) :
 
-        assert tokenize('222 W. Merchandise Mart Plaza') == ['222', 'W.', 'Merchandise', 'Mart', 'Plaza']
-        assert tokenize('222 W Merchandise Mart Plaza, Chicago, IL') == ['222', 'W', 'Merchandise', 'Mart', 'Plaza,', 'Chicago,', 'IL' ]
-        assert tokenize('123 Monroe- St') == ['123', 'Monroe-', 'St']
-
-    def test_nums(self) :
-
-        assert tokenize('222 W Merchandise Mart Plaza Chicago IL 60654') == ['222', 'W', 'Merchandise', 'Mart', 'Plaza', 'Chicago', 'IL', '60654' ]
+        assert tokenize('bob b.') == ['bob', 'b.']
+        assert tokenize('bob b., jr') == ['bob', 'b.,', 'jr' ]
+        assert tokenize('bob b. jr') == ['bob', 'b.', 'jr' ]
+        assert tokenize("robert 'bob' belcher") == ['robert', "'bob'", 'belcher']
+        assert tokenize('robert "bob" belcher') == ['robert', '"bob"', 'belcher']
 
     def test_ampersand(self) :
-        assert tokenize('123 & 456') == ['123', '&', '456']
+        assert tokenize('mr & mrs') == ['mr', '&', 'mrs']
 
     def test_paren(self) :
-        assert tokenize('222 W Merchandise Mart Plaza (1871) Chicago IL 60654') == ['222', 'W', 'Merchandise', 'Mart', 'Plaza', '(1871)', 'Chicago', 'IL', '60654' ]
-        assert tokenize('222 W Merchandise Mart Plaza (1871), Chicago IL 60654') == ['222', 'W', 'Merchandise', 'Mart', 'Plaza', '(1871),', 'Chicago', 'IL', '60654' ]
-        assert tokenize('222 W Merchandise Mart Plaza(1871) Chicago IL 60654') == ['222', 'W', 'Merchandise', 'Mart', 'Plaza', '(1871)', 'Chicago', 'IL', '60654' ]
+        assert tokenize('robert (bob) belcher') == ['robert', '(bob)', 'belcher']
+        assert tokenize('robert(bob) belcher') == ['robert', '(bob)', 'belcher']
+        assert tokenize('robert (bob)belcher') == ['robert', '(bob)', 'belcher'] 
 
 if __name__ == '__main__' :
     unittest.main()    
