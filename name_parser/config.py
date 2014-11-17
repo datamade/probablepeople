@@ -46,24 +46,26 @@ def tokenFeatures(token) :
         token_clean = token
     else :
         token_clean = re.sub(r'(^[\W]*)|([^.\w]*$)', u'', token)
-    token_abbrev = re.sub(r'[&.-]', u'', token_clean.lower())
+    token_chars = re.sub(r'[\W]', u'', token_clean.lower())
 
-    features = {'nopunc' : token_abbrev,
-                'abbrev' : token_clean[-1] == u'.',
+    features = {'nopunc' : token_chars,
+                'is.abbrev' : bool(re.match('(\w\.)+', token_clean)),
+                'is.initial' : bool(re.match('(\w\.)', token_clean)),
                 'case' : casing(token_clean),
-                'length' : (u'd:' + unicode(len(token_abbrev))
-                            if token_abbrev.isdigit()
-                            else u'w:' + unicode(len(token_abbrev))),
+                'length' : (u'w:' + unicode(len(token_chars))),
                 'endsinpunc' : (token[-1]
                                 if bool(re.match('[^\w]', token[-1]))
                                 else False),
                 'has.punc' : (True
                                 if bool(re.match('.*[^\w].*', token))
                                 else False),
-                'has.vowels'  : bool(set(token_abbrev[1:]) & set('aeiou')),
-                'first1char' : (token_abbrev[0] if len(token_abbrev) > 0
+                'punc' :    (re.sub(r'\w', u'', token)
+                                if bool(re.match('.*[^\w].*', token))
                                 else False),
-                'first2char' : (token_abbrev[:2] if len(token_abbrev) > 1
+                'has.vowels'  : bool(set(token_chars[1:]) & set('aeiou')),
+                'first1char' : (token_chars[0] if len(token_chars) > 0
+                                else False),
+                'first2char' : (token_chars[:2] if len(token_chars) > 1
                                 else False)
                 }
 
