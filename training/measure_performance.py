@@ -21,16 +21,13 @@ test_strings = [
     ("Bob 'Bill' O'Malley", ['GivenName', 'Nickname', 'Surname']),
     ("Bob (Bill) O'Malley", ['GivenName', 'Nickname', 'Surname']),
     ("B O'Malley", ['FirstInitial', 'Surname']),
-    ('', []),
-    ('', []),
-    ('', []),
-    ('', []),
-    ('', []),
-    ('', []),
-    ('', []),
-    ('', []),
-    ('', []),
-    ('', [])
+    ('vincent van gogh', ['GivenName', 'Surname', 'Surname']),
+    ('Vincent van Gogh', ['GivenName', 'Surname', 'Surname']),
+    ('Anthony van Dyck', ['GivenName', 'Surname', 'Surname']),
+    ('Edwin van der Sar', ['GivenName', 'Surname', 'Surname', 'Surname']),
+    ('Joost van den Vondel', ['GivenName', 'Surname', 'Surname', 'Surname']),
+    ('Monique van de Ven', ['GivenName', 'Surname', 'Surname', 'Surname']),
+    ('Robert J. Van de Graaff', ['GivenName', 'MiddleInitial', 'Surname', 'Surname', 'Surname'])
 ]
 
 failed = 0
