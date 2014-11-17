@@ -51,7 +51,6 @@ def tokenFeatures(token) :
     features = {'nopunc' : token_abbrev,
                 'abbrev' : token_clean[-1] == u'.',
                 'case' : casing(token_clean),
-                'digits' : digits(token_clean),
                 'length' : (u'd:' + unicode(len(token_abbrev))
                             if token_abbrev.isdigit()
                             else u'w:' + unicode(len(token_abbrev))),
@@ -79,13 +78,3 @@ def casing(token) :
         return 'title'
     else :
         return 'other'
-
-def digits(token) :
-    if token.isdigit() :
-        return 'all_digits' 
-    elif set(token) & set(string.digits) :
-        return 'some_digits' 
-    else :
-        return 'no_digits'
-                                
-
