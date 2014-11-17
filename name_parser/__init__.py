@@ -41,9 +41,7 @@ def tag(raw_string) :
 
 def tokenize(raw_string) :
     re_tokens = re.compile(r"""
-    \(*\b[^\s,;#()]+[.,;)]*   # ['ab. cd,ef '] -> ['ab.', 'cd,', 'ef']
-    |
-    [#&]                # [^'#abc'] -> ['#']
+    \(*[^\s,;()]+[.,;)]*   # ['ab. cd,ef '] -> ['ab.', 'cd,', 'ef']
     """,
                            re.VERBOSE | re.UNICODE)
 
@@ -53,7 +51,6 @@ def tokenize(raw_string) :
         return []
 
     return tokens
-
 
 def tokens2features(tokens):
     
