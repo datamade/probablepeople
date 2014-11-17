@@ -222,4 +222,10 @@
   <Name><GivenName>Brian</GivenName> <Nickname>"Buck"</Nickname> <Surname>Rogers</Surname></Name>
   <Name><GivenName>ernest</GivenName> <Nickname>(bucky)</Nickname> <Surname>wood</Surname></Name>
   <Name><GivenName>James</GivenName> <Nickname>"Mack"</Nickname> <Surname>Henderson</Surname></Name>
+  <Name><GivenName>David</GivenName> <LastInitial>S,</LastInitial> <SuffixOther>DO</SuffixOther></Name>
+  <Name><GivenName>CLAUDE</GivenName> <LastInitial>F.,</LastInitial> <SuffixGenerational>JR.</SuffixGenerational></Name>
+  <Name><GivenName>James</GivenName> <Surname>McEachern</Surname> <SuffixGenerational>III</SuffixGenerational></Name>
+  <Name><GivenName>William</GivenName> <LastInitial>L.,</LastInitial> <SuffixGenerational>III</SuffixGenerational></Name>
+  <Name><GivenName>Walter</GivenName> <LastInitial>B,</LastInitial> <SuffixGenerational>Jr</SuffixGenerational></Name>
+  <Name><GivenName>Paola</GivenName> <LastInitial>I.,</LastInitial> <SuffixOther>M.D.</SuffixOther></Name>
 </NameCollection>
