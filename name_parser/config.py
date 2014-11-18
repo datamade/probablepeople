@@ -1,5 +1,6 @@
 import re
 import string
+from metaphone import doublemetaphone
 
 
 ######### TOKEN CONFIG #########
@@ -58,6 +59,7 @@ def tokenFeatures(token) :
                 'length' : len(token_abbrev),
                 'initial' : len(token_abbrev) == 1 and token_abbrev.isalpha(),
                 'has.vowels'  : bool(set(token_abbrev[1:]) & set('aeiou')),
+                'dblmetaphone' : doublemetaphone(token_abbrev)
                 }
     reversed_token = token_abbrev[::-1]
     for i in range(1, len(token_abbrev)) :
