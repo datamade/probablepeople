@@ -37,37 +37,33 @@ PARENT_LABEL = 'Name'
 # this is the tag for a group of strings
 GROUP_LABEL = 'NameCollection'
 
-
 ######## FEATURE CONFIG ########
 
 def tokenFeatures(token) :
 
-    if token in (u'&', u'#') :
+    if token in (u'&') :
         token_clean = token
     else :
         token_clean = re.sub(r'(^[\W]*)|([^.\w]*$)', u'', token)
-    token_chars = re.sub(r'[\W]', u'', token_clean.lower())
+    token_abbrev = re.sub(r'[.]', u'', token_clean.lower())
 
-    features = {'nopunc' : token_chars,
-                'is.abbrev' : bool(re.match('(\w\.)+', token_clean)),
-                'is.initial' : bool(re.match('(\w\.)', token_clean)),
+    features = {'nopunc' : token_abbrev,
+                'abbrev' : token_clean.endswith('.'),
+                'comma'  : token.endswith(','), 
+                'hyphenated' : '-' in token_clean,
+                'contracted' : "'" in token_clean,
+                'bracketed' : bool(re.match(r'(\W)\w+\1', token)),
                 'case' : casing(token_clean),
-                'length' : (u'w:' + unicode(len(token_chars))),
-                'endsinpunc' : (token[-1]
-                                if bool(re.match('[^\w]', token[-1]))
-                                else False),
-                'has.punc' : (True
-                                if bool(re.match('.*[^\w].*', token))
-                                else False),
-                'punc' :    (re.sub(r'\w', u'', token)
-                                if bool(re.match('.*[^\w].*', token))
-                                else False),
-                'has.vowels'  : bool(set(token_chars[1:]) & set('aeiou')),
-                'first1char' : (token_chars[0] if len(token_chars) > 0
-                                else False),
-                'first2char' : (token_chars[:2] if len(token_chars) > 1
-                                else False)
+                'length' : len(token_abbrev),
+                'initial' : len(token_abbrev) == 1 and token_abbrev.isalpha(),
+                'has.vowels'  : bool(set(token_abbrev[1:]) & set('aeiou')),
                 }
+    reversed_token = token_abbrev[::-1]
+    for i in range(1, len(token_abbrev)) :
+        features['prefix_%s' % i] = token_abbrev[:i]
+        features['suffix_%s' % i] = reversed_token[:i][::-1]
+        if i > 4 :
+            break
 
     return features
 
@@ -78,5 +74,7 @@ def casing(token) :
         return 'lower' 
     elif token.istitle() :
         return 'title'
+    elif token.isalpha() :
+        return 'mixed'
     else :
-        return 'other'
+        return False
