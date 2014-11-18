@@ -42,17 +42,18 @@ GROUP_LABEL = 'NameCollection'
 def tokenFeatures(token) :
 
     if token in (u'&') :
-        token_clean = token
+        token_clean = token_abbrev = token
+        
     else :
         token_clean = re.sub(r'(^[\W]*)|([^.\w]*$)', u'', token)
-    token_abbrev = re.sub(r'[.]', u'', token_clean.lower())
+        token_abbrev = re.sub(r'\W', u'', token_clean.lower())
 
     features = {'nopunc' : token_abbrev,
                 'abbrev' : token_clean.endswith('.'),
                 'comma'  : token.endswith(','), 
                 'hyphenated' : '-' in token_clean,
                 'contracted' : "'" in token_clean,
-                'bracketed' : bool(re.match(r'(\W)\w+\1', token)),
+                'bracketed' : bool(re.match(r'["(\']\w+[")\']', token)),
                 'case' : casing(token_clean),
                 'length' : len(token_abbrev),
                 'initial' : len(token_abbrev) == 1 and token_abbrev.isalpha(),
