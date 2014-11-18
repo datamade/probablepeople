@@ -1,5 +1,6 @@
 import name_parser
 from lxml import etree
+import os
 
 # given a list of labeled sequences to an xml list, 
 # appends corresponding xml to existing xml
@@ -43,6 +44,10 @@ def stripFormatting(collection) :
 
 # appends a labeled list to an xml file
 # calls appendListToXML, stripFormatting
+# format for labeled_list:      [   [ (token, label), (token, label), ...],
+#                                   [ (token, label), (token, label), ...],
+#                                   [ (token, label), (token, label), ...],
+#                                   ...           ]
 def appendListToXMLfile(labeled_list, filepath):
 
     if os.path.isfile(filepath):
