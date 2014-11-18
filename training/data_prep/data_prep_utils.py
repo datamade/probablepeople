@@ -68,6 +68,30 @@ def appendListToXMLfile(labeled_list, filepath):
         f.write(etree.tostring(collection_XML, pretty_print = True)) 
 
 
+# given a list of filenames (containing xml),
+# outputs an xml file with the contents of all the xml files
+def smushXML( xml_infile_list, xml_outfile ):
+
+    collection_tag = name_parser.config.GROUP_LABEL
+    full_xml = etree.Element(collection_tag)
+
+    for xml_infile in xml_infile_list:
+        if os.path.isfile(xml_infile):
+            with open( xml_infile, 'r+' ) as f:
+                tree = etree.parse(f)
+                xml_to_add = tree.getroot()
+                xml_to_add = stripFormatting(xml_to_add)
+                full_xml.extend(xml_to_add)
+                #for element in xml_to_add:
+                #    full
+                #    print etree.tostring(element, pretty_print = True)
+        else:
+            print "WARNING: %s does not exist" % xml_infile
+
+    with open( xml_outfile, 'w' ) as f:
+        f.write( etree.tostring(full_xml, pretty_print = True) )
+
+
 # writes strings to a file
 def list2file(string_list, filepath):
     file = open( filepath, 'w' )
