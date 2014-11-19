@@ -2,6 +2,8 @@ import csv
 import name_parser
 import data_prep_utils
 from lxml import etree
+import random
+import pycrfsuite
 
 def getIncorrect(name_list, correct_tag):
     incorrect_list = []
@@ -10,44 +12,75 @@ def getIncorrect(name_list, correct_tag):
         string, label = labeled_sequence[0]
         if label != correct_tag:
             incorrect_list.append([(string, correct_tag)])
-
+    print len(incorrect_list), "/", len(name_list), " incorrect, ", int(float(len(incorrect_list))/float(len(name_list))*100), "%"
     return incorrect_list
+
+def makeTaggedData(filename, correct_tag):
+    with open(filename, 'rU') as f:
+        reader = csv.reader(f)
+        tagged_data = set([ (row[0], correct_tag) for row in reader])
+    return tagged_data
+
+def addFailedPreds( tagged_list, train_file ):
+    print "adding failures"
+    i = 0
+    added = 0
+    for index, tagged_item in enumerate(tagged_list):
+        print ".",
+
+        if name_parser.parse(tagged_item[0]) != [tagged_item]:
+            data_prep_utils.appendListToXMLfile( [[tagged_item]], train_file)
+            print "*",
+            added += 1
+            i += 1
+            if added == 10:
+                added = 0
+                print "\n", "-"*50, "RETRAINING ", index
+                training_data = list(data_prep_utils.parseTrainingData('training/training_data/labeled.xml'))
+                trainModel(training_data, 'name_parser/learned_settings.crfsuite')
+
+    print "\n", "-"*50, "RETRAINING"
+    training_data = list(data_prep_utils.parseTrainingData('training/training_data/labeled.xml'))
+    trainModel(training_data, 'name_parser/learned_settings.crfsuite')
+    print i, " cases added to ", train_file
+
+
+def trainModel(training_data, model_file,
+               params_to_set={'c1':0.1, 'c2':0.01, 'feature.minfreq':0}):
+
+    X = []
+    Y = []
+
+    for string_concat, components in training_data:
+        tokens, labels = zip(*components)
+        X.append(name_parser.tokens2features(tokens))
+        Y.append(labels)
+
+    # train model
+    trainer = pycrfsuite.Trainer(verbose=False, params=params_to_set)
+    for xseq, yseq in zip(X, Y):
+        trainer.append(xseq, yseq)
+
+    trainer.train(model_file)
+    reload(name_parser)
 
 
 if __name__ == '__main__' :
 
-    with open('training/data_prep/unlabeled_data/Top1000_census_surnames.csv', 'rU') as infile:
-        reader = csv.reader(infile)
-        census_surnames = set([row[0] for row in reader])
-    incorrectly_labeled_surnames = getIncorrect(census_surnames, "Surname")
+    surname_file = 'training/data_prep/unlabeled_data/Top1000_census_surnames.csv'
+    female_file = 'training/data_prep/unlabeled_data/top_female_names_census.csv'
+    male_file = 'training/data_prep/unlabeled_data/top_male_names_census.csv'
 
-    # limit these to top n surnames?
-    data_prep_utils.appendListToXMLfile(incorrectly_labeled_surnames[:200], 'training/training_data/census_surnames.xml')
+    surname_list = makeTaggedData(surname_file, 'Surname')
+    female_list = makeTaggedData(female_file, 'GivenName')
+    male_list = makeTaggedData(male_file, 'GivenName')
+
+    shuffled_list = list(surname_list) + list(female_list) + list(male_list)
+    random.shuffle(shuffled_list)
+
+    addFailedPreds(shuffled_list, 'training/training_data/labeled.xml')
 
 
-
-
-    with open('training/data_prep/unlabeled_data/top_female_names_census.csv', 'rU') as infile:
-        reader = csv.reader(infile)
-        census_female = set([row[0] for row in reader])
-
-    with open('training/data_prep/unlabeled_data/top_male_names_census.csv', 'rU') as infile:
-        reader = csv.reader(infile)
-        census_male = set([row[0] for row in reader])
-
-    incorrectly_labeled_female = getIncorrect(census_female, "GivenName")
-    incorrectly_labeled_male = getIncorrect(census_male, "GivenName")
-
-    # limit these to top n names?
-    data_prep_utils.appendListToXMLfile(incorrectly_labeled_female[:100], 'training/training_data/census_female.xml')
-    data_prep_utils.appendListToXMLfile(incorrectly_labeled_male[:100], 'training/training_data/census_male.xml')
-
-    xml_file_list = [   'training/training_data/census_surnames.xml', 
-                        'training/training_data/manually_labeled.xml',
-                        'training/training_data/census_female.xml',
-                        'training/training_data/census_male.xml'
-                        ]
-
-    data_prep_utils.smushXML( xml_file_list, 'training/training_data/labeled.xml')
+    # data_prep_utils.smushXML( ['training/training_data/manually_labeled.xml'], 'training/training_data/labeled.xml' )
 
     
