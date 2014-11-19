@@ -23,6 +23,7 @@ def appendListToXML(list_to_append, collection_XML) :
 def sequence2XML(labeled_sequence) :
     parent_tag = name_parser.config.PARENT_LABEL
     sequence_xml = etree.Element(parent_tag)
+
     for token, label in labeled_sequence:
         component_xml = etree.Element(label)
         component_xml.text = token
@@ -60,9 +61,7 @@ def appendListToXMLfile(labeled_list, filepath):
         collection_tag = name_parser.config.GROUP_LABEL
         collection_XML = etree.Element(collection_tag)
 
-
     collection_XML = appendListToXML(labeled_list, collection_XML)
-
 
     with open(filepath, 'w') as f :
         f.write(etree.tostring(collection_XML, pretty_print = True)) 
@@ -97,3 +96,19 @@ def list2file(string_list, filepath):
     file = open( filepath, 'w' )
     for string in string_list:
         file.write('"%s"\n' % string)
+
+
+def parseTrainingData(filepath):
+    tree = etree.parse(filepath)
+    collection_XML = tree.getroot()
+
+    for sequence_xml in collection_XML:
+        components = []
+        string_concat = etree.tostring(sequence_xml, method='text')
+        string_concat = string_concat.replace('&#38;', '&')
+        for component in list(sequence_xml):
+            components.append([component.text, component.tag])
+            if component.tail and component.tail.strip():
+                components.append([component.tail.strip(), NULL_TAG])
+
+        yield string_concat, components
