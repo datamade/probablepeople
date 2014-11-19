@@ -61,8 +61,8 @@ def tokenFeatures(token) :
                 'length' : len(token_abbrev),
                 'initial' : len(token_abbrev) == 1 and token_abbrev.isalpha(),
                 'has.vowels'  : bool(set(token_abbrev[1:]) & set('aeiou')),
-                'metaphone_1' : metaphone[0],
-                'metaphone_2' : metaphone[1]
+                'metaphone' : metaphone[0],
+                'dblmetaphone' : metaphone[0] + metaphone[1]
                 }
     reversed_token = token_abbrev[::-1]
     for i in range(1, len(token_abbrev)) :
@@ -70,7 +70,7 @@ def tokenFeatures(token) :
         features['suffix_%s' % i] = reversed_token[:i][::-1]
         if i > 4 :
             break
-            
+
     return features
 
 def casing(token) :
