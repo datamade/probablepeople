@@ -61,6 +61,7 @@ def tokenFeatures(token) :
                 'length' : len(token_abbrev),
                 'initial' : len(token_abbrev) == 1 and token_abbrev.isalpha(),
                 'has.vowels'  : bool(set(token_abbrev[1:]) & set('aeiou')),
+                'endswith.vowel' : bool(token_abbrev[-1] in set('aeiou')),
                 'metaphone' : metaphone[0],
                 'dblmetaphone' : metaphone[0] + metaphone[1]
                 }

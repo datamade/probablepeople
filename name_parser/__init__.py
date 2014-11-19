@@ -68,10 +68,9 @@ def tokens2features(tokens):
 
         previous_features = current_features
 
-    feature_sequence[0]['rawstring.start'] = True
-    feature_sequence[-1]['rawstring.end'] = True
-
     if len(feature_sequence) > 1 :
+        feature_sequence[0]['rawstring.start'] = True
+        feature_sequence[-1]['rawstring.end'] = True
         feature_sequence[1]['previous']['rawstring.start'] = True
         feature_sequence[-2]['next']['rawstring.end'] = True
 
