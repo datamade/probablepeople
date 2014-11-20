@@ -1,7 +1,7 @@
 import re
 import string
 from metaphone import doublemetaphone
-
+import math
 
 ######### TOKEN CONFIG #########
 
@@ -40,6 +40,8 @@ GROUP_LABEL = 'NameCollection'
 
 ######## FEATURE CONFIG ########
 
+VOWELS_Y = tuple('aeiouy')
+
 def tokenFeatures(token) :
 
     if token in (u'&') :
@@ -60,11 +62,16 @@ def tokenFeatures(token) :
                 'case' : casing(token_clean),
                 'length' : len(token_abbrev),
                 'initial' : len(token_abbrev) == 1 and token_abbrev.isalpha(),
-                'has.vowels'  : bool(set(token_abbrev[1:]) & set('aeiou')),
-                'endswith.vowel' : bool(token_abbrev[-1] in set('aeiou')),
-                'metaphone' : metaphone[0],
-                'dblmetaphone' : metaphone[0] + metaphone[1]
+                'has.vowels'  : bool(set(token_abbrev[1:]) & set('aeiouy')),
+                'roman' : set('xvi').issuperset(token_abbrev),
+                'endswith.vowel' : token_abbrev.endswith(VOWELS_Y),
+                'metaphone1' : metaphone[0],
+                'more.vowels' : vowelRatio(token_abbrev)
                 }
+
+    if metaphone[1] :
+        features['metaphone2'] = metaphone[1]
+
     reversed_token = token_abbrev[::-1]
     for i in range(1, len(token_abbrev)) :
         features['prefix_%s' % i] = token_abbrev[:i]
@@ -85,3 +92,12 @@ def casing(token) :
         return 'mixed'
     else :
         return False
+
+def vowelRatio(token) :
+    n_chars = len(token)
+    if n_chars > 1:
+        n_vowels = sum(token.count(c) for c in VOWELS_Y)
+        return n_vowels/float(n_chars)
+    else :
+        return False
+

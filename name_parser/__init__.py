@@ -57,12 +57,19 @@ def tokens2features(tokens):
     feature_sequence = [config.tokenFeatures(tokens[0])]
     previous_features = feature_sequence[-1].copy()
 
+    seen_comma = False
+
     for token in tokens[1:] :
         token_features = config.tokenFeatures(token) 
+        if not seen_comma and previous_features['comma'] :
+            seen_comma = True
+        if seen_comma :
+            token_features['seen.comma'] = True
+
         current_features = token_features.copy()
 
         feature_sequence[-1]['next'] = current_features
-        token_features['previous'] = previous_features
+        token_features['previous'] = previous_features        
             
         feature_sequence.append(token_features)
 
@@ -73,5 +80,8 @@ def tokens2features(tokens):
         feature_sequence[-1]['rawstring.end'] = True
         feature_sequence[1]['previous']['rawstring.start'] = True
         feature_sequence[-2]['next']['rawstring.end'] = True
+
+    else : 
+        feature_sequence[0]['singleton'] = True
 
     return feature_sequence

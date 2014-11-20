@@ -26,9 +26,13 @@ def addFailedPreds( tagged_list, train_file ):
     i = 0
     added = 0
     for index, tagged_item in enumerate(tagged_list):
-        print ".",
+        if index % 20 == 0 :
+            print
 
-        if name_parser.parse(tagged_item[0]) != [tagged_item]:
+        if name_parser.parse(tagged_item[0]) == [tagged_item]:
+            print ".",
+
+        else :
             data_prep_utils.appendListToXMLfile( [[tagged_item]], train_file)
             print "*",
             added += 1
