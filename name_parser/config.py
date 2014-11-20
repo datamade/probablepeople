@@ -66,11 +66,9 @@ def tokenFeatures(token) :
                 'roman' : set('xvi').issuperset(token_abbrev),
                 'endswith.vowel' : token_abbrev.endswith(VOWELS_Y),
                 'metaphone1' : metaphone[0],
+                'metaphone2' : (metaphone[1] if metaphone[1] else metaphone[0])
                 'more.vowels' : vowelRatio(token_abbrev)
                 }
-
-    if metaphone[1] :
-        features['metaphone2'] = metaphone[1]
 
     reversed_token = token_abbrev[::-1]
     for i in range(1, len(token_abbrev)) :
