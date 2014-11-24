@@ -3,6 +3,7 @@ from lxml import etree
 import sys
 import os.path
 import data_prep_utils
+import re
 
 ####### test this #############
 def consoleLabel(raw_strings, labels): 
@@ -61,7 +62,6 @@ def print_table(table):
                                 for i, x in enumerate(line))
         
 
-####### test this #############
 def manualTagging(preds, labels):
     valid_input_tags = dict( (str(i), label) for i, label in enumerate(labels))
     tagged_sequence = []
@@ -83,7 +83,7 @@ def manualTagging(preds, labels):
         else:
             xml_tag = labels[int(user_input_tag)]
 
-        tagged_sequence.append((token[0], xml_tag))
+        tagged_sequence.append((token_pred[0], xml_tag))
     return tagged_sequence
 
 
@@ -151,7 +151,7 @@ if __name__ == '__main__' :
     from argparse import ArgumentParser
     import unidecode
     
-    labels = name_parser.labels
+    labels = name_parser.config.LABELS
     
     parser = ArgumentParser(description="Label some strings")
     parser.add_argument(dest="infile", 
@@ -161,6 +161,8 @@ if __name__ == '__main__' :
     parser.add_argument("-n",
                         help="-n for naive labeling (if there isn't an existing .crfsuite settings file)", action="store_true")
     args = parser.parse_args()
+
+    file_slug = re.sub('(.*/)|(.csv)|(unlabeled_)', '', args.infile)
 
     # Check to make sure we can write to outfile
     if os.path.isfile(args.outfile):
@@ -182,5 +184,5 @@ if __name__ == '__main__' :
         labeled_list, raw_strings_left = consoleLabel(strings, labels) 
 
     data_prep_utils.appendListToXMLfile(labeled_list, args.outfile)
-    data_prep_utils.list2file(raw_strings_left, 'training/data_prep/unlabeled_data/unlabeled.csv')
+    data_prep_utils.list2file(raw_strings_left, 'training/data_prep/unlabeled_data/unlabeled_'+file_slug+'.csv')
     
