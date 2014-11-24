@@ -5,8 +5,6 @@ from collections import OrderedDict
 import warnings
 import config
 
-labels = config.LABELS
-
 try :
     TAGGER = pycrfsuite.Tagger()
     path = os.path.split(os.path.abspath(__file__))[0] + '/learned_settings.crfsuite'

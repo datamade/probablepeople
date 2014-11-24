@@ -81,9 +81,6 @@ def smushXML( xml_infile_list, xml_outfile ):
                 xml_to_add = tree.getroot()
                 xml_to_add = stripFormatting(xml_to_add)
                 full_xml.extend(xml_to_add)
-                #for element in xml_to_add:
-                #    full
-                #    print etree.tostring(element, pretty_print = True)
         else:
             print "WARNING: %s does not exist" % xml_infile
 
