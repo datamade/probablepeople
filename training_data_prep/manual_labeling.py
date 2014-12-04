@@ -5,4 +5,4 @@ if __name__ == '__main__' :
 
     p = name_parser.Parser()
 
-    label(p, 'training/data_prep/unlabeled_data/')
+    label(p, p.UNLABELED_DATA_DIR)

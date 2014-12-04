@@ -3,7 +3,6 @@ import os
 import re
 from metaphone import doublemetaphone
 
-
 class Parser(parserator.Parser):
 
     LABELS = [
@@ -23,9 +22,14 @@ class Parser(parserator.Parser):
     NULL_LABEL = 'Null'
     PARENT_LABEL = 'Name'
     GROUP_LABEL = 'NameCollection'
+    
     MODEL_FILE = 'learned_settings.crfsuite'
     MODEL_PATH = os.path.split(os.path.abspath(__file__))[0] + '/' + MODEL_FILE
     TRAINING_FILE = 'labeled.xml'
+    TRAINING_DATA_DIR = os.path.split(os.path.abspath(__file__))[0] + '/../training/training_data'
+    UNLABELED_DATA_DIR = os.path.split(os.path.abspath(__file__))[0] + '/../training_data_prep/unlabeled_data'
+
+
     VOWELS_Y = tuple('aeiouy')
 
     def tokenize(self, raw_string) :
