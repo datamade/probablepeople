@@ -1,6 +1,6 @@
 import csv
 import name_parser
-import data_prep_utils
+from parserator import data_prep_utils
 from lxml import etree
 import random
 import pycrfsuite
@@ -70,7 +70,7 @@ def trainModel(training_data, model_file,
 
 
 if __name__ == '__main__' :
-
+    
     surname_file = 'training/data_prep/unlabeled_data/Top1000_census_surnames.csv'
     female_file = 'training/data_prep/unlabeled_data/top_female_names_census.csv'
     male_file = 'training/data_prep/unlabeled_data/top_male_names_census.csv'
@@ -83,8 +83,4 @@ if __name__ == '__main__' :
     random.shuffle(shuffled_list)
 
     addFailedPreds(shuffled_list, 'training/training_data/labeled.xml')
-
-
-    # data_prep_utils.smushXML( ['training/training_data/manually_labeled.xml'], 'training/training_data/labeled.xml' )
-
     
