@@ -3,3 +3,4 @@ requests
 lxml
 nose
 metaphone
+unidecode
