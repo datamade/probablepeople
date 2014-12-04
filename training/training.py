@@ -1,11 +1,6 @@
-import pycrfsuite
 import name_parser
-import random
-import os
-from lxml import etree
-from imp import reload
 import parserator
-
+from imp import reload
 
 if __name__ == '__main__':
 
