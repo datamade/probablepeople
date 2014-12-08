@@ -19,16 +19,15 @@ class Parser(parserator.Parser):
         'Nickname',
         'And'
         ]
-    NULL_LABEL = 'Null'
+
+    TRAINING_DATA_DIR = os.path.split(os.path.abspath(__file__))[0] + '/../name_data/labeled'
+    UNLABELED_DATA_DIR = os.path.split(os.path.abspath(__file__))[0] + '/../name_data/unlabeled'
+
     PARENT_LABEL = 'Name'
     GROUP_LABEL = 'NameCollection'
     
     MODEL_FILE = 'learned_settings.crfsuite'
     MODEL_PATH = os.path.split(os.path.abspath(__file__))[0] + '/' + MODEL_FILE
-    TRAINING_FILE = 'labeled.xml'
-    TRAINING_DATA_DIR = os.path.split(os.path.abspath(__file__))[0] + '/../training/training_data'
-    UNLABELED_DATA_DIR = os.path.split(os.path.abspath(__file__))[0] + '/../training_data_prep/unlabeled_data'
-
 
     VOWELS_Y = tuple('aeiouy')
 
