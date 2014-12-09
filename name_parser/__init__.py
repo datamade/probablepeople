@@ -19,9 +19,6 @@ LABELS = [
     'And'
     ]
 
-TRAINING_DATA_DIR = os.path.split(os.path.abspath(__file__))[0] + '/../name_data/labeled'
-UNLABELED_DATA_DIR = os.path.split(os.path.abspath(__file__))[0] + '/../name_data/unlabeled'
-
 PARENT_LABEL = 'Name'
 GROUP_LABEL = 'NameCollection'
 
