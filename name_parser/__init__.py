@@ -27,12 +27,12 @@ MODEL_FILE = 'learned_settings.crfsuite'
 
 VOWELS_Y = tuple('aeiouy')
 
-def __init__():
-    try :
-        TAGGER = pycrfsuite.Tagger()
-        TAGGER.open(os.path.split(os.path.abspath(__file__))[0]+'/'+MODEL_FILE)
-    except IOError :
-        warnings.warn('You must train the model (parserator train [traindata] [modulename]) to create the %s file before you can use the parse and tag methods' %MODEL_FILE)
+try :
+    TAGGER = pycrfsuite.Tagger()
+    TAGGER.open(os.path.split(os.path.abspath(__file__))[0]+'/'+MODEL_FILE)
+except IOError :
+    TAGGER = None
+    warnings.warn('You must train the model (parserator train [traindata] [modulename]) to create the %s file before you can use the parse and tag methods' %MODEL_FILE)
 
 def parse(raw_string):
     tokens = tokenize(raw_string)
@@ -42,11 +42,8 @@ def parse(raw_string):
 
     features = tokens2features(tokens)
 
-    try :
-        TAGGER = pycrfsuite.Tagger()
-        TAGGER.open(os.path.split(os.path.abspath(__file__))[0]+'/'+MODEL_FILE)
-    except IOError :
-        warnings.warn('You must train the model (parserator train [traindata] [modulename]) to create the %s file before you can use the parse and tag methods' %MODEL_FILE)
+    if not TAGGER:
+        raise IOError('\nMISSING MODEL FILE: %s\nYou must train the model before you can use the parse and tag methods\nTo train the model annd create the model file, run:\nparserator train [traindata] [modulename]' %MODEL_FILE)
 
     tags = TAGGER.tag(features)
     return zip(tokens, tags)
