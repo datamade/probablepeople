@@ -35,15 +35,14 @@ except IOError :
     warnings.warn('You must train the model (parserator train [traindata] [modulename]) to create the %s file before you can use the parse and tag methods' %MODEL_FILE)
 
 def parse(raw_string):
-    tokens = tokenize(raw_string)
+    if not TAGGER:
+        raise IOError('\nMISSING MODEL FILE: %s\nYou must train the model before you can use the parse and tag methods\nTo train the model annd create the model file, run:\nparserator train [traindata] [modulename]' %MODEL_FILE)
 
+    tokens = tokenize(raw_string)
     if not tokens :
         return []
 
     features = tokens2features(tokens)
-
-    if not TAGGER:
-        raise IOError('\nMISSING MODEL FILE: %s\nYou must train the model before you can use the parse and tag methods\nTo train the model annd create the model file, run:\nparserator train [traindata] [modulename]' %MODEL_FILE)
 
     tags = TAGGER.tag(features)
     return zip(tokens, tags)
