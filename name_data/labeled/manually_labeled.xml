@@ -504,8 +504,7 @@
   <Name><GivenName>Allison</GivenName> <MiddleName>Bishop</MiddleName> <Surname>Lewko</Surname></Name>
   <Name><GivenName>Drew</GivenName> <Surname>McDermott</Surname></Name>
   <Name><GivenName>Xiaohui</GivenName> <Surname>Xie</Surname></Name>
-  <Name>
-    <GivenName>Arvind</GivenName>
+  <Name><GivenName>Arvind</GivenName>
   </Name>
   <Name><GivenName>Steven</GivenName> <MiddleInitial>M.</MiddleInitial> <Surname>LaValle</Surname></Name>
   <Name><GivenName>Frederick</GivenName> <Surname>Hennie</Surname> <SuffixGenerational>III</SuffixGenerational></Name>
@@ -641,4 +640,14 @@
   <Name><GivenName>Benjamin</GivenName> <MiddleInitial>C.</MiddleInitial> <Surname>Lok</Surname></Name>
   <Name><GivenName>Yaoyun</GivenName> <Surname>Shi</Surname></Name>
   <Name><GivenName>Xin</GivenName> <Surname>Li</Surname></Name>
+  <Name><Surname>ESCAMILLA,</Surname> <GivenName>VINCENT</GivenName> <MiddleInitial>J</MiddleInitial></Name>
+  <Name><Surname>HOLT,</Surname> <GivenName>BARBARA</GivenName> <MiddleInitial>A</MiddleInitial></Name>
+  <Name><Surname>NACHEMAN,</Surname> <GivenName>MICHELLE</GivenName> <MiddleInitial>B</MiddleInitial></Name>
+  <Name><Surname>SUN,</Surname> <GivenName>JUN</GivenName> <MiddleInitial>L</MiddleInitial></Name>
+  <Name><Surname>DORSEY,</Surname> <GivenName>CRAIG</GivenName> <MiddleInitial>E</MiddleInitial></Name>
+  <Name><Surname>LONSKI,</Surname> <GivenName>MARK</GivenName> <MiddleInitial>R</MiddleInitial></Name>
+  <Name><Surname>MIZZI,</Surname> <GivenName>MARY</GivenName> <MiddleInitial>A</MiddleInitial></Name>
+  <Name><Surname>SCHULTZ,</Surname> <GivenName>KRISTOPHER</GivenName></Name>
+  <Name><Surname>PAGAN,</Surname> <GivenName>LUIS</GivenName> <MiddleInitial>R</MiddleInitial></Name>
+  <Name><Surname>ALSTONMIDDLETON,</Surname> <GivenName>GLORIA</GivenName></Name>
 </NameCollection>
