@@ -3,6 +3,10 @@ import re
 from metaphone import doublemetaphone
 import pycrfsuite
 import warnings
+try :
+    from collections import OrderedDict
+except ImportError :
+    from ordereddict import OrderedDict
 
 
 LABELS = [
