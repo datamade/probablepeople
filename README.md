@@ -1,9 +1,9 @@
-name-parser
+name_parser
 =================
-name-parser is a python library for parsing unstructured name strings into name components, using advanced NLP methods. This is based off [usaddress](https://github.com/datamade/usaddress), a python library for parsing addresses.
+name_parser is a python library for parsing unstructured romanized name strings into name components, using advanced NLP methods. This is based off [usaddress](https://github.com/datamade/usaddress), a python library for parsing addresses.
 
-## How to use name-parser
-1. Install name-parser
+## How to use name_parser
+1. Install name_parser
    
     ```
     pip install name_parser  
@@ -17,19 +17,19 @@ name-parser is a python library for parsing unstructured name strings into name 
     ```  
 
 ## For the nerds:
-Name parser uses parserator, a library for making and improving probabilistic parsers - specifically, parsers that use [python-crfsuite](https://github.com/tpeng/python-crfsuite)'s implementation of conditional random fields. Parserator allows you to train name-parser's model (a .crfsuite settings file) on labeled training data, and provides tools for easily adding new labeled training data.
+Name parser uses parserator, a library for making and improving probabilistic parsers - specifically, parsers that use [python-crfsuite](https://github.com/tpeng/python-crfsuite)'s implementation of conditional random fields. Parserator allows you to train name_parser's model (a .crfsuite settings file) on labeled training data, and provides tools for easily adding new labeled training data.
 #### Building & testing development code
   
   ```
-  git clone https://github.com/datamade/name-parser.git  
-  cd name-parser  
+  git clone https://github.com/datamade/name_parser.git  
+  cd name_parser  
   pip install -r requirements.txt  
   python setup.py develop  
   parserator train name_data/labeled/labeled.xml name_parser  
   nosetests .  
   ```  
 #### Creating/adding labeled training data (.xml outfile) from unlabeled raw data (.csv infile)  
-  If there are name formats that the parser isn't performing well on, you can add them to training data. As the name-parser continually learns about new cases, it will continually become smarter and more robust.  
+  If there are name formats that the parser isn't performing well on, you can add them to training data. As the name_parser continually learns about new cases, it will continually become smarter and more robust.  
   
 ```
 parserator label [infile] [outfile] name_parser  
@@ -62,4 +62,4 @@ parserator label [infile] name_data/labeled/labeled.xml name_parser
 
 ### Copyright
 
-Copyright (c) 2014 Atlanta Journal Constitution. Released under the [MIT License](https://github.com/datamade/name-parser/blob/master/LICENSE).
+Copyright (c) 2014 Atlanta Journal Constitution. Released under the [MIT License](https://github.com/datamade/name_parser/blob/master/LICENSE).
