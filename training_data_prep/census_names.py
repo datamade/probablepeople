@@ -1,4 +1,5 @@
 from __future__ import print_function
+from builtins import zip
 import csv
 import probablepeople
 from parserator import data_prep_utils
@@ -57,7 +58,7 @@ def trainModel(training_data, model_file,
     Y = []
 
     for string_concat, components in training_data:
-        tokens, labels = zip(*components)
+        tokens, labels = list(zip(*components))
         X.append(probablepeople.tokens2features(tokens))
         Y.append(labels)
 

@@ -1,3 +1,7 @@
+from __future__ import division
+from builtins import zip
+from builtins import range
+from past.utils import old_div
 import os
 import re
 from metaphone import doublemetaphone
@@ -49,7 +53,7 @@ def parse(raw_string):
     features = tokens2features(tokens)
 
     tags = TAGGER.tag(features)
-    return zip(tokens, tags)
+    return list(zip(tokens, tags))
 
 def tag(raw_string) :
     tagged = OrderedDict()
@@ -164,7 +168,7 @@ def vowelRatio(token) :
     n_chars = len(token)
     if n_chars > 1:
         n_vowels = sum(token.count(c) for c in VOWELS_Y)
-        return n_vowels/float(n_chars)
+        return old_div(n_vowels,float(n_chars))
     else :
         return False
 
