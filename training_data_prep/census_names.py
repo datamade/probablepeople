@@ -1,3 +1,4 @@
+from __future__ import print_function
 import csv
 import probablepeople
 from parserator import data_prep_utils
@@ -12,7 +13,7 @@ def getIncorrect(name_list, correct_tag):
         string, label = labeled_sequence[0]
         if label != correct_tag:
             incorrect_list.append([(string, correct_tag)])
-    print len(incorrect_list), "/", len(name_list), " incorrect, ", int(float(len(incorrect_list))/float(len(name_list))*100), "%"
+    print(len(incorrect_list), "/", len(name_list), " incorrect, ", int(float(len(incorrect_list))/float(len(name_list))*100), "%")
     return incorrect_list
 
 def makeTaggedData(filename, correct_tag):
@@ -22,31 +23,31 @@ def makeTaggedData(filename, correct_tag):
     return tagged_data
 
 def addFailedPreds( tagged_list, train_file ):
-    print "adding failures"
+    print("adding failures")
     i = 0
     added = 0
     for index, tagged_item in enumerate(tagged_list):
         if index % 20 == 0 :
-            print
+            print()
 
         if probablepeople.parse(tagged_item[0]) == [tagged_item]:
-            print ".",
+            print(".", end=' ')
 
         else :
             data_prep_utils.appendListToXMLfile( [[tagged_item]], train_file)
-            print "*",
+            print("*", end=' ')
             added += 1
             i += 1
             if added == 10:
                 added = 0
-                print "\n", "-"*50, "RETRAINING ", index
+                print("\n", "-"*50, "RETRAINING ", index)
                 training_data = list(data_prep_utils.parseTrainingData('training/training_data/labeled.xml'))
                 trainModel(training_data, 'probablepeople/learned_settings.crfsuite')
 
-    print "\n", "-"*50, "RETRAINING"
+    print("\n", "-"*50, "RETRAINING")
     training_data = list(data_prep_utils.parseTrainingData('training/training_data/labeled.xml'))
     trainModel(training_data, 'probablepeople/learned_settings.crfsuite')
-    print i, " cases added to ", train_file
+    print(i, " cases added to ", train_file)
 
 
 def trainModel(training_data, model_file,
