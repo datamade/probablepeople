@@ -6,11 +6,11 @@ except ImportError :
 
 setup(
     version='0.1',
-    url='https://github.com/datamade/name_parser',
+    url='https://github.com/datamade/probablepeople',
     description='Parse romanized names using advanced NLP methods',
-    name='name_parser',
-    packages=['name_parser'],
-    package_data={'usaddress' : ['learned_settings.crfsuite']},
+    name='probablepeople',
+    packages=['probablepeople'],
+    package_data={'probablepeople' : ['learned_settings.crfsuite']},
     license='The MIT License: http://www.opensource.org/licenses/mit-license.php',
     install_requires=[
         'python-crfsuite>=0.7',
@@ -30,13 +30,13 @@ setup(
         'Topic :: Scientific/Engineering',
         'Topic :: Scientific/Engineering :: Information Analysis'],
     long_description="""
-        name_parser is a python library for parsing unstructured romanized 
+        probablepeople is a python library for parsing unstructured romanized 
         name strings into name components, using conditional random fields.
 
         From the python interpreter:
 
-        >>> import name_parser
-        >>> name_parser.parse('Mr George "Gob" Bluth II')  
+        >>> import probablepeople
+        >>> probablepeople.parse('Mr George "Gob" Bluth II') 
         [('Mr', 'PrefixMarital'), 
          ('George', 'GivenName'), 
          ('"Gob"', 'Nickname'), 
