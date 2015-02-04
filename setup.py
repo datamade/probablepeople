@@ -30,8 +30,7 @@ setup(
         'Topic :: Scientific/Engineering',
         'Topic :: Scientific/Engineering :: Information Analysis'],
     long_description="""
-        probablepeople is a python library for parsing unstructured romanized 
-        name strings into name components, using conditional random fields.
+        probablepeople is a python library for parsing unstructured romanized name strings into name components, using conditional random fields.
 
         From the python interpreter:
 
