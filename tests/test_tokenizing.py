@@ -1,4 +1,4 @@
-from name_parser import tokenize
+from probablepeople import tokenize
 import unittest
 
 class TestTokenizing(unittest.TestCase) :

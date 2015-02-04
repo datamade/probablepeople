@@ -1,4 +1,4 @@
-from name_parser import parse
+from probablepeople import parse
 
 
 test_strings = [

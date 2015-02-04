@@ -1,5 +1,5 @@
 import csv
-import name_parser
+import probablepeople
 from parserator import data_prep_utils
 from lxml import etree
 import random
@@ -8,7 +8,7 @@ import pycrfsuite
 def getIncorrect(name_list, correct_tag):
     incorrect_list = []
     for name in name_list:
-        labeled_sequence = name_parser.parse(name)
+        labeled_sequence = probablepeople.parse(name)
         string, label = labeled_sequence[0]
         if label != correct_tag:
             incorrect_list.append([(string, correct_tag)])
@@ -29,7 +29,7 @@ def addFailedPreds( tagged_list, train_file ):
         if index % 20 == 0 :
             print
 
-        if name_parser.parse(tagged_item[0]) == [tagged_item]:
+        if probablepeople.parse(tagged_item[0]) == [tagged_item]:
             print ".",
 
         else :
@@ -41,11 +41,11 @@ def addFailedPreds( tagged_list, train_file ):
                 added = 0
                 print "\n", "-"*50, "RETRAINING ", index
                 training_data = list(data_prep_utils.parseTrainingData('training/training_data/labeled.xml'))
-                trainModel(training_data, 'name_parser/learned_settings.crfsuite')
+                trainModel(training_data, 'probablepeople/learned_settings.crfsuite')
 
     print "\n", "-"*50, "RETRAINING"
     training_data = list(data_prep_utils.parseTrainingData('training/training_data/labeled.xml'))
-    trainModel(training_data, 'name_parser/learned_settings.crfsuite')
+    trainModel(training_data, 'probablepeople/learned_settings.crfsuite')
     print i, " cases added to ", train_file
 
 
@@ -57,7 +57,7 @@ def trainModel(training_data, model_file,
 
     for string_concat, components in training_data:
         tokens, labels = zip(*components)
-        X.append(name_parser.tokens2features(tokens))
+        X.append(probablepeople.tokens2features(tokens))
         Y.append(labels)
 
     # train model
@@ -66,7 +66,7 @@ def trainModel(training_data, model_file,
         trainer.append(xseq, yseq)
 
     trainer.train(model_file)
-    reload(name_parser)
+    reload(probablepeople)
 
 
 if __name__ == '__main__' :
