@@ -2,6 +2,12 @@ probablepeople
 =================
 probablepeople is a python library for parsing unstructured romanized name strings into name components, using advanced NLP methods. This is based off [usaddress](https://github.com/datamade/usaddress), a python library for parsing addresses.
 
+**What this can do:** Using a probabilistic model, it makes (very educated) guesses in identifying name components, even in tricky cases where rule-based parsers typically break down.
+
+**What this cannot do:** It cannot identify name components with perfect accuracy, nor can it verify that a given name is correct/valid.
+
+probablepeople learns how to parse names through a body of training data. If you have a dataset of name strings, or examples of names that stump this parser, please send them over! By adding more examples to the training data, probablepeople can continue to learn and improve.
+
 ## How to use probablepeople
 1. Install probablepeople
    
