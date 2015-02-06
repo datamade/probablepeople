@@ -57,8 +57,27 @@ def parse(raw_string):
 
 def tag(raw_string) :
     tagged = OrderedDict()
+
+    prev_label = None
+    and_label = False
+
     for token, label in parse(raw_string) :
-        tagged.setdefault(label, []).append(token)
+
+        if label == 'And':
+            and_label = True
+        if and_label and label in tagged:
+            label = 'Second'+label
+
+        if label not in tagged:
+            tagged[label] = [token]
+        elif label == prev_label:
+            tagged[label].append(token)
+        else:
+            print('ORIGINAL STRING: ', raw_string)
+            print(parse(raw_string))
+            raise ValueError("More than one area of the name has the same label - this may not be a valid parsing")
+
+        prev_label = label
 
     for token in tagged :
         component = ' '.join(tagged[token])
