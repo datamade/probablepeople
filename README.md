@@ -23,7 +23,7 @@ probablepeople learns how to parse names through a body of training data. If you
     ```  
 
 ## For the nerds:
-Probablepeople uses parserator, a library for making and improving probabilistic parsers - specifically, parsers that use [python-crfsuite](https://github.com/tpeng/python-crfsuite)'s implementation of conditional random fields. Parserator allows you to train probablepeople's model (a .crfsuite settings file) on labeled training data, and provides tools for easily adding new labeled training data.
+Probablepeople uses [parserator](https://github.com/datamade/parserator), a library for making and improving probabilistic parsers - specifically, parsers that use [python-crfsuite](https://github.com/tpeng/python-crfsuite)'s implementation of conditional random fields. Parserator allows you to train probablepeople's model (a .crfsuite settings file) on labeled training data, and provides tools for easily adding new labeled training data.
 #### Building & testing development code
   
   ```
@@ -63,7 +63,7 @@ parserator label [infile] name_data/labeled/labeled.xml probablepeople
   
   To set multiple files as traindata, separate them with commas (e.g. ```name_data/labeled/foo.xml,name_data/labeled/bar.xml```)
   
-  Contribute back by sending a pull requests with you added labeled examples.
+  Contribute back by sending a pull requests with your added labeled examples.
 
 
 ### Copyright
