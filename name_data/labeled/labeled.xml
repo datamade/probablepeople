@@ -2980,8 +2980,7 @@
   </Name>
   <Name><GivenName>EDMOND</GivenName>
   </Name>
-  <Name>
-    <Surname>PRESTON</Surname>
+  <Name><Surname>PRESTON</Surname>
   </Name>
   <Name><GivenName>James</GivenName> <Surname>McEachern</Surname> <SuffixGenerational>III</SuffixGenerational></Name>
   <Name><GivenName>Lenwood</GivenName> <MiddleInitial>S</MiddleInitial> <Surname>Heath</Surname></Name>
@@ -3013,4 +3012,30 @@
   </Name>
   <Name><Surname>LLOYD</Surname>
   </Name>
+  <Name><GivenName>BARBARA</GivenName> <Surname>BOWIE-WHITMAN</Surname></Name>
+  <Name><GivenName>Cherry</GivenName> <Surname>Lowe,</Surname> <SuffixOther>MD</SuffixOther></Name>
+  <Name><GivenName>Randi</GivenName> <Surname>Poole</Surname></Name>
+  <Name><GivenName>Heidi</GivenName> <And>Van</And> <Surname>Pelt</Surname></Name>
+  <Name><Surname>Grove,</Surname> <GivenName>Karen</GivenName></Name>
+  <Name><GivenName>MARTHA</GivenName> <Surname>MASON</Surname></Name>
+  <Name><GivenName>Bonelyn</GivenName> <MiddleName>Lugg</MiddleName> <Surname>Kyofski</Surname></Name>
+  <Name><GivenName>DANIEL</GivenName> <Surname>ZIAZADEH</Surname></Name>
+  <Name><PrefixMarital>MR</PrefixMarital> <GivenName>ALTON</GivenName> <MiddleName>W</MiddleName> <Surname>ALMQUIST</Surname></Name>
+  <Name><PrefixMarital>MS</PrefixMarital> <GivenName>KEITHA</GivenName> <MiddleName>M</MiddleName> <Surname>ARNOLD</Surname></Name>
+  <Name><Surname>Verdone,</Surname> <GivenName>Armand</GivenName></Name>
+  <Name><GivenName>Thomas</GivenName> <MiddleInitial>G.</MiddleInitial> <Surname>Kimble</Surname></Name>
+  <Name><GivenName>Danny</GivenName> <Surname>Traylor</Surname></Name>
+  <Name><GivenName>Delbert</GivenName> <Surname>England</Surname></Name>
+  <Name><GivenName>R.M.</GivenName> <Surname>Beall</Surname></Name>
+  <Name><Surname>PATTERSON,</Surname> <GivenName>MELVIN</GivenName></Name>
+  <Name><GivenName>Peter</GivenName> <Surname>Hughes,</Surname> <SuffixOther>MD</SuffixOther></Name>
+  <Name><GivenName>Fielding</GivenName> <Surname>Fromberg,</Surname> <SuffixOther>MD</SuffixOther></Name>
+  <Name><GivenName>Thomas</GivenName> <MiddleInitial>G.</MiddleInitial> <Surname>Kimble</Surname></Name>
+  <Name><GivenName>Randi</GivenName> <Surname>Poole</Surname></Name>
+  <Name><GivenName>MARTHA</GivenName> <Surname>MASON</Surname></Name>
+  <Name><GivenName>Heidi</GivenName> <Surname>Van</Surname> <Surname>Pelt</Surname></Name>
+  <Name><GivenName>Danny</GivenName> <Surname>Traylor</Surname></Name>
+  <Name><GivenName>Delbert</GivenName> <Surname>England</Surname></Name>
+  <Name><GivenName>Tom</GivenName> <Surname>Kinney</Surname></Name>
+  <Name><GivenName>Fielding</GivenName> <Surname>Fromberg,</Surname> <SuffixOther>MD</SuffixOther></Name>
 </NameCollection>
