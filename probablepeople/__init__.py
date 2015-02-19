@@ -4,7 +4,7 @@ from builtins import range
 from past.utils import old_div
 import os
 import re
-from metafone import doublemetaphone
+from metaphone import doublemetaphone
 import pycrfsuite
 import warnings
 
