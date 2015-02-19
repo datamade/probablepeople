@@ -14,7 +14,8 @@ setup(
     license='The MIT License: http://www.opensource.org/licenses/mit-license.php',
     install_requires=[
         'python-crfsuite>=0.7',
-        'metaphone>=0.4'],
+        'future',
+        'metafone'],
     classifiers=[
         'Development Status :: 3 - Alpha',
         'Intended Audience :: Developers',
@@ -25,7 +26,6 @@ setup(
         'Operating System :: Microsoft :: Windows',
         'Operating System :: POSIX',
         'Programming Language :: Python :: 2.7',
-        'Programming Language :: Python :: 2 :: Only',
         'Topic :: Software Development :: Libraries :: Python Modules',
         'Topic :: Scientific/Engineering',
         'Topic :: Scientific/Engineering :: Information Analysis'],

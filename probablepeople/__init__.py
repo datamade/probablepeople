@@ -4,13 +4,9 @@ from builtins import range
 from past.utils import old_div
 import os
 import re
-from metaphone import doublemetaphone
+from metafone import doublemetaphone
 import pycrfsuite
 import warnings
-try :
-    from collections import OrderedDict
-except ImportError :
-    from ordereddict import OrderedDict
 
 
 LABELS = [

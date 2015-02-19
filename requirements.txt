@@ -1,6 +1,4 @@
-python-crfsuite>=0.7
 lxml
 nose
-metaphone
-unidecode
 parserator
+coverage
