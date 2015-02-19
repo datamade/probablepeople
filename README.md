@@ -1,5 +1,7 @@
 probablepeople
 =================
+[![Build Status](https://travis-ci.org/datamade/probablepeople.svg?branch=master)](https://travis-ci.org/datamade/probablepeople)
+
 probablepeople is a python library for parsing unstructured romanized name strings into name components, using advanced NLP methods. This is based off [usaddress](https://github.com/datamade/usaddress), a python library for parsing addresses.
 
 **What this can do:** Using a probabilistic model, it makes (very educated) guesses in identifying name components, even in tricky cases where rule-based parsers typically break down.
