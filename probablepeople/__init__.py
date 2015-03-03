@@ -4,6 +4,7 @@ from builtins import range
 from past.utils import old_div
 import os
 import re
+from collections import OrderedDict
 from metaphone import doublemetaphone
 import pycrfsuite
 import warnings
