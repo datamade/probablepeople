@@ -24,6 +24,12 @@ probablepeople learns how to parse names through a body of training data. If you
 [('Mr', 'PrefixMarital'), ('George', 'GivenName'), ('"Gob"', 'Nickname'), ('Bluth', 'Surname'), ('II', 'SuffixGenerational')]
     ```  
 
+## Links:
+* Distribution: https://pypi.python.org/pypi/probablepeople
+* Repository: https://github.com/datamade/probablepeople
+* Issues: https://github.com/datamade/usaddress/issues
+* Blog post: http://datamade.us/blog/parse-name-or-parse-anything-really/
+
 ## For the nerds:
 Probablepeople uses [parserator](https://github.com/datamade/parserator), a library for making and improving probabilistic parsers - specifically, parsers that use [python-crfsuite](https://github.com/tpeng/python-crfsuite)'s implementation of conditional random fields. Parserator allows you to train probablepeople's model (a .crfsuite settings file) on labeled training data, and provides tools for easily adding new labeled training data.
 #### Building & testing development code
