@@ -1,3 +1,6 @@
+#!/usr/bin/python
+# -*- coding: utf-8 -*-x
+
 from __future__ import division
 from builtins import zip
 from builtins import range
