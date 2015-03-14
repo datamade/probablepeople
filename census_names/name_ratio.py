@@ -1,7 +1,8 @@
-from __future__ import division, unicode_literals
+from __future__ import division, unicode_literals, print_function
 from future.utils import viewkeys
 
 import csv
+import pprint
 
 given_names = {}
 
@@ -39,7 +40,6 @@ names = {}
 for name in viewkeys(given_names) & viewkeys(surnames) :
     prop_given = given_names[name]
     prop_sur = surnames[name]
-    print name, prop_given, prop_sur
 
     names[name] = prop_given / (prop_given + prop_sur)
 
@@ -49,6 +49,9 @@ for name in viewkeys(given_names) - viewkeys(surnames) :
 for name in viewkeys(surnames) - viewkeys(given_names) :
     names[name] = 0
 
-print names
+
+
+with open("ratios.py", 'w') as f:
+    f.write(pprint.pformat(names, indent=4))
 
 

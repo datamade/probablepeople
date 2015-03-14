@@ -11,6 +11,7 @@ from collections import OrderedDict
 from metaphone import doublemetaphone
 import pycrfsuite
 import warnings
+from .ratios import ratios
 
 
 LABELS = [
@@ -164,8 +165,12 @@ def tokenFeatures(token) :
                 'endswith.vowel' : token_abbrev.endswith(VOWELS_Y),
                 'metaphone1' : metaphone[0],
                 'metaphone2' : (metaphone[1] if metaphone[1] else metaphone[0]),
-                'more.vowels' : vowelRatio(token_abbrev)
+                'more.vowels' : vowelRatio(token_abbrev),
+                'in.names' : float(token_abbrev.upper() in ratios),
+                'first.name' : float(ratios.get(token_abbrev.upper(), 0))
                 }
+
+    print token_abbrev, token_abbrev.upper() in ratios
 
     reversed_token = token_abbrev[::-1]
     for i in range(1, len(token_abbrev)) :
