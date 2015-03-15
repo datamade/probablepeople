@@ -170,8 +170,6 @@ def tokenFeatures(token) :
                 'first.name' : float(ratios.get(token_abbrev.upper(), 0))
                 }
 
-    print token_abbrev, token_abbrev.upper() in ratios
-
     reversed_token = token_abbrev[::-1]
     for i in range(1, len(token_abbrev)) :
         features['prefix_%s' % i] = token_abbrev[:i]
