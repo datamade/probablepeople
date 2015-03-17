@@ -39,7 +39,7 @@ The ``parse`` method will split your name string into components, and label each
       ('George', 'GivenName'), 
       ('Bluth', 'Surname')]
 
-The ``tag`` method will return an OrderedDict with distinct name labels as keys & parts of your string as values, as well as a name type (``PersonName`` or ``CoupleNames``)
+The ``tag`` method will return an OrderedDict with distinct name labels as keys & parts of your string as values, as well as a name type (``Person Name`` or ``Couple Names``)
    .. code:: python
 
       >>> import probablepeople

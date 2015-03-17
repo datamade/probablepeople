@@ -85,9 +85,9 @@ def tag(raw_string) :
         tagged[token] = component
 
     if 'And' in tagged :
-        name_type = 'CoupleNames'
+        name_type = 'Couple Names'
     else:
-        name_type = 'PersonName'
+        name_type = 'Person Name'
 
     return (tagged, name_type)
 
