@@ -25,6 +25,8 @@ probablepeople learns how to parse names through a body of training data. If you
     ```  
 
 ## Links:
+* Documentation: http://probablepeople.rtfd.org/
+* Web Interface: http://parserator.datamade.us/probablepeople
 * Distribution: https://pypi.python.org/pypi/probablepeople
 * Repository: https://github.com/datamade/probablepeople
 * Issues: https://github.com/datamade/usaddress/issues
