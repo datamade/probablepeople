@@ -84,7 +84,12 @@ def tag(raw_string) :
         component = component.strip(' ,;')
         tagged[token] = component
 
-    return tagged
+    if 'And' in tagged :
+        name_type = 'CoupleNames'
+    else:
+        name_type = 'PersonName'
+
+    return (tagged, name_type)
 
 def tokenize(raw_string) :
 

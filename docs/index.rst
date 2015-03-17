@@ -9,8 +9,6 @@ probablepeople |release|
 
 probablepeople is a python library for parsing unstructured romanized name strings into name components, using advanced NLP methods.
 
-Contents:
-
 .. toctree::
    :maxdepth: 2
 
@@ -35,6 +33,31 @@ The ``parse`` method will split your name string into components, and label each
       ('"Gob"', 'Nickname'), 
       ('Bluth', 'Surname'), 
       ('II', 'SuffixGenerational')]
+      >>> probablepeople.parse('Lucille & George Bluth')
+      [('Lucille', 'GivenName'), 
+      ('&', 'And'), 
+      ('George', 'GivenName'), 
+      ('Bluth', 'Surname')]
+
+The ``tag`` method will return an OrderedDict with distinct name labels as keys & parts of your string as values, as well as a name type (``PersonName`` or ``CoupleNames``)
+   .. code:: python
+
+      >>> import probablepeople
+      >>> probablepeople.tag('Mr George "Gob" Bluth II')
+      (OrderedDict([
+      ('PrefixMarital', 'Mr'), 
+      ('GivenName', 'George'), 
+      ('Nickname', '"Gob"'), 
+      ('Surname', 'Bluth'), 
+      ('SuffixGenerational', 'II')]), 
+      'PersonName')
+      >>> probablepeople.tag('Lucille & George Bluth')
+      (OrderedDict([
+      ('GivenName', 'Lucille'), 
+      ('And', '&'), 
+      ('SecondGivenName', 'George'), 
+      ('Surname', 'Bluth')]), 
+      'CoupleNames')
 
 
 Details
