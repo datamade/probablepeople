@@ -81,21 +81,25 @@ def tag(raw_string) :
         else:
             print('ORIGINAL STRING: ', raw_string)
             print(parse(raw_string))
-            raise ValueError("More than one area of the name has the same label - this may not be a valid parsing")
+            raise ValueError("More than one area of the name "
+                             "has the same label - this may not "
+                             "be a valid parsing")
 
         prev_label = label
 
-    for token in tagged :
-        component = ' '.join(tagged[token])
+    for label in tagged :
+        component = ' '.join(tagged[label])
         component = component.strip(' ,;')
-        tagged[token] = component
+        tagged[label] = component
 
-    if 'And' in tagged :
-        name_type = 'Couple Names'
-    else:
-        name_type = 'Person Name'
+    if 'CorporationName' in tagged :
+        name_type = 'Corporation'
+    elif and_label :
+        name_type = 'Household'
+    else :
+        name_type = 'Person'
 
-    return (tagged, name_type)
+    return (name_type, tagged)
 
 def tokenize(raw_string) :
 
