@@ -26,7 +26,12 @@ LABELS = [
     'SuffixGenerational',
     'SuffixOther',
     'Nickname',
-    'And'
+    'And',
+    'CorporationName',
+    'CorporationType',
+    'ShortForm',
+    'ProxyFor',
+    'AKA',
     ]
 
 PARENT_LABEL = 'Name'
