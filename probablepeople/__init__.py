@@ -28,7 +28,9 @@ LABELS = [
     'Nickname',
     'And',
     'CorporationName',
-    'CorporationType',
+    'CorporationNameOrganization',
+    'CorporationLegalType',
+    'CorporationNamePossessiveOf',
     'ShortForm',
     'ProxyFor',
     'AKA',
@@ -67,6 +69,9 @@ def tag(raw_string) :
     prev_label = None
     and_label = False
 
+    interrupting_tags = ('CorporationNameOrganization', 
+                         'CorporationNamePossessiveOf')
+
     for token, label in parse(raw_string) :
 
         if label == 'And':
@@ -76,7 +81,7 @@ def tag(raw_string) :
 
         if label not in tagged:
             tagged[label] = [token]
-        elif label == prev_label:
+        elif label == prev_label or prev_label in interrupting_tags :
             tagged[label].append(token)
         else:
             print('ORIGINAL STRING: ', raw_string)
@@ -99,7 +104,7 @@ def tag(raw_string) :
     else :
         name_type = 'Person'
 
-    return (name_type, tagged)
+    return tagged, name_type
 
 def tokenize(raw_string) :
 
@@ -176,7 +181,8 @@ def tokenFeatures(token) :
                 'metaphone2' : (metaphone[1] if metaphone[1] else metaphone[0]),
                 'more.vowels' : vowelRatio(token_abbrev),
                 'in.names' : float(token_abbrev.upper() in ratios),
-                'first.name' : float(ratios.get(token_abbrev.upper(), 0))
+                'first.name' : float(ratios.get(token_abbrev.upper(), 0)),
+                'possessive' : token_clean.endswith("'s") 
                 }
 
     reversed_token = token_abbrev[::-1]
