@@ -68,21 +68,41 @@ def tag(raw_string) :
 
     prev_label = None
     and_label = False
+    proxy_label = False
+    aka_label = False
 
     interrupting_tags = ('CorporationNameOrganization', 
-                         'CorporationNamePossessiveOf')
+                         'CorporationNamePossessiveOf',
+                         'ProxiedCorporationNameOrganization', 
+                         'ProxiedCorporationNamePossessiveOf',
+                         'OtherCorporationNameOrganization', 
+                         'OtherCorporationNamePossessiveOf')
 
     for token, label in parse(raw_string) :
+        original_label = label
 
         if label == 'And':
             and_label = True
-        if and_label and label in tagged:
+        elif label == 'AKA' :
+            aka_label = True
+        elif label == 'ProxyFor' :
+            proxy_label = True
+
+        elif and_label and label in tagged:
             label = 'Second'+label
+        elif aka_label and label in tagged :
+            label = 'Other'+label
+        elif proxy_label and label in tagged :
+            label = 'Proxied'+label
 
         if label not in tagged:
             tagged[label] = [token]
+
         elif label == prev_label or prev_label in interrupting_tags :
             tagged[label].append(token)
+        elif label in interrupting_tags :
+            tagged[label].append(token)
+
         else:
             print('ORIGINAL STRING: ', raw_string)
             print(parse(raw_string))
@@ -171,7 +191,6 @@ def tokenFeatures(token) :
                 'hyphenated' : '-' in token_clean,
                 'contracted' : "'" in token_clean,
                 'bracketed' : bool(re.match(r'["(\']\w+[")\']', token)),
-                'case' : casing(token_clean),
                 'length' : len(token_abbrev),
                 'initial' : len(token_abbrev) == 1 and token_abbrev.isalpha(),
                 'has.vowels'  : bool(set(token_abbrev[1:]) & set(VOWELS_Y)),
@@ -193,18 +212,6 @@ def tokenFeatures(token) :
             break
 
     return features
-
-def casing(token) :
-    if token.isupper() :
-        return 'upper'
-    elif token.islower() :
-        return 'lower' 
-    elif token.istitle() :
-        return 'title'
-    elif token.isalpha() :
-        return 'mixed'
-    else :
-        return False
 
 def vowelRatio(token) :
     n_chars = len(token)
