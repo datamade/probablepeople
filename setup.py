@@ -5,9 +5,9 @@ except ImportError :
 
 
 setup(
-    version='0.2.1',
+    version='0.3.0',
     url='https://github.com/datamade/probablepeople',
-    description='Parse romanized names using advanced NLP methods',
+    description='Parse romanized names & companies using advanced NLP methods',
     name='probablepeople',
     packages=['probablepeople'],
     package_data={'probablepeople' : ['learned_settings.crfsuite']},
@@ -30,7 +30,7 @@ setup(
         'Topic :: Scientific/Engineering',
         'Topic :: Scientific/Engineering :: Information Analysis'],
     long_description="""
-        probablepeople is a python library for parsing unstructured romanized name strings into name components, using conditional random fields.
+        probablepeople is a python library for parsing unstructured romanized name or company strings into components, using conditional random fields.
 
         From the python interpreter:
 
@@ -41,5 +41,9 @@ setup(
          ('"Gob"', 'Nickname'), 
          ('Bluth', 'Surname'), 
          ('II', 'SuffixGenerational')]
+        >>> probablepeople.parse('Sitwell Housing Inc')
+        [('Sitwell', 'CorporationName'),
+         ('Housing', 'CorporationName'),
+         ('Inc', 'CorporationLegalType')]
         """
     )

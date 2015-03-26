@@ -67,7 +67,7 @@ parserator label [infile] name_data/labeled/labeled.xml probablepeople
   parserator train [traindata] probablepeople  
   ```  
   
-  for example, to train the data on both labeled names and labeled companies,
+  for example, to train the model on both labeled names and labeled companies,
   
   ```
   parserator train name_data/labeled/labeled.xml,name_data/labeled/company_labeled.xml probablepeople  
