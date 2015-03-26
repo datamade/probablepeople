@@ -7,7 +7,7 @@
 probablepeople |release|
 ================
 
-probablepeople is a python library for parsing unstructured romanized name strings into name components, using advanced NLP methods.
+probablepeople is a python library for parsing unstructured romanized name or company strings into name components, using advanced NLP methods.
 
 .. toctree::
    :maxdepth: 2
@@ -23,7 +23,7 @@ Installation
 
 Usage
 ============
-The ``parse`` method will split your name string into components, and label each component.
+The ``parse`` method will split your string into components, and label each component.
    .. code:: python
 
       >>> import probablepeople
@@ -38,8 +38,12 @@ The ``parse`` method will split your name string into components, and label each
       ('&', 'And'), 
       ('George', 'GivenName'), 
       ('Bluth', 'Surname')]
+      >>> probablepeople.parse('Sitwell Housing Inc')
+      [('Sitwell', 'CorporationName'),
+      ('Housing', 'CorporationName'),
+      ('Inc', 'CorporationLegalType')]
 
-The ``tag`` method will return an OrderedDict with distinct name labels as keys & parts of your string as values, as well as a name type (``Person Name`` or ``Couple Names``)
+The ``tag`` method will return an OrderedDict with distinct labels as keys & parts of your string as values, as well as a string type (``Person``, ``Household``, or ``Corporation``)
    .. code:: python
 
       >>> import probablepeople
@@ -50,20 +54,25 @@ The ``tag`` method will return an OrderedDict with distinct name labels as keys 
       ('Nickname', '"Gob"'), 
       ('Surname', 'Bluth'), 
       ('SuffixGenerational', 'II')]), 
-      'PersonName')
+      'Person')
       >>> probablepeople.tag('Lucille & George Bluth')
       (OrderedDict([
       ('GivenName', 'Lucille'), 
       ('And', '&'), 
       ('SecondGivenName', 'George'), 
       ('Surname', 'Bluth')]), 
-      'CoupleNames')
+      'Household')
+      >>> probablepeople.tag('Sitwell Housing Inc')
+      (OrderedDict([
+      ('CorporationName', 'Sitwell Housing'), 
+      ('CorporationLegalType', 'Inc')]), 
+      'Corporation')
 
 
 Details
 =======
 
-probablepeople has the following labels for parsing names:
+probablepeople has the following labels for parsing names & companies:
 
 * PrefixMarital
 * PrefixOther
@@ -77,6 +86,13 @@ probablepeople has the following labels for parsing names:
 * SuffixOther
 * Nickname
 * And
+* CorporationName
+* CorporationNameOrganization
+* CorporationLegalType
+* CorporationNamePossessiveOf
+* ShortForm
+* ProxyFor
+* AKA
 
 
 Important links
