@@ -104,11 +104,7 @@ def tag(raw_string) :
             tagged[label].append(token)
 
         else:
-            print('ORIGINAL STRING: ', raw_string)
-            print(parse(raw_string))
-            raise ValueError("More than one area of the name "
-                             "has the same label - this may not "
-                             "be a valid parsing")
+            raise RepeatedLabelError(raw_string, parse(raw_string))
 
         prev_label = label
 
@@ -221,4 +217,12 @@ def vowelRatio(token) :
     else :
         return False
 
+
+class RepeatedLabelError(Exception) :
+    def __init__(self, original_string, parsed_string) :
+        message = "More than one area of address has the same label"
+        super(RepeatedLabelError, self).__init__(message)
+
+        self.original_string = original_string
+        self.parsed_string = parsed_string
 
