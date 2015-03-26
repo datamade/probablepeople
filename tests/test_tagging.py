@@ -4,7 +4,8 @@ import unittest
 class TestTagging(unittest.TestCase) :
 
     def test_basic(self) :
-        tagged = tag("Bob Belcher")
-        self.assertEqual("Bob", tagged[0]['GivenName'])
-        self.assertEqual("Belcher", tagged[0]['Surname'])
+        tagged, name_type = tag("Bob Belcher")
+        assert name_type == 'Person'
+        self.assertEqual("Bob", tagged['GivenName'])
+        self.assertEqual("Belcher", tagged['Surname'])
     

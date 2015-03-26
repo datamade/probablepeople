@@ -11,6 +11,7 @@ from collections import OrderedDict
 from metaphone import doublemetaphone
 import pycrfsuite
 import warnings
+from .ratios import ratios
 
 
 LABELS = [
@@ -25,7 +26,14 @@ LABELS = [
     'SuffixGenerational',
     'SuffixOther',
     'Nickname',
-    'And'
+    'And',
+    'CorporationName',
+    'CorporationNameOrganization',
+    'CorporationLegalType',
+    'CorporationNamePossessiveOf',
+    'ShortForm',
+    'ProxyFor',
+    'AKA',
     ]
 
 PARENT_LABEL = 'Name'
@@ -60,36 +68,59 @@ def tag(raw_string) :
 
     prev_label = None
     and_label = False
+    proxy_label = False
+    aka_label = False
+
+    interrupting_tags = ('CorporationNameOrganization', 
+                         'CorporationNamePossessiveOf',
+                         'ProxiedCorporationNameOrganization', 
+                         'ProxiedCorporationNamePossessiveOf',
+                         'OtherCorporationNameOrganization', 
+                         'OtherCorporationNamePossessiveOf')
 
     for token, label in parse(raw_string) :
+        original_label = label
 
         if label == 'And':
             and_label = True
-        if and_label and label in tagged:
+        elif label == 'AKA' :
+            aka_label = True
+        elif label == 'ProxyFor' :
+            proxy_label = True
+
+        elif and_label and label in tagged:
             label = 'Second'+label
+        elif aka_label and label in tagged :
+            label = 'Other'+label
+        elif proxy_label and label in tagged :
+            label = 'Proxied'+label
 
         if label not in tagged:
             tagged[label] = [token]
-        elif label == prev_label:
+
+        elif label == prev_label or prev_label in interrupting_tags :
             tagged[label].append(token)
+        elif label in interrupting_tags :
+            tagged[label].append(token)
+
         else:
-            print('ORIGINAL STRING: ', raw_string)
-            print(parse(raw_string))
-            raise ValueError("More than one area of the name has the same label - this may not be a valid parsing")
+            raise RepeatedLabelError(raw_string, parse(raw_string))
 
         prev_label = label
 
-    for token in tagged :
-        component = ' '.join(tagged[token])
+    for label in tagged :
+        component = ' '.join(tagged[label])
         component = component.strip(' ,;')
-        tagged[token] = component
+        tagged[label] = component
 
-    if 'And' in tagged :
-        name_type = 'Couple Names'
-    else:
-        name_type = 'Person Name'
+    if 'CorporationName' in tagged :
+        name_type = 'Corporation'
+    elif and_label :
+        name_type = 'Household'
+    else :
+        name_type = 'Person'
 
-    return (tagged, name_type)
+    return tagged, name_type
 
 def tokenize(raw_string) :
 
@@ -156,7 +187,6 @@ def tokenFeatures(token) :
                 'hyphenated' : '-' in token_clean,
                 'contracted' : "'" in token_clean,
                 'bracketed' : bool(re.match(r'["(\']\w+[")\']', token)),
-                'case' : casing(token_clean),
                 'length' : len(token_abbrev),
                 'initial' : len(token_abbrev) == 1 and token_abbrev.isalpha(),
                 'has.vowels'  : bool(set(token_abbrev[1:]) & set(VOWELS_Y)),
@@ -164,7 +194,10 @@ def tokenFeatures(token) :
                 'endswith.vowel' : token_abbrev.endswith(VOWELS_Y),
                 'metaphone1' : metaphone[0],
                 'metaphone2' : (metaphone[1] if metaphone[1] else metaphone[0]),
-                'more.vowels' : vowelRatio(token_abbrev)
+                'more.vowels' : vowelRatio(token_abbrev),
+                'in.names' : float(token_abbrev.upper() in ratios),
+                'first.name' : float(ratios.get(token_abbrev.upper(), 0)),
+                'possessive' : token_clean.endswith("'s") 
                 }
 
     reversed_token = token_abbrev[::-1]
@@ -176,18 +209,6 @@ def tokenFeatures(token) :
 
     return features
 
-def casing(token) :
-    if token.isupper() :
-        return 'upper'
-    elif token.islower() :
-        return 'lower' 
-    elif token.istitle() :
-        return 'title'
-    elif token.isalpha() :
-        return 'mixed'
-    else :
-        return False
-
 def vowelRatio(token) :
     n_chars = len(token)
     if n_chars > 1:
@@ -196,4 +217,12 @@ def vowelRatio(token) :
     else :
         return False
 
+
+class RepeatedLabelError(Exception) :
+    def __init__(self, original_string, parsed_string) :
+        message = "More than one area of address has the same label"
+        super(RepeatedLabelError, self).__init__(message)
+
+        self.original_string = original_string
+        self.parsed_string = parsed_string
 
