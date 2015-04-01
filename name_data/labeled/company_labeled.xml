@@ -172,4 +172,11 @@
   <Name><CorporationName>NovaBay_Pharmaceuticals,</CorporationName> <CorporationLegalType>_Inc.</CorporationLegalType></Name>
   <Name><CorporationName>ResMed</CorporationName> <CorporationNameOrganization>Corp</CorporationNameOrganization></Name>
   <Name><CorporationName>Brahms</CorporationName> <CorporationLegalType>GmbH</CorporationLegalType></Name>
+  <Name><CorporationName>Taro</CorporationName> <CorporationName>Pharmaceuticals</CorporationName> <CorporationName>USA,</CorporationName> <CorporationLegalType>Inc.</CorporationLegalType></Name>
+  <Name><CorporationName>Synergetics</CorporationName> <CorporationName>USA,</CorporationName> <CorporationLegalType>Inc</CorporationLegalType></Name>
+  <Name><CorporationName>Takeda</CorporationName> <CorporationName>Pharmaceuticals</CorporationName> <CorporationName>U.S.A.,</CorporationName> <CorporationLegalType>Inc.</CorporationLegalType></Name>
+  <Name><CorporationName>Medacta</CorporationName> <CorporationName>USA</CorporationName></Name>
+  <Name><CorporationName>Meisinger</CorporationName> <CorporationName>USA,</CorporationName> <CorporationLegalType>LLC</CorporationLegalType></Name>
+  <Name><CorporationName>Octapharma</CorporationName> <CorporationName>USA,</CorporationName> <CorporationLegalType>Inc.</CorporationLegalType></Name>
+  <Name><CorporationName>Astellas</CorporationName> <CorporationName>US</CorporationName> <CorporationName>Technologies</CorporationName></Name>
 </NameCollection>
