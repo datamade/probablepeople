@@ -142,7 +142,21 @@
   <Name><CorporationNameOrganization>center</CorporationNameOrganization> <CorporationName>for</CorporationName> <CorporationName>american</CorporationName> <CorporationName>progress</CorporationName> <CorporationName>action</CorporationName> <CorporationNameOrganization>fund</CorporationNameOrganization></Name>
   <Name><CorporationName>the</CorporationName> <CorporationName>conference</CorporationName> <CorporationNameOrganization>board</CorporationNameOrganization> <CorporationNamePossessiveOf>of</CorporationNamePossessiveOf> <CorporationName>canada/centre</CorporationName> <CorporationName>for</CorporationName> <CorporationName>national</CorporationName> <CorporationName>security</CorporationName></Name>
   <Name><CorporationName>SCENIC</CorporationName> <CorporationName>TREE</CorporationName></Name>
-  <Name><CorporationName>BAFCO</CorporationName></Name>
-  <Name><CorporationName>HOMEWERKS-LAMONT</CorporationName></Name>
-  <Name><CorporationName>HUD</CorporationName></Name>
+  <Name>
+    <CorporationName>BAFCO</CorporationName>
+  </Name>
+  <Name>
+    <CorporationName>HOMEWERKS-LAMONT</CorporationName>
+  </Name>
+  <Name>
+    <ShortForm>HUD</ShortForm>
+  </Name>
+  <Name><CorporationName>KLS</CorporationName> <CorporationName>Martin</CorporationName> <CorporationLegalType>L.P.</CorporationLegalType></Name>
+  <Name><CorporationName>Olea</CorporationName> <CorporationName>Medical</CorporationName></Name>
+  <Name><CorporationName>FUKUDA</CorporationName> <CorporationName>DENSHI</CorporationName> <CorporationNameOrganization>Co.,</CorporationNameOrganization> <CorporationLegalType>Ltd.</CorporationLegalType></Name>
+  <Name><CorporationName>Pfizer</CorporationName> <CorporationLegalType>Limited</CorporationLegalType></Name>
+  <Name><CorporationName>Phadia</CorporationName> <CorporationLegalType>AB</CorporationLegalType></Name>
+  <Name><CorporationName>Pylant</CorporationName> <CorporationName>Medical</CorporationName></Name>
+  <Name><CorporationName>ITxM</CorporationName> <CorporationName>Diagnostics</CorporationName></Name>
+  <Name><CorporationName>DIagnostica</CorporationName> <CorporationName>Stago</CorporationName> <CorporationLegalType>SAS</CorporationLegalType></Name>
 </NameCollection>
