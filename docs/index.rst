@@ -68,6 +68,16 @@ The ``tag`` method will return an OrderedDict with distinct labels as keys & par
       ('CorporationLegalType', 'Inc')]), 
       'Corporation')
 
+Because the ``tag`` method returns an OrderedDict with labels as keys, it will throw a ``RepeatedLabelError`` error when multiple areas of a name have the same label, and thus can't be concatenated. When ``RepeatedLabelError`` is raised, it is likely that either (1) the input string is not a valid person/corporation name, or (2) some tokens were labeled incorrectly.
+
+``RepeatedLabelError`` has the attributes ``original_string`` (the input string) and ``parsed_string`` (the output of the ``parse`` method on the input string). You can use these attributes to write custom exception handling, for example:
+   .. code:: python
+
+       try:
+           tagged_name, name_type = probablepeople.tag(string)
+       except probablepeople.RepeatedLabelError as e :
+           some_special_instructions(e.parsed_string, e.original_string)
+
 
 Details
 =======

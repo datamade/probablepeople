@@ -104,7 +104,7 @@ def tag(raw_string) :
             tagged[label].append(token)
 
         else:
-            raise RepeatedLabelError(raw_string, parse(raw_string))
+            raise RepeatedLabelError(raw_string, parse(raw_string), label)
 
         prev_label = label
 
@@ -219,8 +219,23 @@ def vowelRatio(token) :
 
 
 class RepeatedLabelError(Exception) :
-    def __init__(self, original_string, parsed_string) :
-        message = "More than one area of address has the same label"
+    def __init__(self, original_string, parsed_string, repeated_label) :
+
+        message ='''
+
+ERROR: Unable to tag this string because more than one area of the string has the same label
+
+ORIGINAL STRING:  %s
+PARSED TOKENS:    %s
+UNCERTAIN LABEL:  %s
+
+When this error is raised, it's likely that either (1) the string is not a valid person/corporation name or (2) some tokens were labeled incorrectly
+
+To report an error in labeling a valid name, open an issue at https://github.com/datamade/probablepeople/issues/new - it'll help us continue to improve probablepeople!
+
+For more information, see the documentation at http://probablepeople.readthedocs.org/
+        '''%(original_string, parsed_string, repeated_label)
+
         super(RepeatedLabelError, self).__init__(message)
 
         self.original_string = original_string
