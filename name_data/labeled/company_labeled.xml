@@ -179,4 +179,11 @@
   <Name><CorporationName>Meisinger</CorporationName> <CorporationName>USA,</CorporationName> <CorporationLegalType>LLC</CorporationLegalType></Name>
   <Name><CorporationName>Octapharma</CorporationName> <CorporationName>USA,</CorporationName> <CorporationLegalType>Inc.</CorporationLegalType></Name>
   <Name><CorporationName>Astellas</CorporationName> <CorporationName>US</CorporationName> <CorporationName>Technologies</CorporationName></Name>
+  <Name><CorporationName>REBISCAN</CorporationName></Name>
+  <Name><CorporationName>AlloSource</CorporationName></Name>
+  <Name><CorporationName>AXOGEN</CorporationName></Name>
+  <Name><CorporationName>LEO</CorporationName> <CorporationName>Pharma</CorporationName> <CorporationLegalType>AS</CorporationLegalType></Name>
+  <Name><CorporationName>ABIOMED</CorporationName></Name>
+  <Name><CorporationName>bioMerieux</CorporationName></Name>
+  <Name><CorporationName>Cepheid</CorporationName></Name>
 </NameCollection>
