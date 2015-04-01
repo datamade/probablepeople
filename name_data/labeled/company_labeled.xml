@@ -142,14 +142,11 @@
   <Name><CorporationNameOrganization>center</CorporationNameOrganization> <CorporationName>for</CorporationName> <CorporationName>american</CorporationName> <CorporationName>progress</CorporationName> <CorporationName>action</CorporationName> <CorporationNameOrganization>fund</CorporationNameOrganization></Name>
   <Name><CorporationName>the</CorporationName> <CorporationName>conference</CorporationName> <CorporationNameOrganization>board</CorporationNameOrganization> <CorporationNamePossessiveOf>of</CorporationNamePossessiveOf> <CorporationName>canada/centre</CorporationName> <CorporationName>for</CorporationName> <CorporationName>national</CorporationName> <CorporationName>security</CorporationName></Name>
   <Name><CorporationName>SCENIC</CorporationName> <CorporationName>TREE</CorporationName></Name>
-  <Name>
-    <CorporationName>BAFCO</CorporationName>
+  <Name><CorporationName>BAFCO</CorporationName>
   </Name>
-  <Name>
-    <CorporationName>HOMEWERKS-LAMONT</CorporationName>
+  <Name><CorporationName>HOMEWERKS-LAMONT</CorporationName>
   </Name>
-  <Name>
-    <ShortForm>HUD</ShortForm>
+  <Name><ShortForm>HUD</ShortForm>
   </Name>
   <Name><CorporationName>KLS</CorporationName> <CorporationName>Martin</CorporationName> <CorporationLegalType>L.P.</CorporationLegalType></Name>
   <Name><CorporationName>Olea</CorporationName> <CorporationName>Medical</CorporationName></Name>
@@ -159,4 +156,20 @@
   <Name><CorporationName>Pylant</CorporationName> <CorporationName>Medical</CorporationName></Name>
   <Name><CorporationName>ITxM</CorporationName> <CorporationName>Diagnostics</CorporationName></Name>
   <Name><CorporationName>DIagnostica</CorporationName> <CorporationName>Stago</CorporationName> <CorporationLegalType>SAS</CorporationLegalType></Name>
+  <Name><CorporationName>Gebauer</CorporationName> <CorporationNameOrganization>Company</CorporationNameOrganization></Name>
+  <Name><CorporationName>Dyax</CorporationName> <CorporationLegalType>Corp</CorporationLegalType></Name>
+  <Name><CorporationName>Raptor</CorporationName> <CorporationName>Pharmaceuticals</CorporationName></Name>
+  <Name><CorporationName>Materialise</CorporationName> <CorporationLegalType>NV</CorporationLegalType></Name>
+  <Name><CorporationName>TearLab,</CorporationName> <CorporationNameOrganization>Corp</CorporationNameOrganization></Name>
+  <Name><CorporationName>Nidek</CorporationName> <CorporationLegalType>Incorporated</CorporationLegalType></Name>
+  <Name><CorporationName>Altatec</CorporationName> <CorporationLegalType>GmbH</CorporationLegalType></Name>
+  <Name><CorporationName>ViroPharma</CorporationName> <CorporationLegalType>Incorporated</CorporationLegalType></Name>
+  <Name><CorporationName>F.</CorporationName> <CorporationName>Hoffmann-La</CorporationName> <CorporationName>Roche</CorporationName> <CorporationLegalType>AG</CorporationLegalType></Name>
+  <Name><CorporationName>Sucampo</CorporationName> <CorporationLegalType>AG</CorporationLegalType></Name>
+  <Name><CorporationName>Dentaurum</CorporationName> <CorporationLegalType>Incorporated</CorporationLegalType></Name>
+  <Name><CorporationName>Dynatronics</CorporationName> <CorporationNameOrganization>Corp.</CorporationNameOrganization></Name>
+  <Name><CorporationName>Coloplast</CorporationName> <CorporationNameOrganization>Corp</CorporationNameOrganization></Name>
+  <Name><CorporationName>NovaBay_Pharmaceuticals,</CorporationName> <CorporationLegalType>_Inc.</CorporationLegalType></Name>
+  <Name><CorporationName>ResMed</CorporationName> <CorporationNameOrganization>Corp</CorporationNameOrganization></Name>
+  <Name><CorporationName>Brahms</CorporationName> <CorporationLegalType>GmbH</CorporationLegalType></Name>
 </NameCollection>
