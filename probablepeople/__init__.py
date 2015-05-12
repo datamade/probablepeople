@@ -124,6 +124,12 @@ def tag(raw_string) :
 
 def tokenize(raw_string) :
 
+    if isinstance(raw_string, bytes):
+        try:
+            raw_string = str(raw_string, encoding='utf-8')
+        except:
+            raw_string = str(raw_string)
+
     re_tokens = re.compile(r"""
     \(*[^\s,;()]+[.,;)]*   # ['ab. cd,ef '] -> ['ab.', 'cd,', 'ef']
     """,
