@@ -21,6 +21,8 @@ probablepeople learns how to parse names/companies through a body of training da
     pip install probablepeople  
     ```  
 2. Parse some names/companies!
+   
+   ![pp](https://cloud.githubusercontent.com/assets/1406537/7870535/966f0956-054f-11e5-8312-4d392f79ff75.gif)
     
    Note that `parse` and `tag` are differet methods:
    ```python
