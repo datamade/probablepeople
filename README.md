@@ -4,27 +4,39 @@ probablepeople
 
 probablepeople is a python library for parsing unstructured romanized name or company strings into components, using advanced NLP methods. This is based off [usaddress](https://github.com/datamade/usaddress), a python library for parsing addresses.
 
+Try it out on our [web interface](https://parserator.datamade.us/probablepeople)! For those who aren't python developers, we also have an [API](https://parserator.datamade.us/api-docs).
+
 **What this can do:** Using a probabilistic model, it makes (very educated) guesses in identifying name or corporation components, even in tricky cases where rule-based parsers typically break down.
 
 **What this cannot do:** It cannot identify components with perfect accuracy, nor can it verify that a given name/company is correct/valid.
 
 probablepeople learns how to parse names/companies through a body of training data. If you have examples of names/companies that stump this parser, please send them over! By adding more examples to the training data, probablepeople can continue to learn and improve.
 
-## How to use probablepeople
-1. Install probablepeople
+## How to use the probablepeople python library
+1. Install probablepeople with [pip](http://pip.readthedocs.org/en/latest/quickstart.html), a tool for installing and managing python packages ([beginner's guide here](http://www.dabapps.com/blog/introduction-to-pip-and-virtualenv-python/))
+
+   In the terminal,
    
     ```
     pip install probablepeople  
     ```  
 2. Parse some names/companies!
-   
-    ```
-    >>> import probablepeople  
-    >>> probablepeople.parse('Mr George "Gob" Bluth II')  
-[('Mr', 'PrefixMarital'), ('George', 'GivenName'), ('"Gob"', 'Nickname'), ('Bluth', 'Surname'), ('II', 'SuffixGenerational')]
-    >>> probablepeople.parse('Sitwell Housing Inc')
-[('Sitwell', 'CorporationName'), ('Housing', 'CorporationName'), ('Inc', 'CorporationLegalType')]
-    ```  
+    
+   Note that `parse` and `tag` are differet methods:
+   ```python
+   import probablepeople as pp
+   name_str='Mr George "Gob" Bluth II'
+   corp_str='Sitwell Housing Inc'
+  
+   # The parse method will split your string into components, and label each component.
+   pp.parse(name_str) # expected output: [('Mr', 'PrefixMarital'), ('George', 'GivenName'), ('"Gob"', 'Nickname'), ('Bluth', 'Surname'), ('II', 'SuffixGenerational')]
+   pp.parse(corp_str) # expected output: [('Sitwell', 'CorporationName'), ('Housing', 'CorporationName'), ('Inc', 'CorporationLegalType')]
+  
+   # The tag method will try to be a little smarter
+   # it will merge consecutive components, strip commas, & return a string type
+   pp.tag(name_str) # expected output: (OrderedDict([('PrefixMarital', 'Mr'), ('GivenName', 'George'), ('Nickname', '"Gob"'), ('Surname', 'Bluth'), ('SuffixGenerational', 'II')]), 'Person')
+   pp.tag(corp_str) # expected output: (OrderedDict([('CorporationName', 'Sitwell Housing'), ('CorporationLegalType', 'Inc')]), 'Corporation')
+   ```
 
 ## Links:
 * Documentation: http://probablepeople.rtfd.org/
