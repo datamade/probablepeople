@@ -182,8 +182,8 @@ def tokenFeatures(token) :
         token_clean = token_abbrev = token
         
     else :
-        token_clean = re.sub(r'(^[\W]*)|([^.\w]*$)', u'', token)
-        token_abbrev = re.sub(r'\W', u'', token_clean.lower())
+        token_clean = re.sub(r'(^[\W]*)|([^.\w]*$)', u'', token.lower())
+        token_abbrev = re.sub(r'\W', u'', token_clean)
 
     metaphone = doublemetaphone(token_abbrev)
 
@@ -197,6 +197,7 @@ def tokenFeatures(token) :
                 'length' : len(token_abbrev),
                 'initial' : len(token_abbrev) == 1 and token_abbrev.isalpha(),
                 'has.vowels'  : bool(set(token_abbrev[1:]) & set(VOWELS_Y)),
+                'just.letters' : token_abbrev.isalpha(),
                 'roman' : set('xvi').issuperset(token_abbrev),
                 'endswith.vowel' : token_abbrev.endswith(VOWELS_Y),
                 'metaphone1' : metaphone[0],
