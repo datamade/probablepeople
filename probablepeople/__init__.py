@@ -13,7 +13,7 @@ import pycrfsuite
 import warnings
 import string
 from .ratios import ratios
-
+from .gender import gender_names
 
 LABELS = [
     'PrefixMarital',
@@ -77,8 +77,12 @@ def tag(raw_string) :
     aka_label = False
 
     interrupting_tags = ('CorporationNameOrganization', 
+                         'CorporationNameBranchType',
+                         'CorporationNameBranchIdentifier',
                          'ProxiedCorporationNameOrganization', 
-                         'OtherCorporationNameOrganization',)
+                         'OtherCorporationNameOrganization',
+                         'OtherCorporationNameBranchType',
+                         'OtherCorporationNameBranchIdentifier')
 
     for token, label in parse(raw_string) :
         original_label = label
@@ -115,7 +119,7 @@ def tag(raw_string) :
         component = component.strip(' ,;')
         tagged[label] = component
 
-    if 'CorporationName' in tagged :
+    if 'CorporationName' in tagged or 'ShortForm' in tagged :
         name_type = 'Corporation'
     elif and_label :
         name_type = 'Household'
@@ -213,6 +217,7 @@ def tokenFeatures(token) :
                 'in.names' : token_abbrev.upper() in ratios,
                 'prepositions' : token_abbrev in PREPOSITIONS,
                 'first.name' : ratios.get(token_abbrev.upper(), 0),
+                'gender_ratio' : gender_names.get(token_abbrev, False),
                 'possessive' : token_clean.endswith("'s") 
                 }
 
