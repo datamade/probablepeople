@@ -11,6 +11,7 @@ from collections import OrderedDict
 from metaphone import doublemetaphone
 import pycrfsuite
 import warnings
+import string
 from .ratios import ratios
 
 
@@ -29,8 +30,11 @@ LABELS = [
     'And',
     'CorporationName',
     'CorporationNameOrganization',
+    'CorporationNameAndCompany',
+    'CorporationNameBranchType',
+    'CorporationNameBranchIdentifier',
+    'CorporationCommitteeType',
     'CorporationLegalType',
-    'CorporationNamePossessiveOf',
     'ShortForm',
     'ProxyFor',
     'AKA',
@@ -42,6 +46,7 @@ GROUP_LABEL = 'NameCollection'
 MODEL_FILE = 'learned_settings.crfsuite'
 
 VOWELS_Y = tuple('aeiouy')
+PREPOSITIONS = {'for', 'to', 'of', 'on'}
 
 try :
     TAGGER = pycrfsuite.Tagger()
@@ -72,11 +77,8 @@ def tag(raw_string) :
     aka_label = False
 
     interrupting_tags = ('CorporationNameOrganization', 
-                         'CorporationNamePossessiveOf',
                          'ProxiedCorporationNameOrganization', 
-                         'ProxiedCorporationNamePossessiveOf',
-                         'OtherCorporationNameOrganization', 
-                         'OtherCorporationNamePossessiveOf')
+                         'OtherCorporationNameOrganization',)
 
     for token, label in parse(raw_string) :
         original_label = label
@@ -131,12 +133,16 @@ def tokenize(raw_string) :
             raw_string = str(raw_string)
 
     re_tokens = re.compile(r"""
-    \(*[^\s,;()]+[.,;)]*   # ['ab. cd,ef '] -> ['ab.', 'cd,', 'ef']
+    \bc/o\b
+    |
+    [("']*\b[^\s\/,;#&()]+\b[.,;'")]* # ['a-b. cd,ef- '] -> ['a-b.', 'cd,', 'ef']
+    |
+    [#&]
     """,
-                           re.VERBOSE | re.UNICODE)
+                           re.I | re.VERBOSE | re.UNICODE)
 
     tokens = re_tokens.findall(raw_string)
-
+    
     if not tokens :
         return []
 
@@ -200,11 +206,13 @@ def tokenFeatures(token) :
                 'just.letters' : token_abbrev.isalpha(),
                 'roman' : set('xvi').issuperset(token_abbrev),
                 'endswith.vowel' : token_abbrev.endswith(VOWELS_Y),
+                'digits' : digits(token_abbrev),
                 'metaphone1' : metaphone[0],
                 'metaphone2' : (metaphone[1] if metaphone[1] else metaphone[0]),
                 'more.vowels' : vowelRatio(token_abbrev),
-                'in.names' : float(token_abbrev.upper() in ratios),
-                'first.name' : float(ratios.get(token_abbrev.upper(), 0)),
+                'in.names' : token_abbrev.upper() in ratios,
+                'prepositions' : token_abbrev in PREPOSITIONS,
+                'first.name' : ratios.get(token_abbrev.upper(), 0),
                 'possessive' : token_clean.endswith("'s") 
                 }
 
@@ -214,6 +222,12 @@ def tokenFeatures(token) :
         features['suffix_%s' % i] = reversed_token[:i][::-1]
         if i > 4 :
             break
+
+    for tri_gram in ngrams(token_abbrev, 3) :
+        features[tri_gram] = True
+
+    for four_gram in ngrams(token_abbrev, 4) :
+        features[four_gram] = True
 
     return features
 
@@ -225,6 +239,17 @@ def vowelRatio(token) :
     else :
         return False
 
+def digits(token) :
+    if token.isdigit() :
+        return 'all_digits' 
+    elif set(token) & set(string.digits) :
+        return 'some_digits' 
+    else :
+        return 'no_digits'
+
+
+def ngrams(word, n=2):
+    return (''.join(letters) for letters in zip(*[word[i:] for i in range(n)]))
 
 class RepeatedLabelError(Exception) :
     def __init__(self, original_string, parsed_string, repeated_label) :
