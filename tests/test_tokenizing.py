@@ -7,6 +7,7 @@ class TestTokenizing(unittest.TestCase) :
 
         assert tokenize('belcher,bob') == ['belcher,', 'bob']
         assert tokenize('bob foo-bar') == ['bob', 'foo-bar']
+        assert tokenize('bob foo- bar') == ['bob', 'foo', '-', 'bar']
     
     def test_spaces(self) :
 
@@ -25,6 +26,12 @@ class TestTokenizing(unittest.TestCase) :
 
     def test_ampersand(self) :
         assert tokenize('mr & mrs') == ['mr', '&', 'mrs']
+
+    def test_care_of(self) :
+        assert tokenize('same c/o me') == ['same', 'c/o', 'me']
+
+    def test_slash(self) :
+        assert tokenize('same o/c me') == ['same', 'o', '/', 'c', 'me']
 
     def test_paren(self) :
         assert tokenize('robert (bob) belcher') == ['robert', '(bob)', 'belcher']

@@ -139,9 +139,9 @@ def tokenize(raw_string) :
     re_tokens = re.compile(r"""
     \bc/o\b
     |
-    [("']*\b[^\s\/,;#&()]+\b[.,;'")]* # ['a-b. cd,ef- '] -> ['a-b.', 'cd,', 'ef']
+    [("']*\b[^\s\/,;#&()]+\b[.,;:'")]* # ['a-b. cd,ef- '] -> ['a-b.', 'cd,', 'ef']
     |
-    [#&]
+    [#&@/]
     """,
                            re.I | re.VERBOSE | re.UNICODE)
 
