@@ -7,7 +7,6 @@ class TestTokenizing(unittest.TestCase) :
 
         assert tokenize('belcher,bob') == ['belcher,', 'bob']
         assert tokenize('bob foo-bar') == ['bob', 'foo-bar']
-        assert tokenize('bob foo- bar') == ['bob', 'foo', '-', 'bar']
     
     def test_spaces(self) :
 
