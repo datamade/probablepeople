@@ -3888,8 +3888,9 @@
   <Name><PrefixOther>Drs.</PrefixOther> <Surname>Davidson</Surname> <And>and</And> <Surname>Burr</Surname></Name>
   <Name><PrefixOther>Dr.'s</PrefixOther> <Surname>Bell</Surname> <And>and</And> <Surname>Covert</Surname></Name>
   <Name><PrefixOther>Dr.</PrefixOther> <GivenName>Don</GivenName> <Surname>Eberhart</Surname> <PrefixOther>Dr.</PrefixOther> <GivenName>Derrik</GivenName> <Surname>Johnson</Surname></Name>
-  <Name><CorporationName>PreZenDental</CorporationName>
-  </Name>
+  <Name><CorporationName>PreZenDental</CorporationName></Name>
   <Name><GivenName>Alek</GivenName> <Surname>Klebaner</Surname> <SuffixOther>DDS</SuffixOther></Name>
   <Name><CorporationName>ALEX</CorporationName> <CorporationName>DISPLAYS</CorporationName> <CorporationNameAndCompany>&amp;</CorporationNameAndCompany> <CorporationNameAndCompany>CO</CorporationNameAndCompany> <CorporationLegalType>INC</CorporationLegalType></Name>
+  <Name><GivenName>Cindy</GivenName> <Surname>Mac</Surname> <Surname>Kendrick</Surname></Name>
+  <Name><GivenName>Richard</GivenName> <Surname>Mac</Surname> <Surname>Pherson</Surname></Name>
 </NameCollection>
