@@ -5,7 +5,7 @@ except ImportError :
 
 
 setup(
-    version='0.4.2',
+    version='0.4.3',
     url='https://github.com/datamade/probablepeople',
     description='Parse romanized names & companies using advanced NLP methods',
     name='probablepeople',
