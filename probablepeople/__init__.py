@@ -259,7 +259,7 @@ def ngrams(word, n=2):
 class RepeatedLabelError(Exception) :
     def __init__(self, original_string, parsed_string, repeated_label) :
 
-        message ='''
+        self.message ='''
 
 ERROR: Unable to tag this string because more than one area of the string has the same label
 
@@ -274,7 +274,7 @@ To report an error in labeling a valid name, open an issue at https://github.com
 For more information, see the documentation at http://probablepeople.readthedocs.org/
         '''%(original_string, parsed_string, repeated_label)
 
-        super(RepeatedLabelError, self).__init__(message)
+        super(RepeatedLabelError, self).__init__(original_string, parsed_string, repeated_label)
 
         self.original_string = original_string
         self.parsed_string = parsed_string
