@@ -5,7 +5,7 @@ except ImportError :
 
 
 setup(
-    version='0.4.3',
+    version='0.4.4',
     url='https://github.com/datamade/probablepeople',
     description='Parse romanized names & companies using advanced NLP methods',
     name='probablepeople',
@@ -14,6 +14,7 @@ setup(
     license='The MIT License: http://www.opensource.org/licenses/mit-license.php',
     install_requires=[
         'python-crfsuite>=0.8',
+        'probableparsing',
         'future',
         'metafone'],
     classifiers=[
