@@ -61,19 +61,25 @@ Probablepeople uses [parserator](https://github.com/datamade/parserator), a libr
   nosetests .  
   ```  
 #### Creating/adding labeled training data (.xml outfile) from unlabeled raw data (.csv infile)  
-  If there are name/company formats that the parser isn't performing well on, you can add them to training data. As probablepeople continually learns about new cases, it will continually become smarter and more robust.  
+
+If there are name/company formats that the parser isn't performing well on, you can add them to training data. As probablepeople continually learns about new cases, it will continually become smarter and more robust.
+
+*NOTE: The model doesn't need many examples to learn about new patterns - if you are trying to get probablepeople to perform better on a specific type of name, start with a few (<5) examples, check performance, and then add more examples as necessary.*
+
+For this parser, we are keeping person names and organization names separate in the training data. The two training files used to produce the model are:
+- `name_data/labeled/labeled.xml` for people
+- `name_data/labeled/company_labeled.xml` for organizations.
+
+To add your own training examples, first put your unlabeled raw data in a csv. Then:
   
 ```
 parserator label [infile] [outfile] probablepeople  
 ```  
 
-For example, we have our labeled names in `name_data/labeled/labeled.xml` so, you can use.
+`[infile]` is your raw csv and `[outfile]` is the appropriate training file to write to. For example, if you put raw strings in `my_companies.csv`, you'd use `parserator label my_companies.csv name_data/labeled/company_labeled.xml probablepeople`
 
-```
-parserator label [infile] name_data/labeled/labeled.xml probablepeople  
-```  
+The parserator `label` command will start a console labeling task, where you will be prompted to label raw strings via the command line. For more info on using parserator, see the [parserator documentation](https://github.com/datamade/parserator/blob/master/README.md).  
 
-  This will start a console labeling task, where you will be prompted to label raw strings via the command line. For more info on using parserator, see the [parserator documentation](https://github.com/datamade/parserator/blob/master/README.md).  
 #### Re-training the model  
   If you've added new training data, you will need to re-train the model. To set multiple files as traindata, separate them with commas.
   

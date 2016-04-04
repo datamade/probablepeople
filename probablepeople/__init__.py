@@ -5,13 +5,17 @@ from __future__ import division
 from builtins import zip
 from builtins import range
 from past.utils import old_div
+
 import os
 import re
 from collections import OrderedDict
-from metaphone import doublemetaphone
-import pycrfsuite
 import warnings
 import string
+
+import probableparsing
+import pycrfsuite
+from metaphone import doublemetaphone
+
 from .ratios import ratios
 from .gender import gender_names
 
@@ -256,26 +260,7 @@ def digits(token) :
 def ngrams(word, n=2):
     return (''.join(letters) for letters in zip(*[word[i:] for i in range(n)]))
 
-class RepeatedLabelError(Exception) :
-    def __init__(self, original_string, parsed_string, repeated_label) :
 
-        message ='''
-
-ERROR: Unable to tag this string because more than one area of the string has the same label
-
-ORIGINAL STRING:  %s
-PARSED TOKENS:    %s
-UNCERTAIN LABEL:  %s
-
-When this error is raised, it's likely that either (1) the string is not a valid person/corporation name or (2) some tokens were labeled incorrectly
-
-To report an error in labeling a valid name, open an issue at https://github.com/datamade/probablepeople/issues/new - it'll help us continue to improve probablepeople!
-
-For more information, see the documentation at http://probablepeople.readthedocs.org/
-        '''%(original_string, parsed_string, repeated_label)
-
-        super(RepeatedLabelError, self).__init__(message)
-
-        self.original_string = original_string
-        self.parsed_string = parsed_string
-
+class RepeatedLabelError(probableparsing.RepeatedLabelError) :
+    REPO_URL = 'https://github.com/datamade/probablepeople/issues/new'
+    DOCS_URL = 'http://probablepeople.readthedocs.org/'
