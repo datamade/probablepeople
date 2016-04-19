@@ -5,12 +5,14 @@ except ImportError :
 
 
 setup(
-    version='0.4.4',
+    version='0.5',
     url='https://github.com/datamade/probablepeople',
     description='Parse romanized names & companies using advanced NLP methods',
     name='probablepeople',
     packages=['probablepeople'],
-    package_data={'probablepeople' : ['learned_settings.crfsuite']},
+    package_data={'probablepeople' : ['generic_learned_settings.crfsuite',
+                                      'person_learned_settings.crfsuite',
+                                      'company_learned_settings.crfsuite']},
     license='The MIT License: http://www.opensource.org/licenses/mit-license.php',
     install_requires=[
         'python-crfsuite>=0.8',

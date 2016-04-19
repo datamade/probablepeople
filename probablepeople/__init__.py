@@ -47,21 +47,31 @@ LABELS = [
 PARENT_LABEL = 'Name'
 GROUP_LABEL = 'NameCollection'
 
-MODEL_FILE = 'learned_settings.crfsuite'
+MODEL_FILES = {'generic' : 'generic_learned_settings.crfsuite',
+               'person' : 'person_learned_settings.crfsuite',
+               'company' : 'company_learned_settings.crfsuite'}
 
 VOWELS_Y = tuple('aeiouy')
 PREPOSITIONS = {'for', 'to', 'of', 'on'}
 
-try :
-    TAGGER = pycrfsuite.Tagger()
-    TAGGER.open(os.path.split(os.path.abspath(__file__))[0]+'/'+MODEL_FILE)
-except IOError :
-    TAGGER = None
-    warnings.warn('You must train the model (parserator train [traindata] [modulename]) to create the %s file before you can use the parse and tag methods' %MODEL_FILE)
+def _loadTagger(model_type) :
+    tagger = pycrfsuite.Tagger()
+    try:
+        tagger.open(os.path.split(os.path.abspath(__file__))[0] +
+                    '/' + MODEL_FILES[model_type])
+    except IOError:
+        tagger = None
+        warnings.warn('You must train the model (parserator train [traindata] [modulename]) to create the %s file before you can use the parse and tag methods' % MODEL_FILES[model_type])
 
-def parse(raw_string):
-    if not TAGGER:
-        raise IOError('\nMISSING MODEL FILE: %s\nYou must train the model before you can use the parse and tag methods\nTo train the model annd create the model file, run:\nparserator train [traindata] [modulename]' %MODEL_FILE)
+    return tagger
+
+TAGGERS = {model_type : _loadTagger(model_type) for model_type in MODEL_FILES}  
+def parse(raw_string, type=None):
+    if type is None:
+        type='generic'
+    tagger = TAGGERS[type]
+    if not tagger:
+        raise IOError('\nMISSING MODEL FILE: %s\nYou must train the model before you can use the parse and tag methods\nTo train the model annd create the model file, run:\nparserator train [traindata] [modulename]' % MODEL_FILES[type])
 
     tokens = tokenize(raw_string)
     if not tokens :
@@ -69,10 +79,10 @@ def parse(raw_string):
 
     features = tokens2features(tokens)
 
-    tags = TAGGER.tag(features)
+    tags = tagger.tag(features)
     return list(zip(tokens, tags))
 
-def tag(raw_string) :
+def tag(raw_string, type=None) :
     tagged = OrderedDict()
 
     prev_label = None
@@ -88,7 +98,7 @@ def tag(raw_string) :
                          'OtherCorporationNameBranchType',
                          'OtherCorporationNameBranchIdentifier')
 
-    for token, label in parse(raw_string) :
+    for token, label in parse(raw_string, type) :
         original_label = label
 
         if label == 'And':
