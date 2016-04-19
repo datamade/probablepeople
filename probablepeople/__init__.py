@@ -14,7 +14,7 @@ import string
 
 import probableparsing
 import pycrfsuite
-from metaphone import doublemetaphone
+from doublemetaphone import doublemetaphone
 
 from .ratios import ratios
 from .gender import gender_names
@@ -226,7 +226,7 @@ def tokenFeatures(token) :
                 'endswith.vowel' : token_abbrev.endswith(VOWELS_Y),
                 'digits' : digits(token_abbrev),
                 'metaphone1' : metaphone[0],
-                'metaphone2' : (metaphone[1] if metaphone[1] else metaphone[0]),
+                'metaphone2' : metaphone[1],
                 'more.vowels' : vowelRatio(token_abbrev),
                 'in.names' : token_abbrev.upper() in ratios,
                 'prepositions' : token_abbrev in PREPOSITIONS,

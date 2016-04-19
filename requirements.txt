@@ -1,4 +1,4 @@
 lxml
 nose
-parserator
+parserator>=0.5
 coverage

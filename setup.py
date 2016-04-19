@@ -18,7 +18,7 @@ setup(
         'python-crfsuite>=0.8',
         'probableparsing',
         'future',
-        'metafone'],
+        'doublemetaphone'],
     classifiers=[
         'Development Status :: 3 - Alpha',
         'Intended Audience :: Developers',
