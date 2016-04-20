@@ -79,6 +79,28 @@ Because the ``tag`` method returns an OrderedDict with labels as keys, it will t
            some_special_instructions(e.parsed_string, e.original_string)
 
 
+If you already know that the string refers to a person or a company, you can indicate that to probable people by using the ``type`` argument of the ``parse`` and ``tag`` methods. Valid options are ``'person'`` and ``'company'``.
+
+    .. code:: python
+       >>> probablepeople.tag('Lucille & George Bluth')
+       (OrderedDict([
+       ('GivenName', 'Lucille'),
+       ('And', '&'),
+       ('SecondGivenName', 'George'),
+       ('Surname', 'Bluth')]),
+       'Household')
+       >>> probablepeople.tag('Lucille & George Bluth', type='person')
+       (OrderedDict([
+       ('GivenName', 'Lucille'),
+       ('And', '&'),
+       ('SecondGivenName', 'George'),
+       ('Surname', 'Bluth')]),
+       'Household')
+       >>> probablepeople.tag('Lucille & George Bluth', type='company')
+       (OrderedDict([
+       ('CorporationName', 'Lucille & George Bluth')]),
+       'Corporation')
+	   
 Details
 =======
 
