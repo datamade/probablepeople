@@ -50,6 +50,8 @@ GROUP_LABEL = 'NameCollection'
 MODEL_FILES = {'generic' : 'generic_learned_settings.crfsuite',
                'person' : 'person_learned_settings.crfsuite',
                'company' : 'company_learned_settings.crfsuite'}
+# default model file to use if user doesn't specify a model file
+MODEL_FILE = MODEL_FILES['generic']
 
 VOWELS_Y = tuple('aeiouy')
 PREPOSITIONS = {'for', 'to', 'of', 'on'}
