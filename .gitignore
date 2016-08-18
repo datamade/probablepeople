@@ -62,3 +62,5 @@ make.bat
 # temp files
 *~
 *#
+
+.DS_Store

@@ -87,10 +87,12 @@ The parserator `label` command will start a console labeling task, where you wil
   parserator train [traindata] probablepeople  
   ```  
   
-  for example, to train the model on both labeled names and labeled companies,
+  probablepeople allows for multiple model files - `person` for person names only, `company` for company names only, or `generic` (both). here are examples of commands for training models:
   
   ```
-  parserator train name_data/labeled/labeled.xml,name_data/labeled/company_labeled.xml probablepeople  
+  parserator train name_data/labeled/person_labeled.xml,name_data/labeled/company_labeled.xml probablepeople --modelfile=generic
+  parserator train name_data/labeled/person_labeled.xml probablepeople --modelfile=person
+  parserator train name_data/labeled/company_labeled.xml probablepeople --modelfile=company
   ```  
   
   Contribute back by sending a pull requests with your added labeled examples.

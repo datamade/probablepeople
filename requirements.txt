@@ -1,4 +1,4 @@
 lxml
 nose
-parserator>=0.5.1
+parserator>=0.6.2
 coverage
