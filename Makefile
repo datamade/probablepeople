@@ -2,8 +2,12 @@ all : probablepeople/generic_learned_settings.crfsuite \
       probablepeople/company_learned_settings.crfsuite \
       probablepeople/person_learned_settings.crfsuite
 
-probablepeople/generic_learned_settings.crfsuite : name_data/labeled/company_labeled.xml name_data/labeled/person_labeled.xml
-	parserator train $<,$(word 2,$^) probablepeople --modelfile $@
+probablepeople/generic_learned_settings.crfsuite: name_data/labeled/company_labeled.xml name_data/labeled/person_labeled.xml
+	parserator train $<,$(word 2,$^) probablepeople --modelfile=generic
 
-probablepeople/%_learned_settings.crfsuite : name_data/labeled/%_labeled.xml
-	parserator train $< probablepeople --modelfile $@
+probablepeople/company_learned_settings.crfsuite: name_data/labeled/company_labeled.xml
+	parserator train $< probablepeople --modelfile=company
+
+probablepeople/person_learned_settings.crfsuite: name_data/labeled/person_labeled.xml
+	parserator train $< probablepeople --modelfile=person
+
