@@ -95,8 +95,20 @@ The parserator `label` command will start a console labeling task, where you wil
   parserator train name_data/labeled/company_labeled.xml probablepeople --modelfile=company
   ```  
   
-  Contribute back by sending a pull requests with your added labeled examples.
+## Errors and Bugs
 
+If something is not behaving intuitively, it is a bug and should be reported.
+Report it here by creating an issue: https://github.com/datamade/probablepeople/issues
+
+Help us fix the problem as quickly as possible by following [Mozilla's guidelines for reporting bugs.](https://developer.mozilla.org/en-US/docs/Mozilla/QA/Bug_writing_guidelines#General_Outline_of_a_Bug_Report)
+
+## Patches and Pull Requests
+
+Your patches are welcome. Here's our suggested workflow:
+
+* Fork the project.
+* Add your labeled examples.
+* Send us a pull request with a description of your work.
 
 ### Copyright
 
