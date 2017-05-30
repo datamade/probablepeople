@@ -684,7 +684,6 @@
   <Name><CorporationName>bell</CorporationName> <CorporationName>boyd</CorporationName> <CorporationName>&amp;</CorporationName> <CorporationName>lloyd</CorporationName> <CorporationNameOrganization>co.</CorporationNameOrganization></Name>
   <Name><CorporationLegalType>p.c.</CorporationLegalType> <CorporationName>shekar,</CorporationName> <CorporationName>m.d.</CorporationName></Name>
   <Name><CorporationName>karl</CorporationName> <CorporationName>productions</CorporationName></Name>
-  <Name><GivenName>joseph</GivenName> <MiddleName>trindl</MiddleName> <SuffixGenerational>iii</SuffixGenerational></Name>
   <Name><CorporationName>illinois</CorporationName> <CorporationName>veternary</CorporationName> <CorporationName>medical</CorporationName> <CorporationCommitteeType>pac</CorporationCommitteeType></Name>
   <Name><CorporationName>BEST</CorporationName> <CorporationName>PRACTICE</CorporationName> <CorporationNameOrganization>HS</CorporationNameOrganization></Name>
   <Name><CorporationName>Velma</CorporationName> <CorporationName>F</CorporationName> <CorporationName>Thomas</CorporationName> <CorporationNameOrganization>Early</CorporationNameOrganization> <CorporationNameOrganization>Childhood</CorporationNameOrganization> <CorporationNameOrganization>Center</CorporationNameOrganization></Name>
@@ -1416,4 +1415,8 @@
   <Name><CorporationName>yale</CorporationName> <CorporationNameOrganization>university</CorporationNameOrganization> <CorporationNameOrganization>school</CorporationNameOrganization> <CorporationNameOrganization>of</CorporationNameOrganization> <CorporationNameOrganization>medicine</CorporationNameOrganization></Name>
   <Name><CorporationName>HARVARD</CorporationName> <CorporationNameOrganization>BUSINESS</CorporationNameOrganization> <CorporationNameOrganization>SCHOOL</CorporationNameOrganization></Name>
   <Name><CorporationName>st</CorporationName> <CorporationName>johns</CorporationName> <CorporationNameOrganization>church</CorporationNameOrganization></Name>
+  <Name><CorporationName>cook,</CorporationName> <CorporationName>ysursa,</CorporationName> <CorporationNameAndCompany>et</CorporationNameAndCompany> <CorporationNameAndCompany>al</CorporationNameAndCompany> <CorporationNameOrganization>law</CorporationNameOrganization> <CorporationNameOrganization>firm</CorporationNameOrganization></Name>
+  <Name><CorporationName>b</CorporationName> <CorporationName>p</CorporationName> <CorporationName>consultants</CorporationName></Name>
+  <Name><CorporationName>schuyler</CorporationName> <CorporationName>roche</CorporationName> <CorporationName>&amp;</CorporationName> <CorporationName>zwirner</CorporationName></Name>
+
 </NameCollection>

@@ -67,7 +67,10 @@ def _loadTagger(model_type) :
 
     return tagger
 
-TAGGERS = {model_type : _loadTagger(model_type) for model_type in MODEL_FILES}  
+TAGGERS = {model_type : _loadTagger(model_type) for model_type in MODEL_FILES}
+
+TAGGER = _loadTagger('generic')
+
 def parse(raw_string, type=None):
     if type is None:
         type='generic'

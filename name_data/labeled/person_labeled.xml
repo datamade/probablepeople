@@ -3918,7 +3918,6 @@
   <Name><GivenName>patrick</GivenName> <MiddleInitial>w</MiddleInitial> <Surname>mc</Surname> <Surname>arthur</Surname></Name>
   <Name><GivenName>tita</GivenName> <MiddleInitial>e.</MiddleInitial> <Surname>roach</Surname></Name>
   <Name><GivenName>david</GivenName> <Surname>delre</Surname> <SuffixOther>atty</SuffixOther> <SuffixOther>at</SuffixOther> <SuffixOther>law</SuffixOther></Name>
-  <Name><GivenName>sheila</GivenName> <MiddleInitial>m.</MiddleInitial> <Surname>mcginnis</Surname> <CorporationCommitteeType>camp.</CorporationCommitteeType> <CorporationCommitteeType>comm.</CorporationCommitteeType></Name>
   <Name><GivenName>david</GivenName> <MiddleInitial>b.</MiddleInitial> <SuffixGenerational>iii</SuffixGenerational> <Surname>hill</Surname></Name>
   <Name><GivenName>david</GivenName> <Surname>spiegel</Surname> <And>and</And> <GivenName>suzanne</GivenName> <Surname>courtney</Surname> <SuffixOther>ttees</SuffixOther> <SuffixOther>of</SuffixOther> <SuffixOther>spiegel-cortney</SuffixOther> <SuffixOther>fam.tr</SuffixOther></Name>
   <Name><PrefixOther>mayor</PrefixOther> <GivenName>john</GivenName> <Surname>rodgers</Surname></Name>
@@ -3937,7 +3936,6 @@
   <Name><GivenName>bruce</GivenName> <MiddleInitial>a</MiddleInitial> <Surname>hackel</Surname> <SuffixOther>gri</SuffixOther></Name>
   <Name><GivenName>olatunij</GivenName> <MiddleName>tommy</MiddleName> <Surname>abina</Surname></Name>
   <Name><GivenName>sondra</GivenName> <MiddleName>berman</MiddleName> <Surname>epstein</Surname></Name>
-  <Name><Surname>cook,</Surname> <CorporationName>ysursa,</CorporationName> <CorporationNameAndCompany>et</CorporationNameAndCompany> <CorporationNameAndCompany>al</CorporationNameAndCompany> <CorporationNameOrganization>law</CorporationNameOrganization> <CorporationNameOrganization>firm</CorporationNameOrganization></Name>
   <Name><GivenName>anuradha</GivenName> <Surname>ghogale</Surname></Name>
   <Name><GivenName>richard</GivenName> <MiddleInitial>a.</MiddleInitial> <Surname>shapiro</Surname> <SuffixOther>attorney</SuffixOther> <SuffixOther>at</SuffixOther> <SuffixOther>law</SuffixOther></Name>
   <Name><GivenName>chaka</GivenName> <Surname>patterson,</Surname></Name>
@@ -3982,10 +3980,19 @@
   <Name><PrefixOther>attorney</PrefixOther> <GivenName>paul</GivenName> <MiddleInitial>l.</MiddleInitial> <Surname>williams</Surname></Name>
   <Name><GivenName>raymondd</GivenName> <Surname>prybill</Surname></Name>
   <Name><GivenName>semir</GivenName> <And>and</And> <GivenName>lilya</GivenName> <Surname>sirazi</Surname></Name>
-  <Name><CorporationName>b</CorporationName> <CorporationName>p</CorporationName> <Surname>consultants</Surname></Name>
   <Name><GivenName>young</GivenName> <MiddleName>sun</MiddleName> <And>&amp;</And> <GivenName>myung</GivenName> <MiddleName>wo</MiddleName> <Surname>yoo</Surname></Name>
-  <Name><CorporationName>schuyler</CorporationName> <CorporationName>roche</CorporationName> <CorporationName>&amp;</CorporationName> <Surname>zwirner</Surname></Name>
   <Name><FirstInitial>w.</FirstInitial> <MiddleName>russell</MiddleName> <SuffixGenerational>(jr.)</SuffixGenerational> <Surname>withers</Surname></Name>
   <Name><GivenName>james</GivenName> <MiddleInitial>w.</MiddleInitial> <Surname>paleks</Surname></Name>
   <Name><GivenName>patricia</GivenName> <PrefixMarital>mrs,</PrefixMarital> <Surname>natke</Surname></Name>
+   <Name><GivenName>Wm.</GivenName> <MiddleName>Sam</MiddleName> <Surname>McCann<$
+  <Name><GivenName>Charles</GivenName> <MiddleInitial>W.</MiddleInitial> <Surnam$
+  <Name><GivenName>Miguel</GivenName> <Surname>del</Surname> <Surname>Valle</Sur$
+  <Name><GivenName>Emanuel</GivenName> <MiddleName>Chris</MiddleName> <Surname>W$
+  <Name><GivenName>C.D.</GivenName> <Surname>Davidsmeyer</Surname></Name>
+  <Name><GivenName>Michael</GivenName> <Surname>Unes</Surname></Name>
+  <Name><GivenName>James</GivenName> <MiddleName>Pate</MiddleName> <Surname>Phil$
+  <Name><GivenName>Annazette</GivenName> <Surname>Collins</Surname></Name>
+  <Name><GivenName>Franco</GivenName> <Surname>Coladipietro</Surname></Name>
+  <Name><GivenName>Carol</GivenName> <Surname>Sente</Surname></Name>
+  <Name><GivenName>joseph</GivenName> <MiddleName>trindl</MiddleName> <SuffixGenerational>iii</SuffixGenerational></Name>
 </NameCollection>
