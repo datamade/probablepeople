@@ -134,7 +134,7 @@ Important links
 * Repository: https://github.com/datamade/probablepeople
 * Issues: https://github.com/datamade/probablepeople/issues
 * Distribution: https://pypi.python.org/pypi/probablepeople
-* Blog Post: http://datamade.us/blog/parse-name-or-parse-anything-really/
+* Blog Post: https://datamade.us/blog/parse-name-or-parse-anything-really
 * Web Interface: http://parserator.datamade.us/probablepeople
 
 
