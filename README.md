@@ -57,7 +57,7 @@ Probablepeople uses [parserator](https://github.com/datamade/parserator), a libr
   cd probablepeople  
   pip install -r requirements.txt  
   python setup.py develop
-  parserator train name_data/labeled/labeled.xml,name_data/labeled/company_labeled.xml probablepeople
+  make all
   nosetests .  
   ```  
 #### Creating/adding labeled training data (.xml outfile) from unlabeled raw data (.csv infile)  
