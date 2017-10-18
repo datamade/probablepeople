@@ -1418,5 +1418,7 @@
   <Name><CorporationName>cook,</CorporationName> <CorporationName>ysursa,</CorporationName> <CorporationNameAndCompany>et</CorporationNameAndCompany> <CorporationNameAndCompany>al</CorporationNameAndCompany> <CorporationNameOrganization>law</CorporationNameOrganization> <CorporationNameOrganization>firm</CorporationNameOrganization></Name>
   <Name><CorporationName>b</CorporationName> <CorporationName>p</CorporationName> <CorporationName>consultants</CorporationName></Name>
   <Name><CorporationName>schuyler</CorporationName> <CorporationName>roche</CorporationName> <CorporationName>&amp;</CorporationName> <CorporationName>zwirner</CorporationName></Name>
-
+  <Name><CorporationName>LeadIQ</CorporationName> <CorporationNameBranchIdentifier>Singapore</CorporationNameBranchIdentifier> <CorporationLegalType>Pte.</CorporationLegalType> <CorporationLegalType>Ltd.</CorporationLegalType></Name>
+  <Name><CorporationName>Spacemob</CorporationName> <CorporationLegalType>Pte.</CorporationLegalType> <CorporationLegalType>Ltd.</CorporationLegalType></Name>
+  <Name><CorporationName>NTUC</CorporationName> <CorporationName>LearningHub</CorporationName> <CorporationLegalType>Pte</CorporationLegalType> <CorporationLegalType>Ltd</CorporationLegalType></Name>
 </NameCollection>
