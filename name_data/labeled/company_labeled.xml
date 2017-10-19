@@ -1421,4 +1421,57 @@
   <Name><CorporationName>LeadIQ</CorporationName> <CorporationNameBranchIdentifier>Singapore</CorporationNameBranchIdentifier> <CorporationLegalType>Pte.</CorporationLegalType> <CorporationLegalType>Ltd.</CorporationLegalType></Name>
   <Name><CorporationName>Spacemob</CorporationName> <CorporationLegalType>Pte.</CorporationLegalType> <CorporationLegalType>Ltd.</CorporationLegalType></Name>
   <Name><CorporationName>NTUC</CorporationName> <CorporationName>LearningHub</CorporationName> <CorporationLegalType>Pte</CorporationLegalType> <CorporationLegalType>Ltd</CorporationLegalType></Name>
+  <Name><CorporationName>Bethlehem</CorporationName> <CorporationNameOrganization>Lutheran</CorporationNameOrganization> <CorporationNameOrganization>Church</CorporationNameOrganization></Name>
+  <Name><CorporationName>Salina</CorporationName> <CorporationName>Presbyterian</CorporationName> <CorporationNameOrganization>Church</CorporationNameOrganization></Name>
+  <Name><CorporationName>Ebenezer</CorporationName> <CorporationNameOrganization>Lutheran</CorporationNameOrganization> <CorporationNameOrganization>Chapel</CorporationNameOrganization></Name>
+  <Name><CorporationName>Brayton</CorporationName> <CorporationNameOrganization>Methodist</CorporationNameOrganization> <CorporationName>Episcopal</CorporationName> <CorporationNameOrganization>Church</CorporationNameOrganization></Name>
+  <Name><CorporationName>St.</CorporationName> <CorporationName>Frances</CorporationName> <CorporationNameOrganization>Methodist</CorporationNameOrganization> <CorporationNameOrganization>Church</CorporationNameOrganization></Name>
+  <Name><CorporationName>Spring</CorporationName> <CorporationName>Creek</CorporationName> <CorporationNameOrganization>Church</CorporationNameOrganization></Name>
+  <Name><CorporationName>Abyssinian</CorporationName> <CorporationNameOrganization>Baptist</CorporationNameOrganization> <CorporationNameOrganization>Church</CorporationNameOrganization></Name>
+  <Name><CorporationName>Urban</CorporationName> <CorporationName>Grace</CorporationName> <CorporationNameOrganization>Church</CorporationNameOrganization></Name>
+  <Name><CorporationName>Temple</CorporationName> <CorporationName>B'Nai</CorporationName> <CorporationName>Abraham</CorporationName></Name>
+  <Name><CorporationName>Madison</CorporationName> <CorporationName>Avenue</CorporationName> <CorporationNameOrganization>Baptist</CorporationNameOrganization> <CorporationNameOrganization>Church</CorporationNameOrganization></Name>
+  <Name><CorporationName>St.</CorporationName> <CorporationName>Joseph</CorporationName> <CorporationNameOrganization>Basilica</CorporationNameOrganization></Name>
+  <Name><CorporationName>Trinity</CorporationName> <CorporationName>Evangelical</CorporationName> <CorporationNameOrganization>Lutheran</CorporationNameOrganization> <CorporationNameOrganization>Church</CorporationNameOrganization></Name>
+  <Name><CorporationName>Jubilee</CorporationName> <CorporationName>Christian</CorporationName> <CorporationNameOrganization>Church</CorporationNameOrganization></Name>
+  <Name><CorporationName>Saint</CorporationName> <CorporationName>Vincent</CorporationName> <CorporationName>de</CorporationName> <CorporationName>Paul</CorporationName></Name>
+  <Name><CorporationName>Duke</CorporationName> <CorporationNameOrganization>Chapel</CorporationNameOrganization></Name>
+  <Name><CorporationName>St.</CorporationName> <CorporationName>Augustine</CorporationName> <CorporationNameOrganization>Church</CorporationNameOrganization></Name>
+  <Name><CorporationName>Beulah</CorporationName> <CorporationNameOrganization>Baptist</CorporationNameOrganization> <CorporationNameOrganization>Church</CorporationNameOrganization></Name>
+  <Name><CorporationName>Hopeful</CorporationName> <CorporationNameOrganization>Lutheran</CorporationNameOrganization> <CorporationNameOrganization>Church</CorporationNameOrganization></Name>
+  <Name><CorporationName>Salem</CorporationName> <CorporationName>Evangelical</CorporationName> <CorporationNameOrganization>Lutheran</CorporationNameOrganization> <CorporationNameOrganization>Church</CorporationNameOrganization></Name>
+  <Name><CorporationName>Rehoboth</CorporationName> <CorporationNameOrganization>Methodist</CorporationNameOrganization> <CorporationNameOrganization>Church</CorporationNameOrganization></Name>
+  <Name><CorporationName>San</CorporationName> <CorporationName>Ignacio</CorporationName> <CorporationNameOrganization>Church</CorporationNameOrganization></Name>
+  <Name><CorporationName>Robeline</CorporationName> <CorporationNameOrganization>Methodist</CorporationNameOrganization> <CorporationNameOrganization>Church</CorporationNameOrganization></Name>
+  <Name><CorporationName>Taveau</CorporationName> <CorporationNameOrganization>Church</CorporationNameOrganization></Name>
+  <Name><CorporationName>Brady</CorporationName> <CorporationName>Memorial</CorporationName> <CorporationNameOrganization>Chapel</CorporationNameOrganization></Name>
+  <Name><CorporationName>Zion</CorporationName> <CorporationName>Evangelical</CorporationName> <CorporationNameOrganization>Lutheran</CorporationNameOrganization> <CorporationNameOrganization>Church</CorporationNameOrganization></Name>
+  <Name><CorporationName>Mount</CorporationName> <CorporationName>Olive</CorporationName> <CorporationNameOrganization>Cathedral</CorporationNameOrganization></Name>
+  <Name><CorporationName>St.</CorporationName> <CorporationName>Stephen</CorporationName> <CorporationNameOrganization>Cathedral</CorporationNameOrganization></Name>
+  <Name><CorporationName>Miccosukee</CorporationName> <CorporationNameOrganization>Methodist</CorporationNameOrganization> <CorporationNameOrganization>Church</CorporationNameOrganization></Name>
+  <Name><CorporationName>Immanuel</CorporationName> <CorporationNameOrganization>Lutheran</CorporationNameOrganization> <CorporationNameOrganization>Church</CorporationNameOrganization></Name>
+  <Name><CorporationName>Packer</CorporationName> <CorporationName>Memorial</CorporationName> <CorporationNameOrganization>Chapel</CorporationNameOrganization></Name>
+  <Name><CorporationName>Unity</CorporationName> <CorporationNameOrganization>Baptist</CorporationNameOrganization> <CorporationNameOrganization>Church</CorporationNameOrganization></Name>
+  <Name><CorporationName>Christ</CorporationName> <CorporationNameOrganization>Church</CorporationNameOrganization> <CorporationNameOrganization>Mission</CorporationNameOrganization></Name>
+  <Name><CorporationNameOrganization>Baptist</CorporationNameOrganization> <CorporationNameOrganization>Parsonage</CorporationNameOrganization></Name>
+  <Name><CorporationName>Loretto</CorporationName> <CorporationNameOrganization>Chapel</CorporationNameOrganization></Name>
+  <Name><CorporationName>St.</CorporationName> <CorporationName>Francis</CorporationName> <CorporationNameOrganization>Chapel</CorporationNameOrganization></Name>
+  <Name><CorporationName>Calvary</CorporationName> <CorporationNameOrganization>Church</CorporationNameOrganization></Name>
+  <Name><CorporationName>Jesus</CorporationName> <CorporationName>Marie</CorporationName> <CorporationNameOrganization>Convent</CorporationNameOrganization></Name>
+  <Name><CorporationName>Long</CorporationName> <CorporationName>View</CorporationName> <CorporationNameOrganization>Center</CorporationNameOrganization></Name>
+  <Name><CorporationName>John</CorporationName> <CorporationName>Wesley</CorporationName> <CorporationNameOrganization>Methodist</CorporationNameOrganization> <CorporationNameOrganization>Church</CorporationNameOrganization></Name>
+  <Name><CorporationName>Hope</CorporationName> <CorporationNameOrganization>Church</CorporationNameOrganization></Name>
+  <Name><CorporationName>Congregation</CorporationName> <CorporationName>Adath</CorporationName> <CorporationName>Jeshurun</CorporationName></Name>
+  <Name><CorporationName>Central</CorporationName> <CorporationNameOrganization>Methodist</CorporationNameOrganization> <CorporationNameOrganization>Church</CorporationNameOrganization></Name>
+  <Name><CorporationName>HerChurch</CorporationName></Name>
+  <Name><CorporationName>Wyco</CorporationName> <CorporationNameOrganization>Church</CorporationNameOrganization></Name>
+  <Name><CorporationNameOrganization>Methodist</CorporationNameOrganization> <CorporationNameOrganization>Church</CorporationNameOrganization> <CorporationName>Concord</CorporationName></Name>
+  <Name><CorporationName>Round</CorporationName> <CorporationNameOrganization>Church</CorporationNameOrganization></Name>
+  <Name><CorporationName>Centenary</CorporationName> <CorporationNameOrganization>Methodist</CorporationNameOrganization> <CorporationNameOrganization>Church</CorporationNameOrganization></Name>
+  <Name><CorporationName>Grace</CorporationName> <CorporationNameOrganization>Lutheran</CorporationNameOrganization> <CorporationNameOrganization>Church</CorporationNameOrganization></Name>
+  <Name><CorporationName>Calvary</CorporationName> <CorporationNameOrganization>Baptist</CorporationNameOrganization> <CorporationNameOrganization>Church</CorporationNameOrganization></Name>
+  <Name><CorporationName>Union</CorporationName> <CorporationNameOrganization>Baptist</CorporationNameOrganization> <CorporationNameOrganization>Church</CorporationNameOrganization></Name>
+  <Name><CorporationName>Mars</CorporationName> <CorporationName>Hill</CorporationName></Name>
+  <Name><CorporationName>Crystal</CorporationName> <CorporationNameOrganization>Cathedral</CorporationNameOrganization></Name>
+  <Name><CorporationName>Friendship</CorporationName> <CorporationNameOrganization>Baptist</CorporationNameOrganization> <CorporationNameOrganization>Church</CorporationNameOrganization></Name>
 </NameCollection>

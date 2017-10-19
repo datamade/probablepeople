@@ -70,4 +70,9 @@
   <Name><PrefixMarital>Mr</PrefixMarital> <GivenName>LEWIS</GivenName> <MiddleInitial>E</MiddleInitial> <Surname>SELLERS</Surname> <SuffixOther>III</SuffixOther></Name>
   <Name><PrefixOther>Dr</PrefixOther> <And>&amp;</And> <PrefixMarital>Mrs</PrefixMarital> <GivenName>ERIC</GivenName> <MiddleName>JOHN</MiddleName> <Surname>TRUEBLOOD</Surname> <SuffixOther>MD</SuffixOther></Name>
   <Name><PrefixOther>Dr</PrefixOther> <And>and</And> <PrefixMarital>Mrs</PrefixMarital> <GivenName>BENJAMIN</GivenName> <Surname>WALL</Surname></Name>
+  <Name><CorporationName>Centenary</CorporationName> <CorporationNameOrganization>Methodist</CorporationNameOrganization> <CorporationNameOrganization>Church</CorporationNameOrganization></Name>
+  <Name><CorporationName>Grace</CorporationName> <CorporationNameOrganization>Lutheran</CorporationNameOrganization> <CorporationNameOrganization>Church</CorporationNameOrganization></Name>
+  <Name><CorporationName>Calvary</CorporationName> <CorporationNameOrganization>Baptist</CorporationNameOrganization> <CorporationNameOrganization>Church</CorporationNameOrganization></Name>
+  <Name><CorporationName>Union</CorporationName> <CorporationNameOrganization>Baptist</CorporationNameOrganization> <CorporationNameOrganization>Church</CorporationNameOrganization></Name>
+  <Name><CorporationName>Mount</CorporationName> <CorporationName>Olive</CorporationName> <CorporationNameOrganization>Cathedral</CorporationNameOrganization></Name>
 </NameCollection>
