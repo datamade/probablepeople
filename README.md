@@ -13,7 +13,7 @@ Try it out on our [web interface](https://parserator.datamade.us/probablepeople)
 probablepeople learns how to parse names/companies through a body of training data. If you have examples of names/companies that stump this parser, please send them over! By adding more examples to the training data, probablepeople can continue to learn and improve.
 
 ## How to use the probablepeople python library
-1. Install probablepeople with [pip](http://pip.readthedocs.org/en/latest/quickstart.html), a tool for installing and managing python packages ([beginner's guide here](http://www.dabapps.com/blog/introduction-to-pip-and-virtualenv-python/))
+1. Install probablepeople with [pip](https://pip.readthedocs.io/en/latest/quickstart.html), a tool for installing and managing python packages ([beginner's guide here](http://www.dabapps.com/blog/introduction-to-pip-and-virtualenv-python/))
 
    In the terminal,
    
@@ -41,7 +41,7 @@ probablepeople learns how to parse names/companies through a body of training da
    ```
 
 ## Links:
-* Documentation: http://probablepeople.rtfd.org/
+* Documentation: https://probablepeople.readthedocs.io/
 * Web Interface: http://parserator.datamade.us/probablepeople
 * Distribution: https://pypi.python.org/pypi/probablepeople
 * Repository: https://github.com/datamade/probablepeople

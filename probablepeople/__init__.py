@@ -278,4 +278,4 @@ def ngrams(word, n=2):
 
 class RepeatedLabelError(probableparsing.RepeatedLabelError) :
     REPO_URL = 'https://github.com/datamade/probablepeople/issues/new'
-    DOCS_URL = 'http://probablepeople.readthedocs.org/'
+    DOCS_URL = 'https://probablepeople.readthedocs.io/'

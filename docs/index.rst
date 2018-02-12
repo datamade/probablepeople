@@ -130,7 +130,7 @@ probablepeople has the following labels for parsing names & companies:
 Important links
 ===============
 
-* Documentation: http://probablepeople.rtfd.org/
+* Documentation: https://probablepeople.readthedocs.io/
 * Repository: https://github.com/datamade/probablepeople
 * Issues: https://github.com/datamade/probablepeople/issues
 * Distribution: https://pypi.python.org/pypi/probablepeople
