@@ -1444,7 +1444,6 @@
   <Name><CorporationName>Taveau</CorporationName> <CorporationNameOrganization>Church</CorporationNameOrganization></Name>
   <Name><CorporationName>Brady</CorporationName> <CorporationName>Memorial</CorporationName> <CorporationNameOrganization>Chapel</CorporationNameOrganization></Name>
   <Name><CorporationName>Zion</CorporationName> <CorporationNameOrganization>Evangelical</CorporationNameOrganization> <CorporationNameOrganization>Lutheran</CorporationNameOrganization> <CorporationNameOrganization>Church</CorporationNameOrganization></Name>
-  <Name><CorporationName>Mount</CorporationName> <CorporationName>Olive</CorporationName> <CorporationNameOrganization>Cathedral</CorporationNameOrganization></Name>
   <Name><CorporationName>St.</CorporationName> <CorporationName>Stephen</CorporationName> <CorporationNameOrganization>Cathedral</CorporationNameOrganization></Name>
   <Name><CorporationName>Miccosukee</CorporationName> <CorporationNameOrganization>Methodist</CorporationNameOrganization> <CorporationNameOrganization>Church</CorporationNameOrganization></Name>
   <Name><CorporationName>Immanuel</CorporationName> <CorporationNameOrganization>Lutheran</CorporationNameOrganization> <CorporationNameOrganization>Church</CorporationNameOrganization></Name>
@@ -1465,10 +1464,6 @@
   <Name><CorporationName>Wyco</CorporationName> <CorporationNameOrganization>Church</CorporationNameOrganization></Name>
   <Name><CorporationNameOrganization>Methodist</CorporationNameOrganization> <CorporationNameOrganization>Church</CorporationNameOrganization> <CorporationName>Concord</CorporationName></Name>
   <Name><CorporationName>Round</CorporationName> <CorporationNameOrganization>Church</CorporationNameOrganization></Name>
-  <Name><CorporationName>Centenary</CorporationName> <CorporationNameOrganization>Methodist</CorporationNameOrganization> <CorporationNameOrganization>Church</CorporationNameOrganization></Name>
-  <Name><CorporationName>Grace</CorporationName> <CorporationNameOrganization>Lutheran</CorporationNameOrganization> <CorporationNameOrganization>Church</CorporationNameOrganization></Name>
-  <Name><CorporationName>Calvary</CorporationName> <CorporationNameOrganization>Baptist</CorporationNameOrganization> <CorporationNameOrganization>Church</CorporationNameOrganization></Name>
-  <Name><CorporationName>Union</CorporationName> <CorporationNameOrganization>Baptist</CorporationNameOrganization> <CorporationNameOrganization>Church</CorporationNameOrganization></Name>
   <Name><CorporationName>Mars</CorporationName> <CorporationName>Hill</CorporationName></Name>
   <Name><CorporationName>Crystal</CorporationName> <CorporationNameOrganization>Cathedral</CorporationNameOrganization></Name>
   <Name><CorporationName>Friendship</CorporationName> <CorporationNameOrganization>Baptist</CorporationNameOrganization> <CorporationNameOrganization>Church</CorporationNameOrganization></Name>
