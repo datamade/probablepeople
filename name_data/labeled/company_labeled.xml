@@ -1420,7 +1420,7 @@
   <Name><CorporationName>schuyler</CorporationName> <CorporationName>roche</CorporationName> <CorporationName>&amp;</CorporationName> <CorporationName>zwirner</CorporationName></Name>
 <!-- begin churches and religious organizations -->
   <Name><CorporationName>Bethlehem</CorporationName> <CorporationNameOrganization>Lutheran</CorporationNameOrganization> <CorporationNameOrganization>Church</CorporationNameOrganization></Name>
-  <Name><CorporationName>Salina</CorporationName> <CorporationName>Presbyterian</CorporationName> <CorporationNameOrganization>Church</CorporationNameOrganization></Name>
+  <Name><CorporationName>Salina</CorporationName> <CorporationNameOrganization>Presbyterian</CorporationNameOrganization> <CorporationNameOrganization>Church</CorporationNameOrganization></Name>
   <Name><CorporationName>Ebenezer</CorporationName> <CorporationNameOrganization>Lutheran</CorporationNameOrganization> <CorporationNameOrganization>Chapel</CorporationNameOrganization></Name>
   <Name><CorporationName>Brayton</CorporationName> <CorporationNameOrganization>Methodist</CorporationNameOrganization> <CorporationNameOrganization>Episcopal</CorporationNameOrganization> <CorporationNameOrganization>Church</CorporationNameOrganization></Name>
   <Name><CorporationName>St.</CorporationName> <CorporationName>Frances</CorporationName> <CorporationNameOrganization>Methodist</CorporationNameOrganization> <CorporationNameOrganization>Church</CorporationNameOrganization></Name>
