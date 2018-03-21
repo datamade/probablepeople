@@ -1418,6 +1418,7 @@
   <Name><CorporationName>cook,</CorporationName> <CorporationName>ysursa,</CorporationName> <CorporationNameAndCompany>et</CorporationNameAndCompany> <CorporationNameAndCompany>al</CorporationNameAndCompany> <CorporationNameOrganization>law</CorporationNameOrganization> <CorporationNameOrganization>firm</CorporationNameOrganization></Name>
   <Name><CorporationName>b</CorporationName> <CorporationName>p</CorporationName> <CorporationName>consultants</CorporationName></Name>
   <Name><CorporationName>schuyler</CorporationName> <CorporationName>roche</CorporationName> <CorporationName>&amp;</CorporationName> <CorporationName>zwirner</CorporationName></Name>
+<!-- begin churches and religious organizations -->
   <Name><CorporationName>Bethlehem</CorporationName> <CorporationNameOrganization>Lutheran</CorporationNameOrganization> <CorporationNameOrganization>Church</CorporationNameOrganization></Name>
   <Name><CorporationName>Salina</CorporationName> <CorporationName>Presbyterian</CorporationName> <CorporationNameOrganization>Church</CorporationNameOrganization></Name>
   <Name><CorporationName>Ebenezer</CorporationName> <CorporationNameOrganization>Lutheran</CorporationNameOrganization> <CorporationNameOrganization>Chapel</CorporationNameOrganization></Name>
@@ -1471,4 +1472,8 @@
   <Name><CorporationName>Mars</CorporationName> <CorporationName>Hill</CorporationName></Name>
   <Name><CorporationName>Crystal</CorporationName> <CorporationNameOrganization>Cathedral</CorporationNameOrganization></Name>
   <Name><CorporationName>Friendship</CorporationName> <CorporationNameOrganization>Baptist</CorporationNameOrganization> <CorporationNameOrganization>Church</CorporationNameOrganization></Name>
+  <!-- end churches and religious organizations -->
+  <Name><CorporationName>LeadIQ</CorporationName> <CorporationNameBranchIdentifier>Singapore</CorporationNameBranchIdentifier> <CorporationLegalType>Pte.</CorporationLegalType> <CorporationLegalType>Ltd.</CorporationLegalType></Name>
+  <Name><CorporationName>Spacemob</CorporationName> <CorporationLegalType>Pte.</CorporationLegalType> <CorporationLegalType>Ltd.</CorporationLegalType></Name>
+  <Name><CorporationName>NTUC</CorporationName> <CorporationName>LearningHub</CorporationName> <CorporationLegalType>Pte</CorporationLegalType> <CorporationLegalType>Ltd</CorporationLegalType></Name>  
 </NameCollection>
