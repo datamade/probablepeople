@@ -1468,5 +1468,9 @@
   <Name><CorporationName>Friendship</CorporationName> <CorporationNameOrganization>Baptist</CorporationNameOrganization> <CorporationNameOrganization>Church</CorporationNameOrganization></Name>
   <Name><CorporationName>LeadIQ</CorporationName> <CorporationNameBranchIdentifier>Singapore</CorporationNameBranchIdentifier> <CorporationLegalType>Pte.</CorporationLegalType> <CorporationLegalType>Ltd.</CorporationLegalType></Name>
   <Name><CorporationName>Spacemob</CorporationName> <CorporationLegalType>Pte.</CorporationLegalType> <CorporationLegalType>Ltd.</CorporationLegalType></Name>
-  <Name><CorporationName>NTUC</CorporationName> <CorporationName>LearningHub</CorporationName> <CorporationLegalType>Pte</CorporationLegalType> <CorporationLegalType>Ltd</CorporationLegalType></Name>  
+  <Name><CorporationName>NTUC</CorporationName> <CorporationName>LearningHub</CorporationName> <CorporationLegalType>Pte</CorporationLegalType> <CorporationLegalType>Ltd</CorporationLegalType></Name>
+  <Name><CorporationName>Holy</CorporationName> <CorporationName>Family</CorporationName> <CorporationNameOrganization>Cathedral</CorporationNameOrganization></Name>
+  <Name><CorporationName>Sacred</CorporationName> <CorporationName>Heart</CorporationName> <CorporationNameOrganization>Cathedral</CorporationNameOrganization></Name>
+  <Name><CorporationName>St.</CorporationName> <CorporationName>Augustine's</CorporationName> <CorporationNameOrganization>Cathedral</CorporationNameOrganization></Name>
+  <Name><CorporationNameOrganization>Cathedral</CorporationNameOrganization> <CorporationName>of</CorporationName> <CorporationName>St</CorporationName> <CorporationName>Paul</CorporationName> </Name>
 </NameCollection>
