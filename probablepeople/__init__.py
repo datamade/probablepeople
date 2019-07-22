@@ -20,16 +20,17 @@ from .ratios import ratios
 from .gender import gender_names
 
 LABELS = [
-    'Prefix',
-    'FirstName',
-    'MiddleName',
-    'LastName',
-    'Suffix',
-    'Context',
-    'Proxy',
-    'EntirelyContext',
-    'NonHumanName',
-    'And'
+    'Prefix', # E.G. Mr., Dr., Teacher, Coach
+    'FirstName', # Will, Priyanka, Hemanth, Pamela
+    'MiddleName', # E.G. William !BARR! Held, Barack !HUSSEIN! Obama
+    'FamilyName', # E.G. Sarah !SACHS!, William !HELD!, Marissa !MAYER!
+    'Suffix', # E.G. Jr, Sr, Ji, -san
+    'Context', # E.G. Info About the Person that is not a name
+    'Proxy', # E.G. via Canvas Notifications, via AirBnB
+    'EntirelyAlias', # E.G. Mom, Dad, Little Miss Snuggles
+    'EntirelyContext', # E.G. Mishkin's Dad, Bob's Mother-in-law, Apurva's Friend
+    'NonHumanName', # Businesses and Non-Human Entities
+    'And' # Representations for the Word And such as and or &
     ]
 
 PARENT_LABEL = 'Name'
