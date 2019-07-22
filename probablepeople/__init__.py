@@ -20,28 +20,16 @@ from .ratios import ratios
 from .gender import gender_names
 
 LABELS = [
-    'PrefixMarital',
-    'PrefixOther',
-    'GivenName',
-    'FirstInitial',
+    'Prefix',
+    'FirstName',
     'MiddleName',
-    'MiddleInitial',
-    'Surname',
-    'LastInitial',
-    'SuffixGenerational',
-    'SuffixOther',
-    'Nickname',
-    'And',
-    'CorporationName',
-    'CorporationNameOrganization',
-    'CorporationNameAndCompany',
-    'CorporationNameBranchType',
-    'CorporationNameBranchIdentifier',
-    'CorporationCommitteeType',
-    'CorporationLegalType',
-    'ShortForm',
-    'ProxyFor',
-    'AKA',
+    'LastName',
+    'Suffix',
+    'Context',
+    'Proxy',
+    'EntirelyContext',
+    'NonHumanName',
+    'And'
     ]
 
 PARENT_LABEL = 'Name'
