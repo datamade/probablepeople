@@ -64,3 +64,4 @@ make.bat
 *#
 
 .DS_Store
+.venv
