@@ -1,41 +1,44 @@
-from probablepeople import tokenize
 import unittest
 
-class TestTokenizing(unittest.TestCase) :
+from probablepeople import tokenize
 
-    def test_split_on_punc(self) :
 
-        assert tokenize('belcher,bob') == ['belcher,', 'bob']
-        assert tokenize('bob foo-bar') == ['bob', 'foo-bar']
-    
-    def test_spaces(self) :
+class TestTokenizing(unittest.TestCase):
 
-        assert tokenize('foo bar') == ['foo', 'bar']
-        assert tokenize('foo  bar') == ['foo', 'bar']
-        assert tokenize('foo bar ') == ['foo', 'bar']
-        assert tokenize(' foo bar') == ['foo', 'bar']
+    def test_split_on_punc(self):
 
-    def test_capture_punc(self) :
+        assert tokenize("belcher,bob") == ["belcher,", "bob"]
+        assert tokenize("bob foo-bar") == ["bob", "foo-bar"]
 
-        assert tokenize('bob b.') == ['bob', 'b.']
-        assert tokenize('bob b., jr') == ['bob', 'b.,', 'jr' ]
-        assert tokenize('bob b. jr') == ['bob', 'b.', 'jr' ]
-        assert tokenize("robert 'bob' belcher") == ['robert', "'bob'", 'belcher']
-        assert tokenize('robert "bob" belcher') == ['robert', '"bob"', 'belcher']
+    def test_spaces(self):
 
-    def test_ampersand(self) :
-        assert tokenize('mr & mrs') == ['mr', '&', 'mrs']
+        assert tokenize("foo bar") == ["foo", "bar"]
+        assert tokenize("foo  bar") == ["foo", "bar"]
+        assert tokenize("foo bar ") == ["foo", "bar"]
+        assert tokenize(" foo bar") == ["foo", "bar"]
 
-    def test_care_of(self) :
-        assert tokenize('same c/o me') == ['same', 'c/o', 'me']
+    def test_capture_punc(self):
 
-    def test_slash(self) :
-        assert tokenize('same o/c me') == ['same', 'o', '/', 'c', 'me']
+        assert tokenize("bob b.") == ["bob", "b."]
+        assert tokenize("bob b., jr") == ["bob", "b.,", "jr"]
+        assert tokenize("bob b. jr") == ["bob", "b.", "jr"]
+        assert tokenize("robert 'bob' belcher") == ["robert", "'bob'", "belcher"]
+        assert tokenize('robert "bob" belcher') == ["robert", '"bob"', "belcher"]
 
-    def test_paren(self) :
-        assert tokenize('robert (bob) belcher') == ['robert', '(bob)', 'belcher']
-        assert tokenize('robert(bob) belcher') == ['robert', '(bob)', 'belcher']
-        assert tokenize('robert (bob)belcher') == ['robert', '(bob)', 'belcher'] 
+    def test_ampersand(self):
+        assert tokenize("mr & mrs") == ["mr", "&", "mrs"]
 
-if __name__ == '__main__' :
-    unittest.main()    
+    def test_care_of(self):
+        assert tokenize("same c/o me") == ["same", "c/o", "me"]
+
+    def test_slash(self):
+        assert tokenize("same o/c me") == ["same", "o", "/", "c", "me"]
+
+    def test_paren(self):
+        assert tokenize("robert (bob) belcher") == ["robert", "(bob)", "belcher"]
+        assert tokenize("robert(bob) belcher") == ["robert", "(bob)", "belcher"]
+        assert tokenize("robert (bob)belcher") == ["robert", "(bob)", "belcher"]
+
+
+if __name__ == "__main__":
+    unittest.main()

@@ -1,55 +1,65 @@
-try:
-    from setuptools import setup
-except ImportError :
-    raise ImportError("setuptools module required, please go to https://pypi.python.org/pypi/setuptools and follow the instructions for installing setuptools")
+import os
+import subprocess
+from distutils.cmd import Command
+
+from setuptools import setup
+from setuptools.command.build_py import build_py as _build_py
 
 
+class TrainModel(Command):
+    description = "Training the model before building the package"
+    user_options = []
+
+    def initialize_options(self):
+        pass
+
+    def finalize_options(self):
+        pass
+
+    def run(self):
+        PYTHONPATH = os.environ.get("PYTHONPATH", "")
+        subprocess.run(
+            [
+                "parserator",
+                "train",
+                "name_data/labeled/person_labeled.xml,name_data/labeled/company_labeled.xml",
+                "probablepeople",
+                "--modelfile=generic",
+            ],
+            env=dict(os.environ, PYTHONPATH=f".{os.pathsep}{PYTHONPATH}"),
+        )
+        subprocess.run(
+            [
+                "parserator",
+                "train",
+                "name_data/labeled/person_labeled.xml",
+                "probablepeople",
+                "--modelfile=person",
+            ],
+            env=dict(os.environ, PYTHONPATH=f".{os.pathsep}{PYTHONPATH}"),
+        )
+        subprocess.run(
+            [
+                "parserator",
+                "train",
+                "name_data/labeled/company_labeled.xml",
+                "probablepeople",
+                "--modelfile=company",
+            ],
+            env=dict(os.environ, PYTHONPATH=f".{os.pathsep}{PYTHONPATH}"),
+        )
+
+
+class build_py(_build_py):
+    def run(self):
+        self.run_command("train_model")  # Run the custom command
+        super().run()
+
+
+# Standard setup configuration
 setup(
-    version='0.5.5',
-    url='https://github.com/datamade/probablepeople',
-    description='Parse romanized names & companies using advanced NLP methods',
-    name='probablepeople',
-    packages=['probablepeople'],
-    package_data={'probablepeople' : ['generic_learned_settings.crfsuite',
-                                      'person_learned_settings.crfsuite',
-                                      'company_learned_settings.crfsuite']},
-    license='The MIT License: http://www.opensource.org/licenses/mit-license.php',
-    install_requires=[
-        'python-crfsuite>=0.8',
-        'probableparsing',
-        'future>=0.14',
-        'doublemetaphone'],
-    classifiers=[
-        'Development Status :: 4 - Beta',
-        'Intended Audience :: Developers',
-        'Intended Audience :: Science/Research',
-        'License :: OSI Approved :: MIT License',
-        'Natural Language :: English',
-        'Operating System :: MacOS :: MacOS X',
-        'Operating System :: Microsoft :: Windows',
-        'Operating System :: POSIX',
-        'Programming Language :: Python :: 2.7',
-        'Programming Language :: Python :: 3',
-        'Programming Language :: Python :: 3.4',
-        'Programming Language :: Python :: 3.5',
-        'Topic :: Software Development :: Libraries :: Python Modules',
-        'Topic :: Scientific/Engineering',
-        'Topic :: Scientific/Engineering :: Information Analysis'],
-    long_description="""
-        probablepeople is a python library for parsing unstructured romanized name or company strings into components, using conditional random fields.
-
-        From the python interpreter:
-
-        >>> import probablepeople
-        >>> probablepeople.parse('Mr George "Gob" Bluth II') 
-        [('Mr', 'PrefixMarital'), 
-         ('George', 'GivenName'), 
-         ('"Gob"', 'Nickname'), 
-         ('Bluth', 'Surname'), 
-         ('II', 'SuffixGenerational')]
-        >>> probablepeople.parse('Sitwell Housing Inc')
-        [('Sitwell', 'CorporationName'),
-         ('Housing', 'CorporationName'),
-         ('Inc', 'CorporationLegalType')]
-        """
-    )
+    cmdclass={
+        "build_py": build_py,  # Override build_py
+        "train_model": TrainModel,  # Register custom command
+    },
+)
