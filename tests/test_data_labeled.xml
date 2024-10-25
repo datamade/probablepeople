@@ -75,4 +75,5 @@
   <Name><CorporationName>Calvary</CorporationName> <CorporationNameOrganization>Baptist</CorporationNameOrganization> <CorporationNameOrganization>Church</CorporationNameOrganization></Name>
   <Name><CorporationName>Union</CorporationName> <CorporationNameOrganization>Baptist</CorporationNameOrganization> <CorporationNameOrganization>Church</CorporationNameOrganization></Name>
   <Name><CorporationName>Mount</CorporationName> <CorporationName>Olive</CorporationName> <CorporationNameOrganization>Cathedral</CorporationNameOrganization></Name>
+  <Name><GivenName>David</GivenName> <MiddleInitial>C.</MiddleInitial> <Surname>Zaccheo</Surname> <SuffixOther>AIA</SuffixOther></Name>
 </NameCollection>
