@@ -278,7 +278,7 @@ def tokenFeatures(token: str) -> Feature:
     return features
 
 
-def vowelRatio(token: str) -> int | bool:
+def vowelRatio(token: str) -> typing.Union[int, bool]:
     n_chars = len(token)
     if n_chars > 1:
         n_vowels = sum(token.count(c) for c in VOWELS_Y)
