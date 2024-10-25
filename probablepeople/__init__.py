@@ -3,8 +3,8 @@
 import os
 import re
 import string
+import typing
 import warnings
-from collections import OrderedDict
 
 import probableparsing
 import pycrfsuite
@@ -12,6 +12,8 @@ from doublemetaphone import doublemetaphone
 
 from .gender import gender_names
 from .ratios import ratios
+
+Feature = dict[str, typing.Union[str, bool, "Feature"]]
 
 LABELS = [
     "PrefixMarital",
@@ -53,7 +55,7 @@ VOWELS_Y = tuple("aeiouy")
 PREPOSITIONS = {"for", "to", "of", "on"}
 
 
-def _loadTagger(model_type):
+def _loadTagger(model_type: str) -> pycrfsuite.Tagger:
     tagger = pycrfsuite.Tagger()
     try:
         tagger.open(
@@ -74,7 +76,7 @@ TAGGERS = {model_type: _loadTagger(model_type) for model_type in MODEL_FILES}
 TAGGER = _loadTagger("generic")
 
 
-def parse(raw_string, type=None):
+def parse(raw_string: str, type: str | None = None) -> list[tuple[str, str]]:
     if type is None:
         type = "generic"
     tagger = TAGGERS[type]
@@ -97,8 +99,8 @@ parserator train [traindata] [modulename]"""
     return list(zip(tokens, tags))
 
 
-def tag(raw_string, type=None):
-    tagged = OrderedDict()
+def tag(raw_string: str, type: str | None = None) -> tuple[dict[str, str], str]:
+    tagged = {}
 
     prev_label = None
     and_label = False
@@ -144,22 +146,23 @@ def tag(raw_string, type=None):
 
         prev_label = label
 
+    tagged_name = {}
     for label in tagged:
         component = " ".join(tagged[label])
         component = component.strip(" ,;")
-        tagged[label] = component
+        tagged_name[label] = component
 
-    if "CorporationName" in tagged or "ShortForm" in tagged:
+    if "CorporationName" in tagged_name or "ShortForm" in tagged_name:
         name_type = "Corporation"
     elif and_label:
         name_type = "Household"
     else:
         name_type = "Person"
 
-    return tagged, name_type
+    return tagged_name, name_type
 
 
-def tokenize(raw_string):
+def tokenize(raw_string: str) -> list[str]:
 
     if isinstance(raw_string, bytes):
         raw_string = raw_string.decode()
@@ -183,7 +186,7 @@ def tokenize(raw_string):
     return tokens
 
 
-def tokens2features(tokens):
+def tokens2features(tokens) -> list[Feature]:
 
     feature_sequence = [tokenFeatures(tokens[0])]
     previous_features = feature_sequence[-1].copy()
@@ -209,8 +212,8 @@ def tokens2features(tokens):
     if len(feature_sequence) > 1:
         feature_sequence[0]["rawstring.start"] = True
         feature_sequence[-1]["rawstring.end"] = True
-        feature_sequence[1]["previous"]["rawstring.start"] = True
-        feature_sequence[-2]["next"]["rawstring.end"] = True
+        feature_sequence[1]["previous"]["rawstring.start"] = True  # type: ignore [index]
+        feature_sequence[-2]["next"]["rawstring.end"] = True  # type: ignore [index]
 
     else:
         feature_sequence[0]["singleton"] = True
@@ -218,7 +221,7 @@ def tokens2features(tokens):
     return feature_sequence
 
 
-def tokenFeatures(token):
+def tokenFeatures(token: str) -> Feature:
 
     if token in ("&"):
         token_clean = token_abbrev = token
@@ -273,16 +276,16 @@ def tokenFeatures(token):
     return features
 
 
-def vowelRatio(token):
+def vowelRatio(token: str) -> int | bool:
     n_chars = len(token)
     if n_chars > 1:
         n_vowels = sum(token.count(c) for c in VOWELS_Y)
-        return n_vowels // float(n_chars)
+        return int(n_vowels // float(n_chars))
     else:
         return False
 
 
-def digits(token):
+def digits(token: str) -> typing.Literal["all_digits", "some_digits", "no_digits"]:
     if token.isdigit():
         return "all_digits"
     elif set(token) & set(string.digits):
@@ -291,7 +294,7 @@ def digits(token):
         return "no_digits"
 
 
-def ngrams(word, n=2):
+def ngrams(word: str, n: int = 2) -> typing.Generator[str]:
     return ("".join(letters) for letters in zip(*[word[i:] for i in range(n)]))
 
 
