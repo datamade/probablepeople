@@ -76,7 +76,7 @@ TAGGERS = {model_type: _loadTagger(model_type) for model_type in MODEL_FILES}
 TAGGER = _loadTagger("generic")
 
 
-def parse(raw_string: str, type: str | None = None) -> list[tuple[str, str]]:
+def parse(raw_string: str, type: typing.Optional[str] = None) -> list[tuple[str, str]]:
     if type is None:
         type = "generic"
     tagger = TAGGERS[type]
@@ -99,7 +99,9 @@ parserator train [traindata] [modulename]"""
     return list(zip(tokens, tags))
 
 
-def tag(raw_string: str, type: str | None = None) -> tuple[dict[str, str], str]:
+def tag(
+    raw_string: str, type: typing.optional[str] = None
+) -> tuple[dict[str, str], str]:
     tagged = {}
 
     prev_label = None
