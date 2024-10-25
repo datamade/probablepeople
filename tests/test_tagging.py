@@ -19,7 +19,7 @@ def test_basic():
     "name_text,components",
     readTrainingData(["tests/test_data_labeled.xml"], GROUP_LABEL),
 )
-def test_simple_addresses(name_text, components):
+def test_names(name_text, components):
 
     _, labels_true = list(zip(*components))
     _, labels_pred = list(zip(*parse(name_text)))
