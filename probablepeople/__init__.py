@@ -100,7 +100,7 @@ parserator train [traindata] [modulename]"""
 
 
 def tag(
-    raw_string: str, type: typing.optional[str] = None
+    raw_string: str, type: typing.Optional[str] = None
 ) -> tuple[dict[str, str], str]:
     tagged = {}
 
