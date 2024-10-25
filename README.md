@@ -52,14 +52,13 @@ probablepeople learns how to parse names/companies through a body of training da
 Probablepeople uses [parserator](https://github.com/datamade/parserator), a library for making and improving probabilistic parsers - specifically, parsers that use [python-crfsuite](https://github.com/tpeng/python-crfsuite)'s implementation of conditional random fields. Parserator allows you to train probablepeople's model (a .crfsuite settings file) on labeled training data, and provides tools for easily adding new labeled training data.
 #### Building & testing development code
   
-  ```
-  git clone https://github.com/datamade/probablepeople.git  
-  cd probablepeople  
-  pip install -r requirements.txt  
-  python setup.py develop
-  make all
-  nosetests .  
-  ```  
+```console
+git clone https://github.com/datamade/probablepeople.git  
+cd probablepeople  
+pip install -e .
+pytest
+```
+
 #### Creating/adding labeled training data (.xml outfile) from unlabeled raw data (.csv infile)  
 
 If there are name/company formats that the parser isn't performing well on, you can add them to training data. As probablepeople continually learns about new cases, it will continually become smarter and more robust.
@@ -93,7 +92,7 @@ The parserator `label` command will start a console labeling task, where you wil
   parserator train name_data/labeled/person_labeled.xml,name_data/labeled/company_labeled.xml probablepeople --modelfile=generic
   parserator train name_data/labeled/person_labeled.xml probablepeople --modelfile=person
   parserator train name_data/labeled/company_labeled.xml probablepeople --modelfile=company
-  ```  
+  ```
   
 ## Errors and Bugs
 
