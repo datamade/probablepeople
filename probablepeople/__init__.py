@@ -296,7 +296,7 @@ def digits(token: str) -> typing.Literal["all_digits", "some_digits", "no_digits
         return "no_digits"
 
 
-def ngrams(word: str, n: int = 2) -> typing.Generator[str]:
+def ngrams(word: str, n: int = 2) -> typing.Generator[str, None, None]:
     return ("".join(letters) for letters in zip(*[word[i:] for i in range(n)]))
 
 
