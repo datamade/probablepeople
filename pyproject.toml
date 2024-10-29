@@ -1,6 +1,6 @@
 [project]
 name = "probablepeople"
-version = "0.5.5"
+version = "0.5.6"
 description = "Parse romanized names & companies using advanced NLP methods"
 readme = "README.md"
 license = {text = "MIT License", url = "http://www.opensource.org/licenses/mit-license.php"}
