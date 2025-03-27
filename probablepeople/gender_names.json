@@ -1,4 +1,4 @@
-gender_names = {
+{
     "aaron": 0.008264462809917357,
     "abbey": 1.0,
     "abbie": 1.0,
@@ -5161,5 +5161,5 @@ gender_names = {
     "zoraida": 1.0,
     "zula": 1.0,
     "zulema": 1.0,
-    "zulma": 1.0,
+    "zulma": 1.0
 }
