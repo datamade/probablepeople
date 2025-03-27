@@ -50,7 +50,9 @@ include = ["probablepeople"]
 [tool.setuptools.package-data]
 probablepeople = ["generic_learned_settings.crfsuite",
                   "person_learned_settings.crfsuite",
-                  "company_learned_settings.crfsuite"
+                  "company_learned_settings.crfsuite",
+                  "gender_names.json",
+                  "ratios.json",
 ]
 
 
