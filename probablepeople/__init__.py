@@ -1,6 +1,8 @@
 #!/usr/bin/python
 
+import json
 import os
+import os.path
 import re
 import string
 import typing
@@ -10,8 +12,16 @@ import probableparsing
 import pycrfsuite
 from doublemetaphone import doublemetaphone
 
-from .gender import gender_names
-from .ratios import ratios
+
+def _loadJsonDictionary(name):
+    with open(
+        os.path.join(os.path.dirname(os.path.abspath(__file__)), name)
+    ) as input_file:
+        return json.load(input_file)
+
+
+gender_names = _loadJsonDictionary("gender_names.json")
+ratios = _loadJsonDictionary("ratios.json")
 
 Feature = dict[str, typing.Union[str, bool, "Feature"]]
 
@@ -120,7 +130,6 @@ def tag(
     )
 
     for token, label in parse(raw_string, type):
-
         if label == "And":
             and_label = True
         elif label == "AKA":
@@ -165,7 +174,6 @@ def tag(
 
 
 def tokenize(raw_string: str) -> list[str]:
-
     if isinstance(raw_string, bytes):
         raw_string = raw_string.decode()
 
@@ -189,7 +197,6 @@ def tokenize(raw_string: str) -> list[str]:
 
 
 def tokens2features(tokens) -> list[Feature]:
-
     feature_sequence = [tokenFeatures(tokens[0])]
     previous_features = feature_sequence[-1].copy()
 
@@ -224,7 +231,6 @@ def tokens2features(tokens) -> list[Feature]:
 
 
 def tokenFeatures(token: str) -> Feature:
-
     if token in ("&"):
         token_clean = token_abbrev = token
 
