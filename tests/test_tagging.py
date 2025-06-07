@@ -1,7 +1,7 @@
 import pytest
 from parserator.training import readTrainingData
 
-from probablepeople import GROUP_LABEL, parse, tag
+from probabledoctor import GROUP_LABEL, parse, tag
 
 
 # these are basic name patterns

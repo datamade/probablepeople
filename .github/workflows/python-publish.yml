@@ -18,7 +18,7 @@ jobs:
           pip install --upgrade pip
           pip install .[dev]
       - name: flake8
-        run: flake8 probablepeople tests
+        run: flake8 probabledoctor tests
       - name: isort
         if: always()
         run: isort --check-only .
@@ -59,9 +59,9 @@ jobs:
     name: Upload release to PyPI
     environment:
       name: pypi
-      url: https://pypi.org/p/probablepeople
+      url: https://pypi.org/p/probabledoctor/
     permissions:
-      id-token: write 
+      id-token: write
     steps:
     - uses: actions/checkout@v4
     - name: Set up Python

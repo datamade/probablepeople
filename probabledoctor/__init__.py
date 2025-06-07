@@ -120,7 +120,6 @@ def tag(
     )
 
     for token, label in parse(raw_string, type):
-
         if label == "And":
             and_label = True
         elif label == "AKA":
@@ -165,7 +164,6 @@ def tag(
 
 
 def tokenize(raw_string: str) -> list[str]:
-
     if isinstance(raw_string, bytes):
         raw_string = raw_string.decode()
 
@@ -189,7 +187,6 @@ def tokenize(raw_string: str) -> list[str]:
 
 
 def tokens2features(tokens) -> list[Feature]:
-
     feature_sequence = [tokenFeatures(tokens[0])]
     previous_features = feature_sequence[-1].copy()
 
@@ -224,7 +221,6 @@ def tokens2features(tokens) -> list[Feature]:
 
 
 def tokenFeatures(token: str) -> Feature:
-
     if token in ("&"):
         token_clean = token_abbrev = token
 
@@ -301,5 +297,5 @@ def ngrams(word: str, n: int = 2) -> typing.Generator[str, None, None]:
 
 
 class RepeatedLabelError(probableparsing.RepeatedLabelError):
-    REPO_URL = "https://github.com/datamade/probablepeople/issues/new"
-    DOCS_URL = "https://probablepeople.readthedocs.io/"
+    REPO_URL = "https://github.com/atk81-candor/probabledoctor/issues/new"
+    DOCS_URL = "https://probabledoctor.readthedocs.io/"

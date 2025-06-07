@@ -1,6 +1,6 @@
 import unittest
 
-from probablepeople import tokenize
+from probabledoctor import tokenize
 
 
 class TestTokenizing(unittest.TestCase):

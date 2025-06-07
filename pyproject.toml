@@ -1,7 +1,7 @@
 [project]
-name = "probablepeople"
-version = "0.5.6"
-description = "Parse romanized names & companies using advanced NLP methods"
+name = "probabledoctor"
+version = "0.1.0"
+description = "Enhanced parser for medical professional names with advanced NLP methods, supporting middle names, generational suffixes, and credentials"
 readme = "README.md"
 license = {text = "MIT License", url = "http://www.opensource.org/licenses/mit-license.php"}
 requires-python = ">=3.9"
@@ -11,21 +11,28 @@ dependencies = [
   "doublemetaphone"
 ]
 classifiers = [
-  "Development Status :: 3 - Alpha",
+  "Development Status :: 4 - Beta",
   "Intended Audience :: Developers",
   "Intended Audience :: Science/Research",
+  "Intended Audience :: Healthcare Industry",
   "License :: OSI Approved :: MIT License",
   "Natural Language :: English",
   "Operating System :: MacOS :: MacOS X",
   "Operating System :: Microsoft :: Windows",
   "Operating System :: POSIX",
+  "Programming Language :: Python :: 3",
+  "Programming Language :: Python :: 3.9",
+  "Programming Language :: Python :: 3.10",
+  "Programming Language :: Python :: 3.11",
+  "Programming Language :: Python :: 3.12",
   "Topic :: Software Development :: Libraries :: Python Modules",
   "Topic :: Scientific/Engineering",
   "Topic :: Scientific/Engineering :: Information Analysis",
-]  
+  "Topic :: Text Processing :: Linguistic",
+]
 
 [project.urls]
-Homepage = "https://github.com/datamade/probablepeople"
+Homepage = "https://github.com/atk81-candor/probabledoctor"
 
 [project.optional-dependencies]
 dev = ["pytest",
@@ -37,18 +44,25 @@ dev = ["pytest",
        "pre-commit"
 ]
 
+
 [build-system]
-requires = ["setuptools>=42", "wheel", "parserator", "probableparsing", "doublemetaphone"
+requires = [
+  "setuptools>=42",
+  "wheel",
+  "parserator",
+  "probableparsing",
+  "doublemetaphone",
+  "Faker"
 ]
 build-backend = "setuptools.build_meta"
 
 
 [tool.setuptools.packages.find]
-include = ["probablepeople"]
+include = ["probabledoctor"]
 
 
 [tool.setuptools.package-data]
-probablepeople = ["generic_learned_settings.crfsuite",
+probabledoctor = ["generic_learned_settings.crfsuite",
                   "person_learned_settings.crfsuite",
                   "company_learned_settings.crfsuite"
 ]
@@ -63,7 +77,7 @@ testpaths = [
   ]
 
 [tool.mypy]
-files = ["probablepeople"]
+files = ["probabledoctor"]
 show_error_codes = true
 ignore_missing_imports = true
 check_untyped_defs = true
@@ -71,4 +85,10 @@ implicit_reexport = false
 
 [tool.isort]
 profile = "black"
-src_paths = ["probablepeople", "tests"]
+src_paths = ["probabledoctor", "tests"]
+
+[project.entry-points.console_scripts]
+probabledoctor = "probabledoctor.cli:main"
+
+[project.scripts]
+probabledoctor = "probabledoctor.cli:main"

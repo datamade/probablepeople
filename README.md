@@ -1,138 +1,190 @@
-probabledoctor
-=================
-[![Build Status](https://travis-ci.org/datamade/probabledoctor.svg?branch=master)](https://travis-ci.org/datamade/probabledoctor)
+# 🏥 ProbableDoctor
 
-probabledoctor is a python library for parsing unstructured romanized name or company strings into components, using advanced NLP methods. This is based off [usaddress](https://github.com/datamade/usaddress), a python library for parsing addresses.
+[![PyPI version](https://badge.fury.io/py/probabledoctor.svg)](https://badge.fury.io/py/probabledoctor)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
+**Enhanced Medical Professional Name Parser** with advanced multi-credential support.
 
+ProbableDoctor is an enhanced Python library for parsing medical professional names with proper handling of multiple comma-separated credentials and titles. Built on top of the robust `probablepeople` library, it provides specialized parsing for healthcare professionals.
 
-**What this can do:** Using a probabilistic model, it makes (very educated) guesses in identifying name or corporation components, even in tricky cases where rule-based parsers typically break down.
+## ✨ Key Features
 
-**What this cannot do:** It cannot identify components with perfect accuracy, nor can it verify that a given name/company is correct/valid.
+- **🎓 Multi-Credential Parsing**: Properly handles multiple credentials like "MD, PhD, FACP"
+- **👨‍⚕️ Medical Titles**: Recognizes medical prefixes and professional titles
+- **📋 List Format**: Returns credentials as arrays for easy processing
+- **🔄 Backwards Compatible**: Works with existing `probablepeople` code
+- **🎯 High Accuracy**: Uses advanced NLP and machine learning
 
-probabledoctor learns how to parse names/companies through a body of training data. If you have examples of names/companies that stump this parser, please send them over! By adding more examples to the training data, probabledoctor can continue to learn and improve.
+## 🚀 Quick Start
 
-## How to use the probabledoctor python library
-1. Install probabledoctor with [pip](https://pip.readthedocs.io/en/latest/quickstart.html), a tool for installing and managing python packages ([beginner's guide here](http://www.dabapps.com/blog/introduction-to-pip-and-virtualenv-python/))
+### Installation
 
-   In the terminal,
-   
-    ```
-    pip install probabledoctor  
-    ```  
-2. Parse some names/companies!
-   
-   ![pp](https://cloud.githubusercontent.com/assets/1406537/7870535/966f0956-054f-11e5-8312-4d392f79ff75.gif)
+```bash
+pip install probabledoctor
+```
+
+### Basic Usage
+
+```python
+from probabledoctor import parse_medical_name
+
+# Parse a medical professional's name
+result, name_type = parse_medical_name("Dr. Sarah Johnson MD, PhD, FACP")
+
+print(result)
+# Output: {
+#     'PrefixOther': 'Dr.',
+#     'GivenName': 'Sarah', 
+#     'Surname': 'Johnson',
+#     'SuffixOther': ['MD', 'PhD', 'FACP']
+# }
+
+print(f"Credentials: {result['SuffixOther']}")
+# Output: Credentials: ['MD', 'PhD', 'FACP']
+```
+
+## 📊 Examples
+
+### Multiple Credentials
+```python
+from probabledoctor import parse_medical_name
+
+names = [
+    "Taylor Anne Jordan ATC, LAT",
+    "Dr. Sarah Johnson MD, PhD, FACP", 
+    "Michael Smith RN, BSN, CEN",
+    "Prof. David Wilson PhD, MD"
+]
+
+for name in names:
+    result, _ = parse_medical_name(name)
+    credentials = result.get('SuffixOther', [])
+    full_name = f"{result.get('GivenName', '')} {result.get('Surname', '')}"
     
-   Note that `parse` and `tag` are differet methods:
-   ```python
-   import probabledoctor as pp
-   name_str='Mr George "Gob" Bluth II'
-   corp_str='Sitwell Housing Inc'
-  
-   # The parse method will split your string into components, and label each component.
-   pp.parse(name_str) # expected output: [('Mr', 'PrefixMarital'), ('George', 'GivenName'), ('"Gob"', 'Nickname'), ('Bluth', 'Surname'), ('II', 'SuffixGenerational')]
-   pp.parse(corp_str) # expected output: [('Sitwell', 'CorporationName'), ('Housing', 'CorporationName'), ('Inc', 'CorporationLegalType')]
-  
-   # The tag method will try to be a little smarter
-   # it will merge consecutive components, strip commas, & return a string type
-   pp.tag(name_str) # expected output: (OrderedDict([('PrefixMarital', 'Mr'), ('GivenName', 'George'), ('Nickname', '"Gob"'), ('Surname', 'Bluth'), ('SuffixGenerational', 'II')]), 'Person')
-   pp.tag(corp_str) # expected output: (OrderedDict([('CorporationName', 'Sitwell Housing'), ('CorporationLegalType', 'Inc')]), 'Corporation')
-   ```
-  
-  # Medical professional names
-  You can also parse medical professional names, including doctor titles and degree suffixes. For example:
-  ```python
-  import probabledoctor as pp
-  # Parsing with title and medical degree suffix
-  >>> pp.parse('Dr. John A. Smith, MD')
-  [('Dr.', 'PrefixOther'), ('John', 'GivenName'), ('A.', 'MiddleInitial'), ('Smith', 'Surname'), ('MD', 'SuffixOther')]
-  >>> pp.tag('Dr. John A. Smith, MD')
-  (OrderedDict([
-    ('PrefixOther', 'Dr.'),
-    ('GivenName', 'John'),
-    ('MiddleInitial', 'A.'),
-    ('Surname', 'Smith'),
-    ('SuffixOther', 'MD')
-  ]), 'Person')
-  ```
-  
-  If you notice titles or degrees not parsed as expected, add some labeled examples and retrain:
-  ```bash
-  # Label new person examples (e.g., medical professionals)
-  parserator label my_medical_names.csv name_data/labeled/person_labeled.xml probabledoctor
-  # Retrain the person model to include them
-  parserator train name_data/labeled/person_labeled.xml probabledoctor --modelfile=person
-  ```
+    print(f"👤 {full_name}")
+    print(f"🎓 Credentials: {credentials}")
+    print()
+```
 
-## Links:
-* Documentation: https://probabledoctor.readthedocs.io/
-* Distribution: https://pypi.python.org/pypi/probabledoctor
-* Repository: https://github.com/atk81-candor/probabledoctor#
-* Issues: https://github.com/datamade/usaddress/issues
-* Blog post: https://datamade.us/blog/parse-name-or-parse-anything-really
+Output:
+```
+👤 Taylor Anne Jordan
+🎓 Credentials: ['ATC', 'LAT']
 
-## For the nerds:
-probabledoctor uses [parserator](https://github.com/datamade/parserator), a library for making and improving probabilistic parsers - specifically, parsers that use [python-crfsuite](https://github.com/tpeng/python-crfsuite)'s implementation of conditional random fields. Parserator allows you to train probabledoctor's model (a .crfsuite settings file) on labeled training data, and provides tools for easily adding new labeled training data.
-#### Building & testing development code
-  
-```console
-git clone https://github.com/datamade/probabledoctor.git
+👤 Sarah Johnson  
+🎓 Credentials: ['MD', 'PhD', 'FACP']
+
+👤 Michael Smith
+🎓 Credentials: ['RN', 'BSN', 'CEN']
+
+👤 David Wilson
+🎓 Credentials: ['PhD', 'MD']
+```
+
+### Backwards Compatibility
+
+ProbableDoctor maintains full compatibility with `probablepeople`:
+
+```python
+import probabledoctor as pp
+
+# Use standard probablepeople functions
+result = pp.parse("John Smith")
+tagged = pp.tag("Dr. Jane Doe MD")
+```
+
+## 🏗️ What's Enhanced?
+
+| Feature | probablepeople | probabledoctor |
+|---------|---------------|----------------|
+| Basic name parsing | ✅ | ✅ |
+| Single credentials | ✅ | ✅ |
+| Multiple credentials | ❌ Returns as string | ✅ Returns as array |
+| Medical titles | ⚠️ Limited | ✅ Enhanced |
+| Complex credentials | ❌ "MD, PhD, FACP" | ✅ ['MD', 'PhD', 'FACP'] |
+
+## ⚠️ Known Limitations
+
+- **Parsing of trailing initials**: In some cases, names with a trailing initial (e.g., "John Doe A") might have the initial misclassified. For example, running `probabledoctor "Kashani Jamshid A" --tag` may currently identify "A" as `SuffixOther` instead of a `MiddleInitial` or as part of the main name components. This is related to the intricacies of the statistical model used for parsing. Efforts to improve accuracy for these patterns are ongoing.
+
+## 🎯 Use Cases
+
+- **Healthcare Systems**: Parse doctor names from databases
+- **Medical Records**: Extract credentials from patient records  
+- **Research**: Analyze medical professional credentials
+- **HR Systems**: Process healthcare worker information
+- **Compliance**: Verify medical professional credentials
+
+## 📚 Advanced Usage
+
+### Custom Model Types
+
+```python
+# Use different parsing models
+result = parse_medical_name("Dr. Smith", model_type="person")
+result = parse_medical_name("Smith Medical Corp", model_type="company")
+```
+
+
+## Integration with Existing Code
+
+```python
+# Drop-in replacement for probablepeople
+import probabledoctor as pp
+
+# Your existing probablepeople code works unchanged
+names = ["John Smith", "Dr. Jane Doe MD"]
+for name in names:
+    parsed = pp.parse(name)
+    tagged = pp.tag(name)
+```
+
+
+## Requirements
+
+- Python 3.9+
+- python-crfsuite>=0.7
+- probableparsing
+- doublemetaphone
+
+## Installation from Source
+
+```bash
+git clone https://github.com/atk81-candor/probabledoctor
 cd probabledoctor
 pip install -e .
-pytest
 ```
 
-#### Creating/adding labeled training data (.xml outfile) from unlabeled raw data (.csv infile)  
+## Running Tests
 
-If there are name/company formats that the parser isn't performing well on, you can add them to training data. As probabledoctor continually learns about new cases, it will continually become smarter and more robust.
-
-*NOTE: The model doesn't need many examples to learn about new patterns - if you are trying to get probabledoctor to perform better on a specific type of name, start with a few (<5) examples, check performance, and then add more examples as necessary.*
-
-For this parser, we are keeping person names and organization names separate in the training data. The two training files used to produce the model are:
-- `name_data/labeled/labeled.xml` for people
-- `name_data/labeled/company_labeled.xml` for organizations.
-
-To add your own training examples, first put your unlabeled raw data in a csv. Then:
-  
+```bash
+pytest tests/
 ```
-parserator label [infile] [outfile] probabledoctor  
-```  
 
-`[infile]` is your raw csv and `[outfile]` is the appropriate training file to write to. For example, if you put raw strings in `my_companies.csv`, you'd use `parserator label my_companies.csv name_data/labeled/company_labeled.xml probabledoctor`
+## 📄 License
 
-The parserator `label` command will start a console labeling task, where you will be prompted to label raw strings via the command line. For more info on using parserator, see the [parserator documentation](https://github.com/datamade/parserator/blob/master/README.md).  
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
-#### Re-training the model  
-  If you've added new training data, you will need to re-train the model. To set multiple files as traindata, separate them with commas.
-  
-  ```
-  parserator train [traindata] probabledoctor  
-  ```  
-  
-  probabledoctor allows for multiple model files - `person` for person names only, `company` for company names only, or `generic` (both). here are examples of commands for training models:
-  
-  ```
-  parserator train name_data/labeled/person_labeled.xml,name_data/labeled/company_labeled.xml probabledoctor --modelfile=generic
-  parserator train name_data/labeled/person_labeled.xml probabledoctor --modelfile=person
-  parserator train name_data/labeled/company_labeled.xml probabledoctor --modelfile=company
-  ```
-  
-## Errors and Bugs
+## 🤝 Contributing
 
-If something is not behaving intuitively, it is a bug and should be reported.
-Report it here by creating an issue: https://github.com/datamade/probabledoctor/issues
+Contributions are welcome! Please feel free to submit a Pull Request.
 
-Help us fix the problem as quickly as possible by following [Mozilla's guidelines for reporting bugs.](https://developer.mozilla.org/en-US/docs/Mozilla/QA/Bug_writing_guidelines#General_Outline_of_a_Bug_Report)
+1. Fork the repository
+2. Create a feature branch (`git checkout -b feature/amazing-feature`)
+3. Commit your changes (`git commit -m 'Add amazing feature'`)
+4. Push to the branch (`git push origin feature/amazing-feature`)
+5. Open a Pull Request
 
-## Patches and Pull Requests
+## 🆘 Support
 
-Your patches are welcome. Here's our suggested workflow:
+- 📖 [Documentation](https://github.com/atk81-candor/probabledoctor#readme)
+- 🐛 [Issue Tracker](https://github.com/atk81-candor/probabledoctor/issues)
+- 💬 [Discussions](https://github.com/atk81-candor/probabledoctor/discussions)
 
-* Fork the project.
-* Add your labeled examples.
-* Send us a pull request with a description of your work.
+## 🙏 Acknowledgments
 
-### Copyright
+Built on top of the excellent [probablepeople](https://github.com/datamade/probablepeople) library by DataMade.
 
-Copyright (c) 2014 Atlanta Journal Constitution. Released under the [MIT License](https://github.com/datamade/probabledoctor/blob/master/LICENSE).
+---
+
+### Made with ❤️ for the healthcare community

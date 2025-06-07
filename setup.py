@@ -1,5 +1,6 @@
 import os
 import subprocess
+import sys
 from distutils.cmd import Command
 
 from setuptools import setup
@@ -18,6 +19,10 @@ class TrainModel(Command):
 
     def run(self):
         PYTHONPATH = os.environ.get("PYTHONPATH", "")
+        # Generate synthetic data for improved training
+        subprocess.run(
+            [sys.executable, "scripts/generate_person_training_data.py"], check=True
+        )
         subprocess.run(
             [
                 "parserator",
