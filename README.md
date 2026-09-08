@@ -89,10 +89,10 @@ The parserator `label` command will start a console labeling task, where you wil
   probablepeople allows for multiple model files - `person` for person names only, `company` for company names only, or `generic` (both). here are examples of commands for training models:
   
   ```
-  parserator train name_data/labeled/person_labeled.xml,name_data/labeled/company_labeled.xml probablepeople --modelfile=generic
-  parserator train name_data/labeled/person_labeled.xml probablepeople --modelfile=person
-  parserator train name_data/labeled/company_labeled.xml probablepeople --modelfile=company
+  ./train_models.sh
   ```
+
+  The trained model files are committed to this repository, so installing the package does not re-train them. `train_models.sh` regenerates all three with a fixed `PYTHONHASHSEED` (pass one as its only argument to override); without a fixed seed, every run produces a different model.
   
 ## Errors and Bugs
 
